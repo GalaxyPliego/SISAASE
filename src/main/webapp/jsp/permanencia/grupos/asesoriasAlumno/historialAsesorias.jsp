@@ -12,31 +12,31 @@
     <meta name="author" content="">
 
     <title>SISA</title>
-    <link rel="icon" href="/SISAASE_war/img/utez/favicon.ico" />
+    <link rel="icon" href="/SISAASE_war_exploded/img/utez/favicon.ico" />
     <!-- Bootstrap Core CSS -->
-    <link href="/SISAASE_war/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
 
 
     <!-- MetisMenu CSS -->
-    <link href="/SISAASE_war/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="/SISAASE_war/css/general.css" rel="stylesheet">
-    <link href="/SISAASE_war/css/timeline.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/general.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/SISAASE_war/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/SISAASE_war/components/morrisjs/morris.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/components/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/SISAASE_war/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/SISAASE_war_exploded/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- include the core styles -->
-    <link rel="stylesheet" href="/SISAASE_war/css/alertify.core.css" />
+    <link rel="stylesheet" href="/SISAASE_war_exploded/css/alertify.core.css" />
     <!-- include a theme, can be included into the core instead of 2 separate files -->
-    <link rel="stylesheet" href="/SISAASE_war/css/sweetalert.css" />
+    <link rel="stylesheet" href="/SISAASE_war_exploded/css/sweetalert.css" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -93,7 +93,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background: url(/SISAASE_war/img/system/preloader.gif) center no-repeat #fff;
+            background: url(/SISAASE_war_exploded/img/system/preloader.gif) center no-repeat #fff;
         }
     </style>
 </head>
@@ -110,7 +110,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/SISAASE_war/iniciarSesion" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISA</a>
+            <a class="navbar-brand" href="/SISAASE_war_exploded/iniciarSesion" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISA</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -120,7 +120,7 @@
 
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" id="cerrarSesion" href="/SISAASE_war/cerrarSesion">
+                <a class="dropdown-toggle" id="cerrarSesion" href="/SISAASE_war_exploded/cerrarSesion">
                     <i class="fa fa-power-off fa-fw"></i>  Salir
                 </a>
             </li>
@@ -128,50 +128,46 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-
-
-
-
         <!DOCTYPE html>
         <div id="leftMenu" class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search text-center hidden-xs " style="background-color: #fff;padding: 15px 0 5px 0;">
-                        <img width="100%" src="/SISAASE_war/img/utez/lenguaje-incluyente.png" />
+                        <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
                     </li>
                     <li class="sidebar-search text-center" style="color: #fff;">
                         <h5>Roy Axxel Salgado Mart&iacute;nez</h5>
                         <h4>Estudiante</h4>
                     </li>
                     <li>
-                        <a href="/SISAASE_war/jsp/permanencia/seguimiento/historialAcademico/historialAcademico.jsp"><i class="fa fa-book fa-fw"></i> Historial académico</a>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/historialAcademico/historialAcademico.jsp"><i class="fa fa-book fa-fw"></i> Historial académico</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Asesorías<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/grupos/asesoriasAlumno/solicitarAsesoria.jsp">Solicitar asesoría</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/solicitarAsesoria.jsp">Solicitar asesoría</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/grupos/asesoriasAlumno/asesoriasSolicitadas.jsp">Asesorías solicitadas</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/asesoriasSolicitadas.jsp">Asesorías solicitadas</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp">Historial de asesorías</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp">Historial de asesorías</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="/SISAASE_war/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-file-text"></i> Evaluación docente</a>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-file-text"></i> Evaluación docente</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Bajas<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/baja/solicitudBaja/bajasRegistroSolicitud.jsp">Registrar solicitud</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/baja/solicitudBaja/bajasRegistroSolicitud.jsp">Registrar solicitud</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/baja/historialBajas/historialBajas.jsp">Historial de  bajas</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/baja/historialBajas/historialBajas.jsp">Historial de  bajas</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -180,10 +176,10 @@
                         <a href="#"><i class="fa fa-usd fa-fw"></i> Pagos<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/seguimiento/pagos/pagosFicha.jsp">Fichas de pago</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/pagos/pagosFicha.jsp">Fichas de pago</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/seguimiento/pagos/pagosHistorial.jsp">Historial de pagos</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/pagos/pagosHistorial.jsp">Historial de pagos</a>
                             </li>
                         </ul>
                     </li>
@@ -191,21 +187,21 @@
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Estadías<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/estadia/cartaPresentacion/cartaPresentacion.jsp">Carta Presentación</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/cartaPresentacion/cartaPresentacion.jsp">Carta Presentación</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/estadia/convenioIndividual/convenionIndividual.jsp">Asignación y aceptación de estadía</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/convenioIndividual/convenionIndividual.jsp">Asignación y aceptación de estadía</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war/jsp/permanencia/estadia/resumenEstadia/resumenEstadia.jsp">Resumen estadía</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/resumenEstadia/resumenEstadia.jsp">Resumen estadía</a>
                             </li>
                         </ul>
                     </li>
                     <!--            <li>
-                                    <a href="/SISAASE_war/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-braille fa-fw"></i> Evaluación Docente</a>
+                                    <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-braille fa-fw"></i> Evaluación Docente</a>
                                 </li>-->
                     <li>
-                        <a href="/SISAASE_war/jsp/permanencia/perfil/alumno/perfilAlumno.jsp"><i class="fa fa-user-o fa-fw"></i>Mi Perfil</a>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/perfil/alumno/perfilAlumno.jsp"><i class="fa fa-user-o fa-fw"></i>Mi Perfil</a>
                     </li>
                 </ul>
             </div>
@@ -231,7 +227,7 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <div class="row">
-                                        <a href="/SISAASE_war/cambiarSesion?idRolCambiar=Alumno&rolCambiar=Estudiante" style="color: white;">
+                                        <a href="/SISAASE_war_exploded/cambiarSesion?idRolCambiar=Alumno&rolCambiar=Estudiante" style="color: white;">
                                             <div class="col-md-8">Estudiante</div>
                                             <div class="col-md-4 text-right"><span class="text-right"><i class="fa fa-angle-right"></i></span></div>
                                         </a>
@@ -273,7 +269,7 @@
 
                 </div>
                 <div ng-show="!perfil" class="text-center">
-                    <img src="/SISAASE_war/img/system/preloader.gif"/>
+                    <img src="/SISAASE_war_exploded/img/system/preloader.gif"/>
                 </div>
             </div>
         </div>
@@ -283,7 +279,7 @@
 <!-- /#wrapper -->
 <!-- jQuery -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
-<script src="/SISAASE_war/components/jquery/dist/jquery.min.js"></script>
+<script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
 <script>
     //paste this code under the head tag or in a separate js file.
     // Wait for window load
@@ -293,31 +289,31 @@
         ;
     });
 </script>
-<!--<script src="/SISAASE_war/js/configuracion.js"></script>-->
+<!--<script src="/SISAASE_war_exploded/js/configuracion.js"></script>-->
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/SISAASE_war/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/SISAASE_war_exploded/components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/SISAASE_war/components/metisMenu/dist/metisMenu.min.js"></script>
+<script src="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/SISAASE_war/js/sb-admin-2.js"></script>
+<script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>-->
 
-<script src="/SISAASE_war/js/angular-1.4.6.min.js"></script>
+<script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
 
 
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war/js/control/permanencia/perfil/ajsControlPerfil.js"></script>
+<script src="/SISAASE_war_exploded/js/control/permanencia/perfil/ajsControlPerfil.js"></script>
 
 
 
-<script src="/SISAASE_war/js/sweetalert.min_1.js"></script>
-<script src="/SISAASE_war/js/SweetAlert.min.js"></script>
-<script src="/SISAASE_war/js/angular-locale_es-mx.js"></script>
-<script src="/SISAASE_war/js/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
+<script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
+<script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
+<script src="/SISAASE_war_exploded/js/ui-bootstrap-tpls-0.14.3.js"></script>
 
 
 
