@@ -128,10 +128,6 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-
-
-
-
         <!DOCTYPE html>
         <div id="leftMenu" class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
