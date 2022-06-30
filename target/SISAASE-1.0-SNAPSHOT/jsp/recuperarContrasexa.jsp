@@ -11,20 +11,20 @@
     <meta name="author" content="">
 
     <title>SISA</title>
-    <link rel="icon" href="/SISAASE_war/img/utez/favicon.ico" />
+    <link rel="icon" href="/SISAASE_war_exploded/img/utez/favicon.ico" />
     <!-- Bootstrap Core CSS -->
-    <link href="/SISAASE_war/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
 
-    <link href="/SISAASE_war/css/general.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/general.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/SISAASE_war/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/SISAASE_war/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/SISAASE_war_exploded/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- include a theme, can be included into the core instead of 2 separate files -->
-    <link rel="stylesheet" href="/SISAASE_war/css/sweetalert.css" />
+    <link rel="stylesheet" href="/SISAASE_war_exploded/css/sweetalert.css" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -81,7 +81,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background: url(/SISAASE_war/img/system/preloader.gif) center no-repeat #fff;
+            background: url(/SISAASE_war_exploded/img/system/preloader.gif) center no-repeat #fff;
         }
     </style>
 </head>
@@ -99,7 +99,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/SISAASE_war" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISAASE_war</a>
+            <a class="navbar-brand" href="/SISAASE_war_exploded" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISAASE_war_exploded</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -143,7 +143,7 @@
 
 
 <!-- jQuery -->
-<script src="/SISAASE_war/components/jquery/dist/jquery.min.js"></script>
+<script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
 <script>
     //paste this code under the head tag or in a separate js file.
     // Wait for window load
@@ -155,22 +155,22 @@
 </script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/SISAASE_war/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/SISAASE_war_exploded/components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/SISAASE_war/components/metisMenu/dist/metisMenu.min.js"></script>
+<script src="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/SISAASE_war/js/sb-admin-2.js"></script>
+<script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>-->
-<script src="/SISAASE_war/js/angular-1.4.6.min.js"></script>
+<script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
 
-<script src="/SISAASE_war/js/control/login/ajsControlLogin.js"></script>
+<script src="/SISAASE_war_exploded/js/control/login/ajsControlLogin.js"></script>
 
-<script src="/SISAASE_war/js/sweetalert.min_1.js"></script>
-<script src="/SISAASE_war/js/SweetAlert.min.js"></script>
-<script src="/SISAASE_war/js/angular-locale_es-mx.js"></script>
+<script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
+<script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
+<script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
 
 
 </body>
