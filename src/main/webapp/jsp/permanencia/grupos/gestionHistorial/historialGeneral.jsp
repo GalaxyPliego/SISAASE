@@ -164,7 +164,7 @@
         <!-- Panel principal -->
         <div class="panel panel-primary">
             <!-- Panel heading -->
-            <div class="panel-heading">Resumen de Asesorías</div>
+            <div class="panel-heading">Historial General de Asesorías</div>
             <!-- Panel body -->
             <div class="panel-body">
                 <div class="row">
@@ -174,12 +174,13 @@
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <td>#</td>
-                                    <td>Fecha</td>
-                                    <td>Hora</td>
+                                    <td>Matrícula</td>
                                     <td>Nombre</td>
-                                    <td>Tema</td>
-                                    <td>Estado</td>
-                                    <td>Acciones</td>
+                                    <td>Sexo</td>
+                                    <td>Carrera</td>
+                                    <td>Grado</td>
+                                    <td>Grupo</td>
+                                    <td>No. Aseorías</td>
                                 </tr>
                                 </thead>
                                 <tbody><!-- ngRepeat: pago in historial.lista -->
@@ -200,28 +201,12 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-                                <tr class="ng-scope">
-                                    <td class="ng-binding">2</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-                                <tr class="ng-scope">
-                                    <td class="ng-binding">3</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
 
-                                </tbody></table>
+                                </tr><!-- end ngRepeat: pago in historial.lista -->
+                                </tbody>
+                            </table>
                         </div>
                         <center>
                             <nav aria-label="...">
