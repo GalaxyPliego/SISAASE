@@ -127,7 +127,7 @@
             <!-- /.dropdown -->
         </ul>
 
-        <!-- diseBar-->
+        <!-- sideBar-->
         <div id="leftMenu" class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -139,13 +139,13 @@
                         <h4>Coordinador</h4>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/perfil/coordinador/homeCoordinador"><i class="fa fa-book fa-fw"></i>Resumen</a>
+                        <a href="/SISAASE_war_exploded/coordinador"><i class="fa fa-book fa-fw"></i>Resumen</a>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHistorial/historialDetallado"><i class="fa fa-file-text"></i> Historial Detallado</a>
+                        <a href="/SISAASE_war_exploded/historialDetallado"><i class="fa fa-file-text"></i> Historial Detallado</a>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHistorial/historialGeneral"><i class="fa fa-file-text"></i> Historial General</a>
+                        <a href="/SISAASE_war_exploded/historialGeneral"><i class="fa fa-file-text"></i> Historial General</a>
                     </li>
                 </ul>
             </div>
@@ -155,6 +155,7 @@
 
 
     </nav>
+
 
     <!-- Page Content -->
     <div id="page-wrapper">

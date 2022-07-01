@@ -12,9 +12,19 @@
             <result>/index.jsp</result>
         </action>
 
+        <!-- COORDINADOR -->
         <action name="coordinador">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
         </action>
+
+        <action name="historialDetallado">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialDetallado.jsp</result>
+        </action>
+
+        <action name="historialGeneral">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialGeneral.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
 
 
     </package>

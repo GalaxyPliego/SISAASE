@@ -78,6 +78,28 @@
                 z-index: 9;
                 width: 13%;
             }
+            .iconsCards{
+                font-size: 80px;
+            }
+            .titlesCards{
+                letter-spacing: 2px;
+            }
+            .titleLargeCards{
+                letter-spacing: 1px;
+            }
+        }
+
+        @media (min-width: 768px){
+            .iconsCards{
+                font-size: 120px;
+            }
+            .titlesCards{
+                letter-spacing: 5px;
+            }
+            .titleLargeCards{
+                letter-spacing: -1px;
+            }
+
         }
     </style>
     <style>
@@ -94,6 +116,11 @@
             height: 100%;
             z-index: 9999;
             background: url(/SISAASE_war_exploded/img/system/preloader.gif) center no-repeat #fff;
+        }
+    </style>
+
+    <style>
+        #vcenter {
         }
     </style>
 </head>
@@ -127,7 +154,7 @@
                 <!-- /.dropdown -->
             </ul>
 
-            <!-- diseBar-->
+            <!-- sideBar-->
             <div id="leftMenu" class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -139,13 +166,13 @@
                             <h4>Coordinador</h4>
                         </li>
                         <li>
-                            <a href="/SISAASE_war_exploded/jsp/permanencia/perfil/coordinador/homeCoordinador"><i class="fa fa-book fa-fw"></i>Resumen</a>
+                            <a href="/SISAASE_war_exploded/coordinador"><i class="fa fa-book fa-fw"></i>Resumen</a>
                         </li>
                         <li>
-                            <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHistorial/historialDetallado"><i class="fa fa-file-text"></i> Historial Detallado</a>
+                            <a href="/SISAASE_war_exploded/historialDetallado"><i class="fa fa-file-text"></i> Historial Detallado</a>
                         </li>
                         <li>
-                            <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHistorial/historialGeneral"><i class="fa fa-file-text"></i> Historial General</a>
+                            <a href="/SISAASE_war_exploded/historialGeneral"><i class="fa fa-file-text"></i> Historial General</a>
                         </li>
                     </ul>
                 </div>
@@ -167,83 +194,174 @@
                 <!-- Panel body -->
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="panel panel-green">
+                                <div class="panel-body bg-danger "  style="background-color: #009574; padding: 25px;">
+                                    <div class="row" style="display: flex;">
 
-                        </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Asesorías aceptadas</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <thead style="background-color: #676f77 ; color: #fff">
-                                    <tr>
-                                        <td>#</td>
-                                        <td>Fecha</td>
-                                        <td>Hora</td>
-                                        <td>Nombre</td>
-                                        <td>Tema</td>
-                                        <td>Estado</td>
-                                        <td>Acciones</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody><!-- ngRepeat: pago in historial.lista -->
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="text" placeholder="Buscar"/></td>
-                                        <td><input type="text" placeholder="Buscar"/></td>
-                                        <td><input type="text" placeholder="Buscar"/></td>
-                                        <td><input type="text" placeholder="Buscar"/></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="ng-scope">
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="display: flex; justify-content: center; align-items: center">
+                                            <i class="fa fa-calendar-check-o fa-5x iconsCards " style="color: white;" aria-hidden="true"></i>
+                                        </div>
 
-                                        <td class="ng-binding">1</td>
-                                        <td class="ng-binding">2021//05//20</td>
-                                        <td class="ng-binding">14:00</td>
-                                        <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                        <td class="ng-binding">Sentencias MySQL</td>
-                                        <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                        <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
-                                    </tr><!-- end ngRepeat: pago in historial.lista -->
-                                    <tr class="ng-scope">
-                                        <td class="ng-binding">2</td>
-                                        <td class="ng-binding">2021//05//20</td>
-                                        <td class="ng-binding">14:00</td>
-                                        <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                        <td class="ng-binding">Sentencias MySQL</td>
-                                        <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                        <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
-                                    </tr><!-- end ngRepeat: pago in historial.lista -->
-                                    <tr class="ng-scope">
-                                        <td class="ng-binding">3</td>
-                                        <td class="ng-binding">2021//05//20</td>
-                                        <td class="ng-binding">14:00</td>
-                                        <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                        <td class="ng-binding">Sentencias MySQL</td>
-                                        <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                        <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
-                                    </tr><!-- end ngRepeat: pago in historial.lista -->
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <h2 style="color: white; letter-spacing: 5px;"><strong>Sesiones</strong></h2>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 20px;">Hombres: <strong>30</strong></p>
+                                                <p style="color: white; font-size: 20px;">Mujeres: <strong>56</strong></p>
+                                            </div>
+                                        </div>
 
-                                    </tbody></table>
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h2 class="titlesCards" style="color: #009574; margin: 0px; padding: 0;">Total: <strong>86</strong></h2>
+                                </div>
                             </div>
-                            <center>
-                                <nav aria-label="...">
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                        <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                                        <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                                        <li ><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </center>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <div class="panel panel-green">
+                                <div class="panel-body bg-danger "  style="background-color: #009574; padding: 25px;">
+                                    <div class="row" style="display: flex;">
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12 mar" style="display: flex; justify-content: center; align-items: center">
+                                            <i class="fa fa-calendar-check-o fa-5x iconsCards" style="color: white; " aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <h2 class="titlesCards" style="color: white;"><strong>Atendidos</strong></h2>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 20px;">Hombres: <strong>23</strong></p>
+                                                <p style="color: white; font-size: 20px;">Mujeres: <strong>35</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <h2 style="color: #009574; margin: 0px; padding: 0;">Total: <strong>58</strong></h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel panel-green">
+                                <div class="panel-body" style="background-color: #009574; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-check-o fa-5x iconsCardsSecondary " style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 class="titleLargeCards" style="color: white; letter-spacing: 1px;"><strong>Aceptadas</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>16</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>25</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #009574; margin: 0px; padding: 0;">Total: <strong>41</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel" style="border: 1px solid #F0AD4E">
+                                <div class="panel-body" style="background-color: #F0AD4E; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-minus-o fa-5x iconsCardsSecondary" style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 style="color: white; letter-spacing: 1px;"><strong>Pendientes</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>5</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>2</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #F0AD4E; margin: 0px; padding: 0;">Total: <strong>7</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel" style="border: 1px solid #E74C3C">
+                                <div class="panel-body" style="background-color: #E74C3C; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-times-o fa-5x iconsCardsSecondary" style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 class="titleLargeCards" style="color: white;"><strong>Rechazadas</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>22</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>14</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #E74C3C; margin: 0px; padding: 0;">Total: <strong>36</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel" style="border: 1px solid #E74C3C">
+                                <div class="panel-body" style="background-color: #E74C3C; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-times-o fa-5x iconsCardsSecondary" style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 class="titleLargeCards" style="color: white; "><strong>Canceladas</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>30</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>50</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #E74C3C; margin: 0px; padding: 0;">Total: <strong>80</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
