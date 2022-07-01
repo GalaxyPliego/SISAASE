@@ -244,14 +244,36 @@
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                                      aria-labelledby="headingOne">
                                     <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead style="background-color: #676f77 ; color: #fff">
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>Materia</td>
+                                                    <td>Cuatrimestre</td>
+                                                    <td>Señecciona</td>
+                                                </tr>
+                                                </thead>
+                                                <tr ng-repeat="pago in historial.lista">
+                                                    <th>1</th>
+                                                    <td>Algebra lineal</td>
+                                                    <td>1ro</td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                </tr>
+                                                <tr ng-repeat="pago in historial.lista">
+                                                    <th>2</th>
+                                                    <td>Física</td>
+                                                    <td>1ro</td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -287,30 +309,6 @@
                                            data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                                            aria-controls="collapseThree">
                                             Plan de estudios Desarrollo y Gestión de Software 2021 </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                           aria-controls="collapseThree">
-                                            Plan de estudios Mecatrónica 2020</a>
                                     </h4>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
