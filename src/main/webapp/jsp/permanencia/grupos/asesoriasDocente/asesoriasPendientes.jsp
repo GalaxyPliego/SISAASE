@@ -289,7 +289,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalAceptarR()"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">2</td>
@@ -298,7 +298,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalAceptarR()"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">3</td>
@@ -307,7 +307,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalAceptarR()"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody></table>
@@ -362,7 +362,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalFinalizar()" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger" onclick="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">2</td>
@@ -371,7 +371,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;" onclick="modalFinalizar()"><i class="fa fa-search"></i></button><button class="btn btn-danger" onclick="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">3</td>
@@ -380,7 +380,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;" modalFinalizar()><i class="fa fa-search"></i></button><button class="btn btn-danger" onclick="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody></table>
@@ -405,6 +405,407 @@
     </div>
     <!-- /#page-wrapper -->
 </div>
+
+
+<!--Modal aceptar o rechazar asesoría -->
+<div class="modal fade" id="aceptarRechazar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#345177; color: white;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="color: white ;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Aceptar / rechazar Asesoría</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background:#676F77; color: white;">Información del estudiante
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label >Nombre:</label>
+                                <div>Nathaly Escalona Ruiz
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Matrícula:</label>
+                                <div >20203TN082</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Carrera:</label>
+                                <div >Desarrollo de Software
+                                    Multiplataforma</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Grado:</label>
+                                    <div><span >6</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Grupo:</label>
+                                    <div><span >C</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Riesgo:</label>
+                                    <div> <span >No</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background:#676F77; color: white;">Información Académica</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label >Fecha:</label>
+                                <div >04/02/2022</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Hora:</label>
+                                <div >14:00</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Asignatura:</label>
+                                <div >Base de Datos</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Tema:</label>
+                                    <div><span >Sentencias
+                                                MySQL</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label >Dudas Específicas:</label>
+                                    <div><span >Sentencias
+                                                básicas, create, alter table, etc.</span></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background:#676F77; color: white;">Información Académica</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label >¿Aceptar asesoría?:</label>
+
+                                <div>
+                                    <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="sexo"  id="siu" value="0"
+                                               required=""
+                                        ><strong>Si</strong>
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="sexo"  id="nou" value="1"
+                                               required=""
+                                        ><strong>No</strong>
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <div class="form-group col-md-8" hidden="true" id="motivosRechazo">
+
+
+
+                                <label class="checkbox-inline">
+                                    <strong>Motivos</strong>
+                                    <br>
+                                    <input type="text" name="sexo"
+                                           placeholder="Motivos" required=""
+                                    >
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                    <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
+                    <input class="btn"  id="aceptarR" value="Aceptar" type="button" style="background-color:#019979 ; color: white;" ></input>
+                    <input  hidden="true" id="rechazarR" value="Rechazar" type="button" style="background-color:tomato ; color: white;" ></input>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- Modal Finalizar asesoría -->
+<div class="modal fade" id="finalizar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#345177; color: white;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="color: white ;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Asesoría Impartida</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background:#676F77; color: white;">Información del estudiante
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label >Nombre:</label>
+                                <div >Nathaly Escalona Ruiz
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Matrícula:</label>
+                                <div >20203TN082</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Carrera:</label>
+                                <div >Desarrollo de Software
+                                    Multiplataforma</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Grado:</label>
+                                    <div><span >6</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Grupo:</label>
+                                    <div><span >C</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Riesgo:</label>
+                                    <div> <span >No</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background:#676F77; color: white;">Información Académica</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label >Fecha:</label>
+                                <div >04/02/2022</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Hora:</label>
+                                <div >14:00</div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label >Asignatura:</label>
+                                <div >Base de Datos</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Tema:</label>
+                                    <div><span >Sentencias
+                                                MySQL</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label >Dudas Específicas:</label>
+                                    <div><span >Sentencias
+                                                básicas, create, alter table, etc.</span></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background:#676F77; color: white;">Asistencia</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label >¿Asistió el estudiante?:</label>
+
+                                <div>
+                                    <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="sexo"  id="siS" value="0"
+                                               required=""
+                                        ><strong>Si</strong>
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="sexo"  id="noN" value="1"
+                                               required=""
+                                        ><strong>No</strong>
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <div class="form-group col-md-8" hidden="true" id="duracion">
+
+                                <label class="checkbox-inline">
+                                    <strong>Duración en minutos</strong>
+                                    <br>
+                                    <input type="text" name="sexo"
+                                           placeholder="30" required=""
+                                    >
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn" data-dismiss="modal" style="background-color:#6C757D; color:white">Cerrar</button>
+                    <button id="aceptarF" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
+                    <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
+                    <!--<input  hidden="true" id="rechazar" value="Cerrar" type="button" style="background-color:tomato ; color: white;" ></input>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- Modal cancelar asesoría -->
+<div class="modal fade" id="cancelar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="top:25%"  role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#345177; color: white;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="color: white ;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cancelación Asesoría</h4>
+            </div>
+            <div class="modal-body" >
+
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label >Motivos de cancelación :</label>
+                        <br>
+                        <input type="text" name="sexo"  style="width: 100%; height: 50px"
+                               placeholder="Motivos" required=""
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn" data-dismiss="modal" style="background-color:#6C757D; color:white">Cerrar</button>
+                    <button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
+                    <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
+                    <!--<input  hidden="true" id="rechazar" value="Cerrar" type="button" style="background-color:tomato ; color: white;" ></input>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+
+<script>
+    var discounted = document.getElementById('siu');
+    var no_discounted = document.getElementById('nou')
+    var discount_percentage = document.getElementById('motivosRechazo')
+    var aceptarR = document.getElementById('aceptarR');
+    var rechazarR= document.getElementById('rechazarR')
+    function updateStatus() {
+        if (discounted.checked) {
+            discount_percentage.hidden = true;
+            rechazarR.classList.remove("btn");
+            aceptarR.classList.add("btn");
+            rechazarR.hidden = true;
+            aceptarR.hidden = false;
+
+        } else {
+            discount_percentage.hidden = false;
+            aceptarR.classList.remove("btn");
+            rechazarR.classList.add("btn");
+            rechazarR.hidden = false;
+            aceptarR.hidden = true;
+
+        }
+    }
+
+    discounted.addEventListener('change', updateStatus)
+    no_discounted.addEventListener('change', updateStatus)
+</script>
+
+<script>
+    const modalAceptarR = () => {
+
+        $('#aceptarRechazar').modal('show')
+
+    }
+
+</script>
+
+<script>
+    var discounted = document.getElementById('siS');
+    var no_discounted = document.getElementById('noN')
+    var discount_percentage = document.getElementById('duracion')
+    function updateStatus() {
+        if (discounted.checked) {
+            discount_percentage.hidden = true;
+        } else {
+            discount_percentage.hidden = false;
+        }
+    }
+
+    discounted.addEventListener('change', updateStatus)
+    no_discounted.addEventListener('change', updateStatus)
+</script>
+
+<script>
+    const modalFinalizar = () => {
+
+        $('#finalizar').modal('show')
+
+    }
+
+</script>
+
+<script>
+    const modalCancelar = () => {
+
+        $('#cancelar').modal('show')
+
+    }
+
+</script>
+
+
 <!-- /#wrapper -->
 <!-- jQuery -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
