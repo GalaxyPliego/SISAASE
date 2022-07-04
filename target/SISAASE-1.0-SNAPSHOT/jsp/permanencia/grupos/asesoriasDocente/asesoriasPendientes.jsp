@@ -136,8 +136,8 @@
                         <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
                     </li>
                     <li class="sidebar-search text-center" style="color: #fff;">
-                        <h5>Roy Axxel Salgado Mart&iacute;nez</h5>
-                        <h4>Estudiante</h4>
+                        <h5>Nathaly Escalona Ruiz</h5>
+                        <h4>Docente</h4>
                     </li>
                     <li>
                         <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/historialAcademico/historialAcademico.jsp"><i class="fa fa-book fa-fw"></i> Historial académico</a>
@@ -732,6 +732,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 </div>
+
 
 
 <script>
