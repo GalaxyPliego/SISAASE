@@ -221,29 +221,6 @@
         </div>
         <!-- /.navbar-static-side -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </nav>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -281,14 +258,13 @@
             </div>
         </div>
     </div>
-    <div id="wrapper"></div>
 
     <div id="page-wrapper">
         <br/>
         <div class="panel panel-primary">
             <div class="panel-heading">Mi perfil</div>
             <div class="panel-body" style="padding-top: 0px;">
-                <div ng-show="perfil" >
+                <div >
                     <div class="row ">
                         <div class="col-md-16" >
                             <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>-->
