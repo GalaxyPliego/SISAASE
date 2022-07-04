@@ -713,7 +713,7 @@
                     <div class="form-group col-md-12">
                         <label >Motivos de cancelación :</label>
                         <br>
-                        <input type="text" name="sexo"  style="width: 100%; height: 50px"
+                        <input type="text" name="sexo" id="motCancelacion" style="width: 100%; height: 50px"
                                placeholder="Motivos" required=""
                         >
 
@@ -732,6 +732,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 </div>
+
 
 
 <script>
@@ -766,33 +767,43 @@
     const modalAceptarR = () => {
 
         $('#aceptarRechazar').modal('show')
-
+        $("#motivosRechazo").val("");
+        $("#siu input [type='checkbox']").prop('checked', false).change();
+        $("#nou input [type='checkbox']").prop('checked', false).change();
     }
 
 </script>
 
 <script>
-    var discounted = document.getElementById('siS');
-    var no_discounted = document.getElementById('noN')
-    var discount_percentage = document.getElementById('duracion')
+    var discounteds = document.getElementById('siS');
+    var no_discounteds = document.getElementById('noN')
+    var discount_percentages = document.getElementById('duracion')
     function updateStatus() {
-        if (discounted.checked) {
-            discount_percentage.hidden = true;
+        if (discounteds.checked) {
+            discount_percentages.hidden = false;
         } else {
-            discount_percentage.hidden = false;
+            discount_percentages.hidden = true;
         }
     }
 
-    discounted.addEventListener('change', updateStatus)
-    no_discounted.addEventListener('change', updateStatus)
+    discounteds.addEventListener('change', updateStatus)
+    no_discounteds.addEventListener('change', updateStatus)
 </script>
 
 <script>
+
+
     const modalFinalizar = () => {
 
         $('#finalizar').modal('show')
+        $("#duracion").val("");
 
+        $("#siS input[type='checkbox']").prop('checked', false).change();
+        $("#noN input[type='checkbox']").prop('checked', false).change();
     }
+
+
+
 
 </script>
 
@@ -800,10 +811,12 @@
     const modalCancelar = () => {
 
         $('#cancelar').modal('show')
+        $("#motCancelacion").val("");
 
     }
 
 </script>
+
 
 
 <!-- /#wrapper -->
