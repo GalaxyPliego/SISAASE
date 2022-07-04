@@ -16,7 +16,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="/SISAASE_war_exploded/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
 
-
     <!-- MetisMenu CSS -->
     <link href="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
@@ -98,7 +97,7 @@
     </style>
 </head>
 
-<body ng-controller="ControlPerfil" ng-init="consultarPerfil()">
+<body ng-controller="historialDetallado" ng-init="">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -164,160 +163,77 @@
         <!-- Panel principal -->
         <div class="panel panel-primary">
             <!-- Panel heading -->
-            <div class="panel-heading">Resumen de Asesorías</div>
+            <div class="panel-heading">Historial Detallado de Asesorías</div>
             <!-- Panel body -->
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead style="background-color: #676f77 ; color: #fff">
-                                <tr>
-                                    <td>#</td>
-                                    <td>Fecha</td>
-                                    <td>Hora</td>
-                                    <td>Nombre</td>
-                                    <td>Tema</td>
-                                    <td>Estado</td>
-                                    <td>Acciones</td>
-                                </tr>
-                                </thead>
-                                <tbody><!-- ngRepeat: pago in historial.lista -->
-                                <tr>
-                                    <td></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="ng-scope">
-
-                                    <td class="ng-binding">1</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
-                                    <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-                                <tr class="ng-scope">
-                                    <td class="ng-binding">2</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
-                                    <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-                                <tr class="ng-scope">
-                                    <td class="ng-binding">3</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
-                                    <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success"><i class="fa fa-search"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-
-                                </tbody></table>
+                    <div class="col-md-4 col-md-offset-4">
+                        <!-- filtrado con un select por periodo cuatrimestral -->
+                        <div class="form-group">
+                            <label for="periodo">Periodo Cuatrimestral:</label>
+                            <select class="form-control" id="periodo" ng-model="periodo" ng-change="cambioPeriodo()">
+                                <option value="">Seleccione un periodo</option>
+                                <option >Opcion 1</option>
+                                <option >Opcion 2</option>
+                                <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
+                            </select>
                         </div>
-                        <center>
-                            <nav aria-label="...">
-                                <ul class="pagination">
-                                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                                    <li ><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
-                        </center>
                     </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Asesorías aceptadas</div>
-                </div>
-                <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table st-safe-src="rowCollection" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
-                                    <td>#</td>
-                                    <td>Fecha</td>
-                                    <td>Hora</td>
-                                    <td>Nombre</td>
-                                    <td>Tema</td>
-                                    <td>Estado</td>
-                                    <td>Acciones</td>
+                                    <th>#</th>
+                                    <th st-sort="matricula">Matrícula</th>
+                                    <th st-sort="nombre">Nombre</th>
+                                    <th st-sort="sexo">Sexo</th>
+                                    <th st-sort="carrera">Carrera</th>
+                                    <th st-sort="grado">Grado</th>
+                                    <th st-sort="grupo">Grupo</th>
+                                    <th st-sort="noAsesorias">No. Aseorías</th>
                                 </tr>
                                 </thead>
                                 <tbody><!-- ngRepeat: pago in historial.lista -->
                                 <tr>
                                     <td></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td><input type="text" placeholder="Buscar"/></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><input st-search="matricula" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="nombre" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="sexo" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="carrera" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="grado" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="grupo" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="noAsesorias" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
                                 </tr>
-                                <tr class="ng-scope">
+                                <tr ng-repeat="row in displayCollection" class="ng-scope">
 
-                                    <td class="ng-binding">1</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
-                                    <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-                                <tr class="ng-scope">
-                                    <td class="ng-binding">2</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
-                                    <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
-                                <tr class="ng-scope">
-                                    <td class="ng-binding">3</td>
-                                    <td class="ng-binding">2021//05//20</td>
-                                    <td class="ng-binding">14:00</td>
-                                    <td class="ng-binding">Nathaly Escalona Ruiz</td>
-                                    <td class="ng-binding">Sentencias MySQL</td>
-                                    <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger"><i class="fa fa-calendar-times-o"></i></button></td>
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
+                                    <td ng-bind="$index + 1"> </td>
+                                    <td ng-bind="row.matricula | uppercase "></td>
+                                    <td ng-bind="row.nombre"></td>
+                                    <td ng-bind="row.sexo"></td>
+                                    <td ng-bind="row.carrera"></td>
+                                    <td ng-bind="row.grado"></td>
+                                    <td ng-bind="row.grupo | uppercase "></td>
+                                    <td ng-bind="row.noAsesorias"></td>
 
-                                </tbody></table>
+                                </tr><!-- end ngRepeat: pago in historial.lista -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
-                        <center>
-                            <nav aria-label="...">
-                                <ul class="pagination">
-                                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                                    <li ><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
-                        </center>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- /#page-wrapper -->
 </div>
-<!-- /#wrapper -->
-<!-- jQuery -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
 <script>
@@ -341,14 +257,19 @@
 <script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>-->
+
 <script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
 
+
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war_exploded/js/control/permanencia/perfil/ajsControlPerfil.js"></script>
+<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/historialDetallado.js"></script>
+
+
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
 <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
 <script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
 <script src="/SISAASE_war_exploded/js/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
 
 </body>
 

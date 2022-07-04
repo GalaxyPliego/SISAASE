@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="es" ng-app="sisa">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +14,6 @@
     <link rel="icon" href="/SISAASE_war_exploded/img/utez/favicon.ico" />
     <!-- Bootstrap Core CSS -->
     <link href="/SISAASE_war_exploded/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
-
 
     <!-- MetisMenu CSS -->
     <link href="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
@@ -78,28 +76,6 @@
                 z-index: 9;
                 width: 13%;
             }
-            .iconsCards{
-                font-size: 80px;
-            }
-            .titlesCards{
-                letter-spacing: 2px;
-            }
-            .titleLargeCards{
-                letter-spacing: 1px;
-            }
-        }
-
-        @media (min-width: 768px){
-            .iconsCards{
-                font-size: 120px;
-            }
-            .titlesCards{
-                letter-spacing: 5px;
-            }
-            .titleLargeCards{
-                letter-spacing: -1px;
-            }
-
         }
     </style>
     <style>
@@ -116,11 +92,6 @@
             height: 100%;
             z-index: 9999;
             background: url(/SISAASE_war_exploded/img/system/preloader.gif) center no-repeat #fff;
-        }
-    </style>
-
-    <style>
-        #vcenter {
         }
     </style>
 </head>
@@ -368,8 +339,6 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
     <script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
     <script>
@@ -393,14 +362,20 @@
     <script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
 
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>-->
+
     <script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
 
+
     <!--Script Angular Perfil-->
-    <script src="/SISAASE_war_exploded/js/control/permanencia/perfil/ajsControlPerfil.js"></script>
+    <script src="/SISAASE_war_exploded/js/control/permanencia/perfil/coordinador/coordinador.js"></script>
+
+
     <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
     <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
     <script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
     <script src="/SISAASE_war_exploded/js/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
+
 
 </body>
 
