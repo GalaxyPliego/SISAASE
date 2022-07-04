@@ -375,11 +375,12 @@
                                         <label>Dudas específicas:</label>
                                         <textarea class="form-control" rows="3"></textarea>
                                     </div>
-                                    <div class="checkbox">
+                                    <div class="form-group col-md-6">
                                         <label>
-                                            <input type="checkbox" value="">
-                                            Option one is this and that&mdash;be sure to include why it's great
+                                            ¿Estás en recuperación?
                                         </label>
+                                        <br>
+                                        <input type="checkbox" value=""> Sí
                                     </div>
                                 </div>
 
