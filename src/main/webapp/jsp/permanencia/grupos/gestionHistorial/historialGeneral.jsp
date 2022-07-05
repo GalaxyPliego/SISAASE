@@ -180,9 +180,9 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <!-- filtrado con un select por periodo cuatrimestral -->
+                        <!-- filtrado con un select por carrera -->
                         <div class="form-group">
-                            <label for="periodo">Periodo Cuatrimestral:</label>
+                            <label for="periodo">Carrera:</label>
                             <select class="form-control" id="carrera" ng-model="carrera" ng-change="cambioCarrera()">
                                 <option value="">Seleccione una carrera</option>
                                 <option >Opcion 1</option>
