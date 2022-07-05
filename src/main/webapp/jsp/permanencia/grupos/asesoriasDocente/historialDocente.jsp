@@ -97,7 +97,7 @@
     </style>
 </head>
 
-<body ng-controller="historialAlumno" ng-init="">
+<body ng-controller="historialDocente" ng-init="">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -186,34 +186,42 @@
                                 <tr>
                                     <th>#</th>
                                     <th st-sort="fecha">Fecha</th>
-                                    <th st-sort="hora">Hora</th>
-                                    <th st-sort="duracion">Duración</th>
-                                    <th st-sort="docente">Docente</th>
+                                    <th st-sort="matricula">Matricula</th>
+                                    <th st-sort="alumno">Alumno</th>
                                     <th st-sort="asignatura">Asignatura</th>
                                     <th st-sort="tema">Tema</th>
                                     <th st-sort="estado">Estado</th>
-                                    <th st-sort="dudas">¿Resolvió dudas?</th>
+                                    <th st-sort="detalles">Detalles</th>
                                 </tr>
                                 </thead>
                                 <tbody><!-- ngRepeat: pago in historial.lista -->
-                                <tr ng-repeat="row in rowCollection | orderBy : 'fecha'" class="ng-scope">
+                                <tr>
+                                    <td></td>
+                                    <td><input st-search="fecha" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="matricula" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="alumno" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="asignatura" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="tema" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr ng-repeat="row in displayCollection | orderBy : 'fecha'" class="ng-scope">
 
                                     <td ng-bind="$index + 1"> </td>
                                     <td ng-bind="row.fecha"></td>
-                                    <td ng-bind="row.hora"></td>
-                                    <td ng-bind="row.duracion"></td>
-                                    <td ng-bind="row.docente"></td>
+                                    <td ng-bind="row.matricula"></td>
+                                    <td ng-bind="row.alumno"></td>
                                     <td ng-bind="row.asignatura"></td>
-                                    <td ng-bind="row.tema "></td>
-                                    <td ng-bind="row.estado"></td>
-                                    <td ng-bind="row.dudas"></td>
+                                    <td ng-bind="row.tema"></td>
+                                    <td ng-bind="row.estado "></td>
+                                    <td class="text-center" style="color: #009574; font-size: 18px"> <i ng-click="" data-toggle="modal" data-target="#modalDetails"  class="fa fa-search-plus" aria-hidden="true" style="cursor: pointer"></i> </td>
 
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="9" class="text-center">
-                                        <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                    <td colspan="8" class="text-center">
+                                        <div style="cursor:pointer;" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
                                     </td>
                                 </tr>
                                 </tfoot>
@@ -224,7 +232,131 @@
             </div>
         </div>
     </div>
-    <!-- /#page-wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-lg" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails">
+        <div class="modal-dialog modal-lg" >
+            <div class="modal-content" style="background-color: #F2F2F2 ">
+                <div class="modal-header" style="background-color: #345177 ">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="color: white; font-weight: bold">Información Adicional</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información del Alumno</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Nombre</label>
+                                        <p>Carlos Ricardo Espinoza Pliego</p>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Matrícula</label>
+                                        <p>20203TN129</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Carrera</label>
+                                        <p>Ingeniería en Desarrollo y Gestión de Software</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Grado</label>
+                                        <p>6</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Grupo</label>
+                                        <p>A</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Riesgo</label>
+                                        <p>No</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información de la Asesoría</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Fecha</label>
+                                        <p>24/01/2022</p>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Hora</label>
+                                        <p>13:00 - 14:00</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Duración (minutos) </label>
+                                        <p>44</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Asignatura</label>
+                                        <p>Base de Datos</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Tema</label>
+                                        <p>Consultas Avanzadas</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">¿Resolvió dudas?</label>
+                                        <p>No</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Estado</label>
+                                        <p>Pendiente</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="form-group">
+                                        <label for="">Dudas específicas</label>
+                                        <p>Estructura básica de las consultas y casos de uso en los que se pueden utilizar</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
@@ -254,7 +386,7 @@
 
 
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/historialAlumno.js"></script>
+<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/asesoriasDocente/historialDocente.js"></script>
 
 
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
