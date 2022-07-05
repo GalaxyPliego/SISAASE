@@ -98,7 +98,7 @@
     </style>
 </head>
 
-<body ng-controller="ControlPerfil" ng-init="consultarPerfil()">
+<body ng-controller="ControlAsesoriasDocente" ng-init="consultarPerfil()">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -289,7 +289,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalAceptarR()"><i class="fa fa-search"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR()"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">2</td>
@@ -298,7 +298,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalAceptarR()"><i class="fa fa-search"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR()"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">3</td>
@@ -307,7 +307,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#F0AD4E ;">Pendiente</td>
-                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalAceptarR()"><i class="fa fa-search"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR()"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody></table>
@@ -763,16 +763,16 @@
     no_discounted.addEventListener('change', updateStatus)
 </script>
 
-<script>
-    const modalAceptarR = () => {
+<%--<script>--%>
+<%--    const modalAceptarR = () => {--%>
 
-        $('#aceptarRechazar').modal('show')
-        $("#motivosRechazo").val("");
-        $("#siu input [type='checkbox']").prop('checked', false).change();
-        $("#nou input [type='checkbox']").prop('checked', false).change();
-    }
+<%--        $('#aceptarRechazar').modal('show')--%>
+<%--        $("#motivosRechazo").val("");--%>
+<%--        $("#siu input [type='checkbox']").prop('checked', false).change();--%>
+<%--        $("#nou input [type='checkbox']").prop('checked', false).change();--%>
+<%--    }--%>
 
-</script>
+<%--</script>--%>
 
 <script>
     var discounteds = document.getElementById('siS');
@@ -849,7 +849,7 @@
 
 
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war_exploded/js/control/permanencia/perfil/ajsControlPerfil.js"></script>
+<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/asesoriasDocente/asesoriasPendientes.js"></script>
 
 
 
