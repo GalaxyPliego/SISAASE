@@ -229,7 +229,7 @@
                                     <td></td>
                                     <td><input st-search="estado" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
                                 </tr>
-                                <tr ng-repeat="row in displayCollection" class="ng-scope">
+                                <tr ng-repeat="row in displayCollection | orderBy : 'fecha' " class="ng-scope">
 
                                     <td ng-cloak ng-bind="$index + 1"> </td>
                                     <td ng-cloak ng-bind="row.matricula | uppercase "></td>

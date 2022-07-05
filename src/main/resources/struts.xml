@@ -26,6 +26,12 @@
         </action>
         <!-- +++++++++++++++++++ -->
 
+        <!-- COORDINADOR -->
+        <action name="historialAlumno">
+            <result>/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
+
 
     </package>
 

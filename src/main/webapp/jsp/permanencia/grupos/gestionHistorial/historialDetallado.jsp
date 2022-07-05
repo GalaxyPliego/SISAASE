@@ -205,7 +205,7 @@
                                     <td><input st-search="grupo" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
                                     <td><input st-search="noAsesorias" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
                                 </tr>
-                                <tr ng-repeat="row in displayCollection" class="ng-scope">
+                                <tr ng-repeat="row in displayCollection | orderBy : 'fecha'" class="ng-scope">
 
                                     <td ng-bind="$index + 1"> </td>
                                     <td ng-bind="row.matricula | uppercase "></td>

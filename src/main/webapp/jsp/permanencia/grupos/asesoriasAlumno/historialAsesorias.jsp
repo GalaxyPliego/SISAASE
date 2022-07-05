@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%String context = request.getContextPath();%>
 
 <!DOCTYPE html>
 <html lang="es" ng-app="sisa">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,6 @@
     <link rel="icon" href="/SISAASE_war_exploded/img/utez/favicon.ico" />
     <!-- Bootstrap Core CSS -->
     <link href="/SISAASE_war_exploded/components/bootstrap/dist/css/bootstrap_1.css" rel="stylesheet">
-
 
     <!-- MetisMenu CSS -->
     <link href="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
@@ -98,7 +97,7 @@
     </style>
 </head>
 
-<body ng-controller="ControlPerfil" ng-init="consultarPerfil()">
+<body ng-controller="historialAlumno" ng-init="">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -112,8 +111,8 @@
             </button>
             <a class="navbar-brand" href="/SISAASE_war_exploded/iniciarSesion" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISA</a>
         </div>
-        <!-- /.navbar-header -->
 
+        <!-- /.navbar-header -->
         <ul id="rightMenu" class="nav navbar-top-links navbar-right">
 
             <li class="dropdown">
@@ -126,9 +125,8 @@
             </li>
             <!-- /.dropdown -->
         </ul>
-        <!-- /.navbar-top-links -->
 
-        <!DOCTYPE html>
+        <!-- sideBar-->
         <div id="leftMenu" class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -136,72 +134,17 @@
                         <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
                     </li>
                     <li class="sidebar-search text-center" style="color: #fff;">
-                        <h5>Roy Axxel Salgado Mart&iacute;nez</h5>
-                        <h4>Estudiante</h4>
+                        <h5>Jazmin Isabel Rogel Arizmendi</h5>
+                        <h4>Coordinador</h4>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/historialAcademico/historialAcademico.jsp"><i class="fa fa-book fa-fw"></i> Historial académico</a>
+                        <a href="/SISAASE_war_exploded/coordinador"><i class="fa fa-book fa-fw"></i>Resumen</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Asesorías<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/solicitarAsesoria.jsp">Solicitar asesoría</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/asesoriasSolicitadas.jsp">Asesorías solicitadas</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp">Historial de asesorías</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="/SISAASE_war_exploded/historialDetallado"><i class="fa fa-file-text"></i> Historial Detallado</a>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-file-text"></i> Evaluación docente</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Bajas<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/baja/solicitudBaja/bajasRegistroSolicitud.jsp">Registrar solicitud</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/baja/historialBajas/historialBajas.jsp">Historial de  bajas</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-usd fa-fw"></i> Pagos<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/pagos/pagosFicha.jsp">Fichas de pago</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/pagos/pagosHistorial.jsp">Historial de pagos</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Estadías<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/cartaPresentacion/cartaPresentacion.jsp">Carta Presentación</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/convenioIndividual/convenionIndividual.jsp">Asignación y aceptación de estadía</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/resumenEstadia/resumenEstadia.jsp">Resumen estadía</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--            <li>
-                                    <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-braille fa-fw"></i> Evaluación Docente</a>
-                                </li>-->
-                    <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/perfil/alumno/perfilAlumno.jsp"><i class="fa fa-user-o fa-fw"></i>Mi Perfil</a>
+                        <a href="/SISAASE_war_exploded/historialGeneral"><i class="fa fa-file-text"></i> Historial General</a>
                     </li>
                 </ul>
             </div>
@@ -211,73 +154,78 @@
 
 
     </nav>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header" style="background: #345177; color: white;">
-                    <h4 class="modal-title" id="myModalLabel">Roles</h4>
-                </div>
-                <div class="modal-body">
-                    <h4>Selecciona el rol para acceder a las funcionalidades correspondientes.</h4>
-                    <div class="row">
 
-                        <div class="col-md-12">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <a href="/SISAASE_war_exploded/cambiarSesion?idRolCambiar=Alumno&rolCambiar=Estudiante" style="color: white;">
-                                            <div class="col-md-8">Estudiante</div>
-                                            <div class="col-md-4 text-right"><span class="text-right"><i class="fa fa-angle-right"></i></span></div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <p>Estudiante.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Page Content -->
     <div id="page-wrapper">
         <br/>
+
+        <!-- Panel principal -->
         <div class="panel panel-primary">
-            <div class="panel-heading">Asesorías solicitadas</div>
-            <div class="panel-body" style="padding-top: 0px;">
-                <div ng-show="perfil" >
-                    <div class="row ">
-
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-12" >
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Información Académica</div>
-                                <div class="panel-body">
-
-                                </div>
-                            </div>
+            <!-- Panel heading -->
+            <div class="panel-heading">Historial Detallado de Asesorías</div>
+            <!-- Panel body -->
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <!-- filtrado con un select por periodo cuatrimestral -->
+                        <div class="form-group">
+                            <label for="periodo">Periodo Cuatrimestral:</label>
+                            <select class="form-control" id="periodo" ng-model="periodo" ng-change="cambioPeriodo()">
+                                <option value="">Seleccione un periodo</option>
+                                <option >Opcion 1</option>
+                                <option >Opcion 2</option>
+                                <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
+                            </select>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table st-safe-src="rowCollection" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
+                                <thead style="background-color: #676f77 ; color: #fff">
+                                <tr>
+                                    <th>#</th>
+                                    <th st-sort="fecha">Fecha</th>
+                                    <th st-sort="hora">Hora</th>
+                                    <th st-sort="duracion">Duración</th>
+                                    <th st-sort="docente">Docente</th>
+                                    <th st-sort="asignatura">Asignatura</th>
+                                    <th st-sort="tema">Tema</th>
+                                    <th st-sort="estado">Estado</th>
+                                    <th st-sort="dudas">¿Resolvió dudas?</th>
+                                </tr>
+                                </thead>
+                                <tbody><!-- ngRepeat: pago in historial.lista -->
+                                <tr ng-repeat="row in displayCollection | orderBy : 'fecha'" class="ng-scope">
 
-                </div>
-                <div ng-show="!perfil" class="text-center">
-                    <img src="/SISAASE_war_exploded/img/system/preloader.gif"/>
+                                    <td ng-bind="$index + 1"> </td>
+                                    <td ng-bind="row.fecha"></td>
+                                    <td ng-bind="row.hora"></td>
+                                    <td ng-bind="row.duracion"></td>
+                                    <td ng-bind="row.docente"></td>
+                                    <td ng-bind="row.asignatura"></td>
+                                    <td ng-bind="row.tema "></td>
+                                    <td ng-bind="row.estado"></td>
+                                    <td ng-bind="row.dudas"></td>
+
+                                </tr><!-- end ngRepeat: pago in historial.lista -->
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="9" class="text-center">
+                                        <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- /#page-wrapper -->
 </div>
-<!-- /#wrapper -->
-<!-- jQuery -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
 <script>
@@ -306,19 +254,15 @@
 
 
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war_exploded/js/control/permanencia/perfil/ajsControlPerfil.js"></script>
-
+<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/historialAlumno.js"></script>
 
 
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
 <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
 <script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
 <script src="/SISAASE_war_exploded/js/ui-bootstrap-tpls-0.14.3.js"></script>
-
-
-
+<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
 
 </body>
 
 </html>
-
