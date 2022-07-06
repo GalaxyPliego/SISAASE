@@ -9,6 +9,8 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
 
                 $('#cancelar').modal('show')
                 $("#motCancelacion").val("");
+                var motivosCancel = document.getElementById("motCancelacion")
+                motivosCancel.value = null;
         }
 
         $scope.modalFinalizar = () => {

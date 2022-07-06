@@ -250,7 +250,7 @@
     <div id="page-wrapper">
         <br/>
         <div class="panel panel-primary">
-            <div class="panel-heading">Asesorías pendientes</div>
+            <div class="panel-heading" style="font-size:medium ">Solicitudes</div>
             <div class="panel-body">
 <%--                <div ng-show="!historial" class="text-center ng-hide">--%>
 <%--                    <img src="SISAASE_war_exploded/preloader.gif">--%>
@@ -258,6 +258,8 @@
 <%--                <div ng-show="historial" class="row">--%>
     <div class="row">
                     <div class="col-md-12">
+                            <h2 style="color: #345177 ; margin-top: -5px">Asesorias pendientes</h2>
+
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
@@ -326,9 +328,8 @@
                         </center>
                     </div>
                 </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Asesorías aceptadas</div>
-                </div>
+
+                <h2 style="color: #345177; margin-top: -5px">Asesorías aceptadas</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -527,12 +528,11 @@
 
 
 
-                                <label class="checkbox-inline">
+                                <label >
                                     <strong>Motivos</strong>
                                     <br>
-                                    <input type="text" name="sexo"
-                                           placeholder="Motivos" required="" id="rechaz0"
-                                    >
+                                    <textarea name="textarea"  name="sexo" id="rechaz0"
+                                              required="" rows="3" cols="35" placeholder="Motivos de rechazo"></textarea>
                                 </label>
 
 
@@ -675,12 +675,13 @@
                             </div>
                             <div class="form-group col-md-8" hidden="true" id="duracion">
 
-                                <label class="checkbox-inline" >
+                                <label>
                                     <strong>Duración en minutos</strong>
                                     <br>
+                                    <input type="number" name="sexo" id="duracionMin"
+                                           placeholder="30" required="" min="0"  pattern="[0-9]+"
+                                    >
 
-                                    <textarea name="textarea"  name="sexo" id="duracionMin"
-                                              required="" rows="5" cols="45" placeholder="fmklsdlñfksdalf"></textarea>
                                 </label>
 
 
