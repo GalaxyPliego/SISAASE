@@ -362,7 +362,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" onclick="modalFinalizar()" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger" onclick="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" ng-click="modalFinalizar()" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger" ng-click="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">2</td>
@@ -371,7 +371,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;" onclick="modalFinalizar()"><i class="fa fa-search"></i></button><button class="btn btn-danger" onclick="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;" ng-click="modalFinalizar()"><i class="fa fa-search"></i></button><button class="btn btn-danger" ng-click="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 <tr class="ng-scope">
                                     <td class="ng-binding">3</td>
@@ -380,7 +380,7 @@
                                     <td class="ng-binding">Nathaly Escalona Ruiz</td>
                                     <td class="ng-binding">Sentencias MySQL</td>
                                     <td class="ng-binding" style="color:#069779 ;">Aceptada</td>
-                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;" modalFinalizar()><i class="fa fa-search"></i></button><button class="btn btn-danger" onclick="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td class="ng-binding"><button class="btn btn-success" style="margin-right:5px ;" ng-click="modalFinalizar()"><i class="fa fa-search"></i></button><button class="btn btn-danger" ng-click="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody></table>
@@ -687,7 +687,7 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn" data-dismiss="modal" style="background-color:#6C757D; color:white">Cerrar</button>
+                    <button type="button" class="btn" ng-click="cerrarModalFinalizar()" style="background-color:#6C757D; color:white">Cerrar</button>
                     <button id="aceptarF" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
                     <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
                     <!--<input  hidden="true" id="rechazar" value="Cerrar" type="button" style="background-color:tomato ; color: white;" ></input>-->
@@ -723,7 +723,7 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn" data-dismiss="modal" style="background-color:#6C757D; color:white">Cerrar</button>
+                    <button type="button" class="btn" ng-click="cerrarModalCancelar()" style="background-color:#6C757D; color:white">Cerrar</button>
                     <button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
                     <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
                     <!--<input  hidden="true" id="rechazar" value="Cerrar" type="button" style="background-color:tomato ; color: white;" ></input>-->
@@ -790,32 +790,9 @@
     no_discounteds.addEventListener('change', updateStatus)
 </script>
 
-<script>
-
-
-    const modalFinalizar = () => {
-
-        $('#finalizar').modal('show')
-        $("#duracion").val("");
-
-        $("#siS input[type='checkbox']").prop('checked', false).change();
-        $("#noN input[type='checkbox']").prop('checked', false).change();
-    }
 
 
 
-
-</script>
-
-<script>
-    const modalCancelar = () => {
-
-        $('#cancelar').modal('show')
-        $("#motCancelacion").val("");
-
-    }
-
-</script>
 
 
 

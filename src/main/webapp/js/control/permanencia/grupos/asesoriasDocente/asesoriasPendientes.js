@@ -11,4 +11,21 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
                 $("#motCancelacion").val("");
         }
 
+        $scope.modalFinalizar = () => {
+                $('#finalizar').modal('show')
+        }
+
+        $scope.cerrarModalAceptarR = () => {
+                $('#aceptarRechazar').modal('hide')
+        }
+
+        $scope.cerrarModalCancelar = () => {
+                $('#cancelar').modal('hide')
+        }
+
+        $scope.cerrarModalFinalizar = () => {
+                $('#finalizar').modal('hide')
+        }
+
+
         }]);
