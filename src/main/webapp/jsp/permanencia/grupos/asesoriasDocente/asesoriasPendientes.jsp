@@ -509,13 +509,13 @@
                                 <div>
                                     <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
                                     <label class="checkbox-inline">
-                                        <input type="radio" name="sexo"  id="siu" value="0"
-                                               required=""
+                                        <input ng-change="checkOptions()" type="radio" name="aceptarRechazar"  id="siu" value="0"
+                                               required="" ng-model="aceptarRechazar"
                                         ><strong>Si</strong>
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="radio" name="sexo"  id="nou" value="1"
-                                               required=""
+                                        <input ng-change="checkOptions()" type="radio" name="aceptarRechazar"  id="nou" value="1"
+                                               required="" ng-model="aceptarRechazar"
                                         ><strong>No</strong>
                                     </label>
 
@@ -531,7 +531,7 @@
                                     <strong>Motivos</strong>
                                     <br>
                                     <input type="text" name="sexo"
-                                           placeholder="Motivos" required=""
+                                           placeholder="Motivos" required="" id="rechaz0"
                                     >
                                 </label>
 
@@ -545,8 +545,12 @@
 
                     <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                     <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
+
+                    <input type="button" class="btn" ng-click="cerrarModalAceptarR()" value="Cerrar" style="background-color:#6C757D; color:white"></input>
+
                     <input class="btn"  id="aceptarR" value="Aceptar" type="button" style="background-color:#019979 ; color: white;" ></input>
                     <input  hidden="true" id="rechazarR" value="Rechazar" type="button" style="background-color:tomato ; color: white;" ></input>
+
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -655,13 +659,13 @@
                                 <div>
                                     <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
                                     <label class="checkbox-inline">
-                                        <input type="radio" name="sexo"  id="siS" value="0"
-                                               required=""
+                                        <input ng-change="checkOptions()" type="radio" name="asesoriaImpartida"  id="siS" value="0"
+                                               required="" ng-model="asesoriaImpartida"
                                         ><strong>Si</strong>
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="radio" name="sexo"  id="noN" value="1"
-                                               required=""
+                                        <input ng-change="checkOptions()" type="radio" name="asesoriaImpartida"  id="noN" value="1"
+                                               required="" ng-model="asesoriaImpartida"
                                         ><strong>No</strong>
                                     </label>
 
@@ -671,12 +675,12 @@
                             </div>
                             <div class="form-group col-md-8" hidden="true" id="duracion">
 
-                                <label class="checkbox-inline">
+                                <label class="checkbox-inline" >
                                     <strong>Duración en minutos</strong>
                                     <br>
-                                    <input type="text" name="sexo"
-                                           placeholder="30" required=""
-                                    >
+
+                                    <textarea name="textarea"  name="sexo" id="duracionMin"
+                                              required="" rows="5" cols="45" placeholder="fmklsdlñfksdalf"></textarea>
                                 </label>
 
 
