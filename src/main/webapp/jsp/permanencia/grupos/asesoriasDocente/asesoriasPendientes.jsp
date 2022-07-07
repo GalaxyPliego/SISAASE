@@ -413,7 +413,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#345177; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                <button type="button" class="close" ng-click="cerrarModalAceptarR()" aria-label="Close"
                         style="color: white ;"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Aceptar / rechazar Asesoría</h4>
             </div>
@@ -536,7 +536,7 @@
                                     <strong>Motivos</strong>
                                     <br>
                                     <textarea name="textarea"  name="sexo" id="rechaz0"
-                                              required="" rows="3" cols="36" style="resize:none" placeholder="Motivos de rechazo"></textarea>
+                                              required="" style="resize:none; width: 100%; height: 50%" placeholder="Motivos de rechazo"></textarea>
                                 </label>
 
 
@@ -564,7 +564,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#345177; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                <button type="button" class="close" ng-click="cerrarModalFinalizar()" aria-label="Close"
                         style="color: white ;"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Asesoría Impartida</h4>
             </div>
@@ -714,7 +714,7 @@
     <div class="modal-dialog" style="top:25%"  role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color:#345177; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                <button type="button" class="close" ng-click="cerrarModalCancelar()" aria-label="Close"
                         style="color: white ;"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Cancelación Asesoría</h4>
             </div>
