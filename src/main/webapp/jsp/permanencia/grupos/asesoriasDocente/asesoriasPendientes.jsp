@@ -419,10 +419,10 @@
             </div>
             <div class="modal-body">
 
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background:#676F77; color: white;">Información del estudiante
-                    </div>
-                    <div class="panel-body">
+               <div>
+                    <h3 style="margin-left: 15px; color: #345177">Información del estudiante</h3>
+               </div>
+                    <div class="panel-body" >
 
                         <div class="row">
                             <div class="form-group col-md-4">
@@ -462,10 +462,12 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background:#676F77; color: white;">Información Académica</div>
-                    <div class="panel-body">
+
+                <div>
+<%--                    <div >--%>
+                        <h3 style="margin-left: 15px; color: #345177">Información Académica</h3>
+<%--                    </div>--%>
+                    <div class="panel-body" >
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label >Fecha:</label>
@@ -500,8 +502,10 @@
 
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background:#676F77; color: white;">Información Académica</div>
+                <div>
+                    <div>
+                        <h3 style="margin-left: 15px; color: #345177">Aceptar / rechazar asesoría académica</h3>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="form-group col-md-4">
@@ -532,7 +536,7 @@
                                     <strong>Motivos</strong>
                                     <br>
                                     <textarea name="textarea"  name="sexo" id="rechaz0"
-                                              required="" rows="3" cols="35" placeholder="Motivos de rechazo"></textarea>
+                                              required="" rows="3" cols="36" style="resize:none" placeholder="Motivos de rechazo"></textarea>
                                 </label>
 
 
@@ -545,12 +549,10 @@
 
                     <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                     <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
-
-                    <input type="button" class="btn" ng-click="cerrarModalAceptarR()" value="Cerrar" style="background-color:#6C757D; color:white"></input>
-
                     <input class="btn"  id="aceptarR" value="Aceptar" type="button" style="background-color:#019979 ; color: white;" ></input>
                     <input  hidden="true" id="rechazarR" value="Rechazar" type="button" style="background-color:tomato ; color: white;" ></input>
-
+                    <input type="button" class="btn" ng-click="cerrarModalAceptarR()" value="Cerrar" style="background-color:#6C757D; color:white"></input>
+                </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -568,8 +570,9 @@
             </div>
             <div class="modal-body">
 
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background:#676F77; color: white;">Información del estudiante
+
+                    <div>
+                        <h3 style="margin-left: 15px; color: #345177">Información del estudiante</h3>
                     </div>
                     <div class="panel-body">
 
@@ -611,9 +614,11 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background:#676F77; color: white;">Información Académica</div>
+
+
+                    <div>
+                        <h3 style="margin-left: 15px; color: #345177">Información Académica</h3>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="form-group col-md-4">
@@ -648,9 +653,11 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="background:#676F77; color: white;">Asistencia</div>
+
+
+                    <div>
+                        <h3 style="margin-left: 15px; color: #345177">Asistencia</h3>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="form-group col-md-4">
@@ -689,11 +696,11 @@
                         </div>
                     </div>
 
-                </div>
-                <div class="modal-footer">
 
-                    <button type="button" class="btn" ng-click="cerrarModalFinalizar()" style="background-color:#6C757D; color:white">Cerrar</button>
+                <div class="modal-footer">
                     <button id="aceptarF" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
+                    <button type="button" class="btn" ng-click="cerrarModalFinalizar()" style="background-color:#6C757D; color:white">Cerrar</button>
+
                     <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
                     <!--<input  hidden="true" id="rechazar" value="Cerrar" type="button" style="background-color:tomato ; color: white;" ></input>-->
                 </div>
@@ -712,13 +719,11 @@
                 <h4 class="modal-title">Cancelación Asesoría</h4>
             </div>
             <div class="modal-body" >
-
-
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label >Motivos de cancelación :</label>
-                        <br>
-                        <input type="text" name="sexo" id="motCancelacion" style="width: 100%; height: 50px"
+                        <h3 style=" color: #345177; margin-top: 5px;">Motivos de cancelación :</h3>
+
+                        <input type="text" name="sexo" id="motCancelacion" style="width: 100%; height: 80px; margin-top: 5px;"
                                placeholder="Motivos" required=""
                         >
 
@@ -727,9 +732,9 @@
                 </div>
 
                 <div class="modal-footer">
-
-                    <button type="button" class="btn" ng-click="cerrarModalCancelar()" style="background-color:#6C757D; color:white">Cerrar</button>
                     <button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
+                    <button type="button" class="btn" ng-click="cerrarModalCancelar()" style="background-color:#6C757D; color:white">Cerrar</button>
+
                     <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
                     <!--<input  hidden="true" id="rechazar" value="Cerrar" type="button" style="background-color:tomato ; color: white;" ></input>-->
                 </div>
