@@ -45,13 +45,12 @@
     <link rel="stylesheet" href="/SISAASE_war_exploded/css/alertify.core.css"/>
     <!-- include a theme, can be included into the core instead of 2 separate files -->
     <link rel="stylesheet" href="/SISAASE_war_exploded/css/sweetalert.css"/>
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
     <style>
 
@@ -111,7 +110,7 @@
     </style>
 </head>
 
-<body ng-controller="controller" ng-init="consultarHistorialPagos()">
+<body ng-controller="gestionhorarios">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <div id="page-wrapper">
@@ -160,10 +159,12 @@
                             <h4>Estudiante</h4>
                         </li>
                         <li>
-                            <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHorarios/asignarMaterias.jsp"><i class="fa fa-book fa-fw"></i> Materias </a>
+                            <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHorarios/asignarMaterias.jsp"><i
+                                    class="fa fa-book fa-fw"></i> Materias </a>
                         </li>
                         <li>
-                            <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp"><i class="fa fa-clock-o"></i> Horarios </a>
+                            <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp"><i
+                                    class="fa fa-clock-o"></i> Horarios </a>
                         </li>
                         <!--            <li>
                                         <a href="/SISAVA/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-braille fa-fw"></i> Evaluación Docente</a>
@@ -176,63 +177,30 @@
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
-
-
         </nav>
-<%--        <div class="modal fade" id="myModal" role="dialog">--%>
-<%--            <div class="modal-dialog">--%>
-
-<%--                <!-- Modal content-->--%>
-<%--                <div class="modal-content">--%>
-<%--                    <div class="modal-header" style="background: #345177; color: white;">--%>
-<%--                        <h4 class="modal-title" id="myModalLabel">Roles</h4>--%>
-<%--                    </div>--%>
-<%--                    <div class="modal-body">--%>
-<%--                        <h4>Selecciona el rol para acceder a las funcionalidades correspondientes.</h4>--%>
-<%--                        <div class="row">--%>
-
-<%--                            <div class="col-md-12">--%>
-<%--                                <div class="panel panel-primary">--%>
-<%--                                    <div class="panel-heading">--%>
-<%--                                        <div class="row">--%>
-<%--                                            <a href="/SISAVA/cambiarSesion?idRolCambiar=Alumno&rolCambiar=Estudiante"--%>
-<%--                                               style="color: white;">--%>
-<%--                                                <div class="col-md-8">Estudiante</div>--%>
-<%--                                                <div class="col-md-4 text-right"><span class="text-right"><i--%>
-<%--                                                        class="fa fa-angle-right"></i></span></div>--%>
-<%--                                            </a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="panel-body">--%>
-<%--                                        <p>Estudiante.</p>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="modal-footer">--%>
-<%--                        <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">--%>
-<%--                            Cerrar--%>
-<%--                        </button>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
 
         <br/>
         <div class="panel panel-primary">
             <div class="panel-heading">Horarios</div>
             <div class="panel-body">
-                <div ng-show="!historial" class="text-center">
+                <div class="text-center">
                     <%--                    <img src="/SISAASE_war_exploded/img/system/preloader.gif"/>--%>
                     <div class="alert alert-warning alert-dismissible" role="alert">
-                        <strong>Se sugiere brindar asesoría dos días por semana en un solo horario por día</strong>
+                        <strong>Se deberá agregar al menos dos horas de asesoría a la semana</strong>
                     </div>
                 </div>
-                <div ng-show="historial" class="row">
+
+                <div class="row">
                     <div class="col-md-12">
-                        <div class="table-responsive">
+
+
+                        <div class="form-group">
+                            <label>Periodo cuatrimestral: <span class="text-danger">*</span></label>
+                            <select class="form-control" required>
+                                <option ng-repeat="cuatrimestre in periodoCuatri" ng-bind="cuatrimestre.periodo"></option>
+                            </select>
+                        </div>
+
                             <table class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
@@ -242,131 +210,31 @@
                                     <td>Acciones</td>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="pago in historial.lista">
-                                    <th><input type="checkbox"></th>
-                                    <td>Lunes</td>
+                                <tr ng-repeat="entrada in datos |  limitTo: 6">
+                                    <th><input type="checkbox" ng-model="dia.selected[entrada.idDia]"  ng-true-value="'{{entrada.idDia}}'"  ng-false-value="''"></th>
+                                    <td ng-bind="entrada.dia"></td>
                                     <td>
-                                        <form class="form-inline">
+                                        <label>No hay asesoría</label>
+                                        <form class="form-inline" ng-show="entrada.horaInicio != '' && entrada.horFin!='' ">
                                             <div class="form-group">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" ng-value="entrada.horaInicio | date: 'HH:mm'" readonly required>
                                             </div>
                                             <div class="form-group">
                                                 <label>-</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" ng-value="entrada.horaFin | date: 'HH:mm'" readonly required>
                                             </div>
                                         </form>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-success">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            <span class="fa fa-pencil"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <span class="fa fa-times"></span>
-                                        </button>
-                                    </td>
-                                </tr>
+                                            <button type="button" class="btn btn-success" ng-show="mostrarBotonAgregar" ng-click="agregarHorario(entrada)">
+                                                <span class="fa fa-plus"></span>
+                                            </button>
 
-                                <tr ng-repeat="pago in historial.lista">
-                                    <th><input type="checkbox"></th>
-                                    <td>Martes</td>
-                                    <td>
-                                        <label>No hay asesoría</label>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-success">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
+                                        <button type="button" class="btn btn-primary" ng-click="select($index)">
                                             <span class="fa fa-pencil"></span>
                                         </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <span class="fa fa-times"></span>
-                                        </button>
-                                    </td>
-                                </tr>
 
-                                <tr ng-repeat="pago in historial.lista">
-                                    <th><input type="checkbox"></th>
-                                    <td>Miercoles</td>
-                                    <td>
-                                        <form class="form-inline">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>-</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-success">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            <span class="fa fa-pencil"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <span class="fa fa-times"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr ng-repeat="pago in historial.lista">
-                                    <th><input type="checkbox"></th>
-                                    <td>Jueves</td>
-                                    <td>
-                                        <label>No hay asesoría</label>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-success">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            <span class="fa fa-pencil"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <span class="fa fa-times"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr ng-repeat="pago in historial.lista">
-                                    <th><input type="checkbox"></th>
-                                    <td>Viernes</td>
-                                    <td>
-                                        <label>No hay asesoría</label>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-success">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            <span class="fa fa-pencil"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <span class="fa fa-times"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr ng-repeat="pago in historial.lista">
-                                    <th><input type="checkbox"></th>
-                                    <td>Sábado</td>
-                                    <td>
-                                        <label>No hay asesoría</label>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-success">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            <span class="fa fa-pencil"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
+                                        <button type="button" class="btn btn-danger" ng-click="eliminarHorario(entrada)">
                                             <span class="fa fa-times"></span>
                                         </button>
                                     </td>
@@ -375,10 +243,10 @@
                         </div>
                     </div>
                 </div>
-                <div ng-show="historial" class="row">
+                <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="form-group">
-                            <button type="submit" ng-click="generarReporteHistorialPagos()" class="btn btn-success">
+                            <button type="submit" class="btn btn-success">
                                 Guardar
                             </button>
                         </div>
@@ -403,20 +271,26 @@
 <!-- Angular -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>-->
 <script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
-<script src=""></script>
+<script src="/SISAASE_war_exploded/js/control/horarios/ajsHorarios.js"></script>
+<jsp:include page="modalHorarios.jsp"></jsp:include>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="/SISAASE_war_exploded/components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.js"></script>
+
 <%--Morris Charts JavaScript--%>
-<script src="/SISAASE_war_exploded/components/raphael/raphael-min.js"></script>
-<script src="/SISAASE_war_exploded/components/morrisjs/morris.min.js"></script>
-<script src="/SISAASE_war_exploded/js/morris-data.js"></script>
+
+<%--<script src="/SISAASE_war_exploded/components/raphael/raphael-min.js"></script>--%>
+<%--<script src="/SISAASE_war_exploded/components/morrisjs/morris.min.js"></script>--%>
+<%--<script src="/SISAASE_war_exploded/js/morris-data.js"></script>--%>
+
 <!-- Custom Theme JavaScript -->
-<script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
+<%--<script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>--%>
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
 <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
-<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
+<script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script><script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
+<%--<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>--%>
 </body>
 </html>

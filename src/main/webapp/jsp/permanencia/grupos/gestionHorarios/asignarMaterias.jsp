@@ -110,7 +110,7 @@
     </style>
 </head>
 
-<body ng-controller="controller" ng-init="consultarHistorialPagos()">
+<body ng-controller="materias">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <div id="page-wrapper">
@@ -228,20 +228,20 @@
                 <div class="text-center">
                     <%--                    <img src="/SISAASE_war_exploded/img/system/preloader.gif"/>--%>
                 </div>
-                <div ng-show="historial" class="row">
+                <div class="row">
                     <div class="col-md-12">
 
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                           href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Plan de estudios Procesos industriales área: Manufactura 2020 </a>
+                                           href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                           ng-repeat="entrada in datosProc" ng-bind="entrada.planEstudios1">
+                                        </a>
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <div class="table-responsive">
@@ -251,29 +251,19 @@
                                                     <td>#</td>
                                                     <td>Materia</td>
                                                     <td>Cuatrimestre</td>
-                                                    <td>Señecciona</td>
+                                                    <td>Selecciona</td>
                                                 </tr>
                                                 </thead>
-                                                <tr ng-repeat="pago in historial.lista">
-                                                    <th>1</th>
-                                                    <td>Algebra lineal</td>
-                                                    <td>1ro</td>
-                                                    <td>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                </tr>
-                                                <tr ng-repeat="pago in historial.lista">
-                                                    <th>2</th>
-                                                    <td>Física</td>
-                                                    <td>1ro</td>
+                                                <tr ng-repeat="entrada in datosProc">
+                                                    <th ng-bind="$index+1"></th>
+                                                    <td ng-bind="entrada.materia"></td>
+                                                    <td ng-bind="entrada.cuatrimestre"></td>
                                                     <td>
                                                         <input type="checkbox">
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -281,107 +271,83 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                                           aria-controls="collapseTwo">
-                                            Plan de estudios Diseño digital área: animación 2020 </a>
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"
+                                           ng-repeat="entrada in datosMeca" ng-bind="entrada.planEstudios1">
+                                        </a>
                                     </h4>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="headingTwo">
                                     <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead style="background-color: #676f77 ; color: #fff">
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>Materia</td>
+                                                    <td>Cuatrimestre</td>
+                                                    <td>Selecciona</td>
+                                                </tr>
+                                                </thead>
+                                                <tr ng-repeat="entrada in datosMeca">
+                                                    <th ng-bind="$index+1"></th>
+                                                    <td ng-bind="entrada.materia"></td>
+                                                    <td ng-bind="entrada.cuatrimestre"></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
+
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                           aria-controls="collapseThree">
-                                            Plan de estudios Desarrollo y Gestión de Software 2021 </a>
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"
+                                           ng-repeat="entrada in datosMant" ng-bind="entrada.planEstudios1">
+                                        </a>
                                     </h4>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="headingThree">
                                     <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead style="background-color: #676f77 ; color: #fff">
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>Materia</td>
+                                                    <td>Cuatrimestre</td>
+                                                    <td>Selecciona</td>
+                                                </tr>
+                                                </thead>
+                                                <tr ng-repeat="entrada in datosMant">
+                                                    <th ng-bind="$index+1"></th>
+                                                    <td ng-bind="entrada.materia"></td>
+                                                    <td ng-bind="entrada.cuatrimestre"></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingFour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                           aria-controls="collapseThree">
-                                            Plan de estudios Mecatrónica 2020</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingFive">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                           aria-controls="collapseThree">
-                                            Plan de estudios Diseño textil y moda 2021</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-
-
                         </div>
+
                     </div>
                 </div>
-                <div ng-show="historial" class="row">
+                <div  class="row">
                     <div class="col-md-12 text-center">
                         <div class="form-group">
-                            <button type="submit" ng-click="generarReporteHistorialPagos()" class="btn btn-success">
+                            <button type="submit" class="btn btn-success" ng-click="guardarMaterias()">
                                 Guardar
                             </button>
                         </div>
@@ -406,20 +372,19 @@
 <!-- Angular -->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>-->
 <script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
-<script src=""></script>
+<script src="/SISAASE_war_exploded/js/control/horarios/ajsMaterias.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="/SISAASE_war_exploded/components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- Metis Menu Plugin JavaScript -->
 <script src="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.js"></script>
 <%--Morris Charts JavaScript--%>
-<script src="/SISAASE_war_exploded/components/raphael/raphael-min.js"></script>
-<script src="/SISAASE_war_exploded/components/morrisjs/morris.min.js"></script>
-<script src="/SISAASE_war_exploded/js/morris-data.js"></script>
+<%--<script src="/SISAASE_war_exploded/components/raphael/raphael-min.js"></script>--%>
+<%--<script src="/SISAASE_war_exploded/components/morrisjs/morris.min.js"></script>--%>
+<%--<script src="/SISAASE_war_exploded/js/morris-data.js"></script>--%>
 <!-- Custom Theme JavaScript -->
-<script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
+<%--<script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>--%>
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
 <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
-<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
+<%--<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>--%>
 </body>
 </html>
