@@ -235,12 +235,9 @@
     <div id="page-wrapper">
         <br/>
         <div class="panel panel-primary">
-            <div class="panel-heading">Asesorías pendientes</div>
-            <div class="panel-body">
-                <%--                <div ng-show="!historial" class="text-center ng-hide">--%>
-                <%--                    <img src="SISAASE_war_exploded/preloader.gif">--%>
-                <%--                </div>--%>
-                <%--                <div ng-show="historial" class="row">--%>
+            <div class="panel-heading">Asesorías</div>
+            <div class="panel-body" style="margin-top: -20px">
+                <h2 style="color: #345177">Asesorías pendientes</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -303,9 +300,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Asesorías aceptadas</div>
-                </div>
+                <h2 style="color: #345177">Asesorías aceptadas</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -392,125 +387,82 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background:#676F77; color: white;">Información del
-                                estudiante
+                        <div class="row">
+                            <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
+                                <h3>Información de la asesoría</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="form-group col-md-6">
+                                <label>Fecha:</label>
+                                <div class="ng-binding">04/02/2022</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Hora:</label>
+                                <div class="ng-binding">14:00</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Asignatura:</label>
+                                <div class="ng-binding">Base de Datos</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Tema:</label>
+                                <div class="ng-binding">Sentencias</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Docente:</label>
+                                <div class="ng-binding">Jazmin Rogel Arizmendi</div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Nombre:</label>
-                                        <div class="ng-binding">Roy Axxel Salgado Martinez
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Matrícula:</label>
-                                        <div class="ng-binding">20203TN052</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Grado:</label>
-                                        <div class="ng-binding">6</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Carrera:</label>
-                                        <div class="ng-binding">Desarrollo de Software Multiplataforma
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Grupo:</label>
-                                        <div class="ng-binding">C
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Riesgo:</label>
-                                        <div class="ng-binding">No
-                                        </div>
-                                    </div>
+                            <div class="form-group col-md-6">
+                                <label>Estado:</label>
+                                <div class="ng-binding" style="color: #069779">Aceptada</div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Dudas específicas:</label>
+                                <div class="ng-binding">Sentencias básicas, create, alter table, etc. También tengo dudas en algunos comandos en específico.</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>¿Asesoría impartida?:</label>
+                                <div>
+                                    <label class="checkbox-inline">
+                                        <input ng-change="checkOptions()" name="asesoriaImpartida"
+                                               ng-model="asesoriaImpartida" value="1" type="radio"
+                                               required><strong>Sí</strong>
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input ng-change="checkOptions()" name="asesoriaImpartida"
+                                               ng-model="asesoriaImpartida" value="2" type="radio"
+                                               required><strong>No</strong>
+                                    </label>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background:#676F77; color: white;">Información de la
-                                asesoría
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Fecha:</label>
-                                        <div class="ng-binding">04/02/2022</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Hora:</label>
-                                        <div class="ng-binding">14:00</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Asignatura:</label>
-                                        <div class="ng-binding">Base de Datos</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Tema:</label>
-                                        <div class="ng-binding">Sentencias</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Docente:</label>
-                                        <div class="ng-binding">Jazmin Rogel Arizmendi</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Dudas específicas:</label>
-                                        <div class="ng-binding">Diagrama ER</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Estado:</label>
-                                        <div class="ng-binding" style="color: #069779">Aceptada</div>
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        <label>¿Asesoría impartida?:</label>
-                                        <div>
-                                            <label class="checkbox-inline">
-                                                <input ng-change="checkOptions()" name="asesoriaImpartida"
-                                                       ng-model="asesoriaImpartida" value="1" type="radio"
-                                                       required><strong>Sí</strong>
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input ng-change="checkOptions()" name="asesoriaImpartida"
-                                                       ng-model="asesoriaImpartida" value="2" type="radio"
-                                                       required><strong>No</strong>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6" ng-show="asesoriaImpartida==1">
-                                        <label>¿Se aclararon las dudas?:</label>
-                                        <div>
-                                            <label class="checkbox-inline">
-                                                <input ng-change="checkOptions()" name="dudas" ng-model="dudas"
-                                                       value="1" type="radio"
-                                                       required><strong>Sí</strong>
-                                            </label>
-                                            <label class="checkbox-inline">
-                                                <input ng-change="checkOptions()" name="dudas" ng-model="dudas"
-                                                       value="2" type="radio"
-                                                       required><strong>No</strong>
-                                            </label>
-                                        </div>
-                                    </div>
-
+                            <div class="form-group col-md-6" ng-show="asesoriaImpartida==1">
+                                <label>¿Se aclararon las dudas?:</label>
+                                <div>
+                                    <label class="checkbox-inline">
+                                        <input ng-change="checkOptions()" name="dudas" ng-model="dudas"
+                                               value="1" type="radio"
+                                               required><strong>Sí</strong>
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input ng-change="checkOptions()" name="dudas" ng-model="dudas"
+                                               value="2" type="radio"
+                                               required><strong>No</strong>
+                                    </label>
                                 </div>
-
                             </div>
+
                         </div>
                         <div class="modal-footer">
-                            <button ng-click="cerrarModalFinalizar()" class="btn" type="button"
-                                    style="background-color:#D9534F ; color: white;">Cancelar
-                            </button>
-
                             <button ng-disabled="!formValid"
                                     type="button" style="background-color:#019979 ; color: white;" class="btn"
                                     ng-click="finalizarAsesoria()">Finalizar
                                 asesoría
                             </button>
+                            <button ng-click="cerrarModalFinalizar()" class="btn" type="button"
+                                    style="background-color:#D9534F ; color: white;">Cancelar
+                            </button>
+
+
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -530,86 +482,40 @@
                     <div class="modal-header" style="background-color:#345177; color: white;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                                 style="color: white ;"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Finalizar asesoría</h4>
+                        <h4 class="modal-title">Información de la asesoría</h4>
                     </div>
                     <div class="modal-body">
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background:#676F77; color: white;">Información del
-                                estudiante
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Fecha:</label>
+                                <div class="ng-binding">04/02/2022</div>
                             </div>
-                            <div class="panel-body">
+                            <div class="form-group col-md-6">
+                                <label>Hora:</label>
+                                <div class="ng-binding">14:00</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Asignatura:</label>
+                                <div class="ng-binding">Base de Datos</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Tema:</label>
+                                <div class="ng-binding">Sentencias</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Docente:</label>
+                                <div class="ng-binding">Jazmin Rogel Arizmendi</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Estado:</label>
+                                <div class="ng-binding" style="color: #F0AD4E">Pendiente</div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Dudas específicas:</label>
+                                <div class="ng-binding">Sentencias básicas, create, alter table, etc. También tengo dudas en algunos comandos en <específico class=""></específico></div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Nombre:</label>
-                                        <div class="ng-binding">Roy Axxel Salgado Martinez
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Matrícula:</label>
-                                        <div class="ng-binding">20203TN052</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Grado:</label>
-                                        <div class="ng-binding">6</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Carrera:</label>
-                                        <div class="ng-binding">Desarrollo de Software Multiplataforma
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Grupo:</label>
-                                        <div class="ng-binding">C
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Riesgo:</label>
-                                        <div class="ng-binding">No
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background:#676F77; color: white;">Información de la
-                                asesoría
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Fecha:</label>
-                                        <div class="ng-binding">04/02/2022</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Hora:</label>
-                                        <div class="ng-binding">14:00</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Asignatura:</label>
-                                        <div class="ng-binding">Base de Datos</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Tema:</label>
-                                        <div class="ng-binding">Sentencias</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Docente:</label>
-                                        <div class="ng-binding">Jazmin Rogel Arizmendi</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Dudas específicas:</label>
-                                        <div class="ng-binding">Diagrama ER</div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Estado:</label>
-                                        <div class="ng-binding" style="color: #F0AD4E">Pendiente</div>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button ng-click="cerrarModalInformacion()" class="btn" type="button"
@@ -646,14 +552,15 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button ng-click="cerrarModalCancelar()" class="btn" type="button"
-                                    style="background-color:#D9534F ; color: white;">Cancelar
-                            </button>
-
                             <button ng-disabled="formCancelarAsesoria.$pristine || !formCancelarAsesoria.$valid"
                                     type="button" style="background-color:#019979 ; color: white;" class="btn"
                                     ng-click="cancelarAsesoria()">Cancelar asesoría
                             </button>
+                            <button ng-click="cerrarModalCancelar()" class="btn" type="button"
+                                    style="background-color:#D9534F ; color: white;">Cancelar
+                            </button>
+
+
                         </div>
                     </div>
                     <!-- /.modal-content -->

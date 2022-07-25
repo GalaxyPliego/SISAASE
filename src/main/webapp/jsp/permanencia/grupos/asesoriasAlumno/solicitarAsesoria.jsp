@@ -324,78 +324,66 @@
                         <h4 class="modal-title">Solicitar asesoría</h4>
                     </div>
                     <div class="modal-body">
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background:#676F77; color: white;">Información del
-                                docente
+                        <div class="row">
+                            <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
+                                <h3>Información del docente</h3>
                             </div>
-                            <div class="panel-body">
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Nombre:</label>
-                                        <div class="ng-binding">Roy Axxel Salgado Martinez
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Materia:</label>
-                                        <div class="ng-binding">Cálculo</div>
-                                    </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre:</label>
+                                <div class="ng-binding">Roy Axxel Salgado Martinez
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background:#676F77; color: white;">Información de la
-                                asesoría
+                            <div class="form-group col-md-6">
+                                <label>Materia:</label>
+                                <div class="ng-binding">Cálculo</div>
                             </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Día:</label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Lunes</option>
-                                            <option value="">Martes</option>
-                                            <option value="">Miércoles</option>
-                                            <option value="">Jueves</option>
-                                            <option value="">Viernes</option>
-                                            <option value="">Sábado</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Horario:</label>
-                                        <input type="time" class="form-control">
-                                        <label for="" class="text-warning">El horario de asesorías es de 14:00 hrs a 17:00 hrs, ten en cuenta que si solicitas una asesoría fuera de este horario el docente podría rechazar tu asesoría</label>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Tema:</label>
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Dudas específicas:</label>
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>
-                                            ¿Estás en recuperación?
-                                        </label>
-                                        <br>
-                                        <input type="checkbox" value=""> Sí
-                                    </div>
-                                </div>
-
+                            <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
+                                <h3>Información de la asesoría</h3>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Día:</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="">Lunes</option>
+                                    <option value="">Martes</option>
+                                    <option value="">Miércoles</option>
+                                    <option value="">Jueves</option>
+                                    <option value="">Viernes</option>
+                                    <option value="">Sábado</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Horario:</label>
+                                <input type="time" class="form-control">
+                                <label for="" class="text-warning">El horario de asesorías es de 14:00 hrs a 17:00 hrs, ten en cuenta que si solicitas una asesoría fuera de este horario el docente podría rechazar tu asesoría</label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Tema:</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Dudas específicas:</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>
+                                    ¿Estás en recuperación?
+                                </label>
+                                <br>
+                                <input type="checkbox" value=""> Sí
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button ng-click="cerrarModalSolicitar()" class="btn" type="button"
-                                    style="background-color:#D9534F ; color: white;">Cancelar
-                            </button>
-
                             <button ng-disabled="!formValid"
                                     type="button" style="background-color:#019979 ; color: white;" class="btn"
                                     ng-click="solicitarAsesoria()">Finalizar
                                 asesoría
                             </button>
+                            <button ng-click="cerrarModalSolicitar()" class="btn" type="button"
+                                    style="background-color:#D9534F ; color: white;">Cancelar
+                            </button>
+
+
                         </div>
                     </div>
                     <!-- /.modal-content -->
