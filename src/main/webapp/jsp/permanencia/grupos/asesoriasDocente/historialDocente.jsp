@@ -64,6 +64,13 @@
             width: 13%;
         }
 
+        .text__modal{
+            font-size: 16px;
+        }
+        .label__modal{
+            font-size: 18px;
+        }
+
         @media (max-width:768px)
         {
 
@@ -214,14 +221,14 @@
                                     <td ng-bind="row.asignatura"></td>
                                     <td ng-bind="row.tema"></td>
                                     <td ng-bind="row.estado "></td>
-                                    <td class="text-center" style="color: #009574; font-size: 18px"> <i ng-click="" data-toggle="modal" data-target="#modalDetails"  class="fa fa-search-plus" aria-hidden="true" style="cursor: pointer"></i> </td>
+                                    <td class="text-center" style="color: #009574; font-size: 18px"> <i ng-click="s" data-toggle="modal" data-target="#modalDetails"  class="fa fa-search-plus" aria-hidden="true" style="cursor: pointer"></i> </td>
 
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <td colspan="8" class="text-center">
-                                        <div style="cursor:pointer;" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                        <div style="cursor:pointer;" st-pagination="" st-items-by-page="10" st-displayed-pages="5" st-page-change="onPage"></div>
                                     </td>
                                 </tr>
                                 </tfoot>
@@ -234,123 +241,123 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade bs-example-modal-lg" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails">
+    <div class="modal fade bs-example-modal-lg" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails" >
         <div class="modal-dialog modal-lg" >
             <div class="modal-content" style="background-color: #F2F2F2 ">
-                <div class="modal-header" style="background-color: #345177 ">
+                <div class="modal-header" style="background-color: #345177; padding-left: 30px; padding-right: 30px;">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel" style="color: white; font-weight: bold">Información Adicional</h4>
+                    <h4 class="modal-title" id="myModalLabel" style="color: white; font-weight: bold; margin:0px;">Información Adicional</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Información del Alumno</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Nombre</label>
-                                        <p>Carlos Ricardo Espinoza Pliego</p>
+                <div class="modal-body" style="padding-left: 30px; padding-right: 30px; padding-bottom: 20px; padding-top: 20px;">
+                    <h3 class="" style="margin-top: 0; margin-bottom: 20px; color: #345177; font-weight: bold;">Información del Alumno</h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Nombre</label>
+                                <p class="text__modal">Carlos Ricardo Espinoza Pliego</p>
 
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Matrícula</label>
-                                        <p>20203TN129</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Carrera</label>
-                                        <p>Ingeniería en Desarrollo y Gestión de Software</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Grado</label>
-                                        <p>6</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Grupo</label>
-                                        <p>A</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Riesgo</label>
-                                        <p>No</p>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Matrícula</label>
+                                <p class="text__modal">20203TN129</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Carrera</label>
+                                <p class="text__modal">Ingeniería en Desarrollo y Gestión de Software</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Grado</label>
+                                <p class="text__modal">6</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Grupo</label>
+                                <p class="text__modal">A</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Riesgo</label>
+                                <p class="text__modal">No</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Información de la Asesoría</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Fecha</label>
-                                        <p>24/01/2022</p>
+                    <h3 class="" style="margin-top: 0; margin-bottom: 20px; color: #345177; font-weight: bold;">Información de la Asesoría</h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Fecha</label>
+                                <p class="text__modal">24/01/2022</p>
 
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Hora</label>
-                                        <p>13:00 - 14:00</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Duración (minutos) </label>
-                                        <p>44</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Asignatura</label>
-                                        <p>Base de Datos</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Tema</label>
-                                        <p>Consultas Avanzadas</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">¿Resolvió dudas?</label>
-                                        <p>No</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Estado</label>
-                                        <p>Pendiente</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                                    <div class="form-group">
-                                        <label for="">Dudas específicas</label>
-                                        <p>Estructura básica de las consultas y casos de uso en los que se pueden utilizar</p>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Hora</label>
+                                <p class="text__modal">13:00 - 14:00</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Duración (minutos) </label>
+                                <p class="text__modal">44</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Asignatura</label>
+                                <p class="text__modal">Base de Datos</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Tema</label>
+                                <p class="text__modal">Consultas Avanzadas</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">¿Resolvió dudas?</label>
+                                <p class="text__modal">No</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Estado</label>
+                                <p class="text__modal">Pendiente</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Dudas específicas</label>
+                                <p class="text__modal">Estructura básica de las consultas y casos de uso en los que se pueden utilizar</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Motivos de Cancelación</label>
+                                <p class="text__modal">Tuve una reunión de imprevisto muy importante, una disculpa de antemano. Puedes agendar otra asesoría en estos días, saludos.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px" >
+                            <div class="form-group">
+                                <label for="" class="label__modal" >Motivos de Rechazo</label>
+                                <p class="text__modal">Ese día ya tengo ocupado esa hora para otras asesorias, puedes solicitar otra en estos días.</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: #676F77; color: white;">Cerrar</button>
                 </div>
             </div>
         </div>

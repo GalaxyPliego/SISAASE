@@ -185,7 +185,7 @@
                             <label for="periodo">Carrera:</label>
                             <select class="form-control" id="carrera" ng-model="carrera" ng-change="cambioCarrera()">
                                 <option value="">Seleccione una carrera</option>
-                                <option >Opcion 1</option>
+                                 <option >Opcion 1</option>
                                 <option >Opcion 2</option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
                             </select>
