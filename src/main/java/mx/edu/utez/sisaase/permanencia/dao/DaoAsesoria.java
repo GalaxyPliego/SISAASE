@@ -1,6 +1,7 @@
 package mx.edu.utez.sisaase.permanencia.dao;
 
 import mx.edu.utez.sisaase.permanencia.bean.BeanAsesorias;
+import mx.edu.utez.sisaase.utils.ConnectionMysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,13 @@ public class DaoAsesoria {
 
     public List<BeanAsesorias> consultarAsesorias() throws SQLException {
         List<BeanAsesorias> listaAsesorias = new ArrayList<>();
+        connection = ConnectionMysql.getConnection();
+        String script = "";
+        pstm = connection.prepareStatement(script);
+        rs = pstm.executeQuery();
+        while (rs.next()){
+            List<BeanAsesorias> asesorias = new ArrayList<>();
+        }
         return listaAsesorias;
     }
 
