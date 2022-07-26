@@ -1,9 +1,11 @@
 const sisa = angular.module("sisa", ['oitozero.ngSweetAlert']);
-sisa.controller("gestionhorarios", ['$scope', 'SweetAlert', function ($scope, SweetAlert) {
+sisa.controller("gestionhorarios", ['$scope', 'SweetAlert', '$http', function ($scope, SweetAlert, $http) {
     console.log("- ANGULAR JS -")
-    $scope.mostrarBotonAgregar = true;
+
+    $scope.arrayDias = []
 
     $scope.mostrarLeyenda = true;
+
     $scope.datos = [
         {
             horaInicio: "",
@@ -80,6 +82,19 @@ sisa.controller("gestionhorarios", ['$scope', 'SweetAlert', function ($scope, Sw
     $scope.dia = {
         selected: {}
     };
+
+    $scope.consultarDias = ( ) =>{
+        console.log("ConsultarDias")
+        $http({
+            method: 'POST',
+            url: 'Sisa-Ase/consultarDias'
+        }).then(function (response){
+            const {data: {listDiaSemana}} = response
+            $scope.arrayDias = listDiaSemana;
+            console.log("-------------------------------------")
+            console.log(response)
+        })
+    }
 
     $scope.agregarHorario = (entrada) => {
         $scope.agregarHora = angular.copy(entrada)

@@ -201,7 +201,7 @@
                             </select>
                         </div>
 
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped" ng-init="consultarDias()">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <td>#</td>
@@ -210,18 +210,30 @@
                                     <td>Acciones</td>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="entrada in datos |  limitTo: 6">
-                                    <th><input type="checkbox" ng-model="dia.selected[entrada.idDia]"  ng-true-value="'{{entrada.idDia}}'"  ng-false-value="''"></th>
-                                    <td ng-bind="entrada.dia"></td>
+                                <tr ng-repeat="entrada in arrayDias">
+                                    <th>
+                                        <input type="checkbox"
+                                               ng-model="dia.selected[entrada.idDia]"
+                                               ng-true-value="'{{entrada.idDia}}'"
+                                               ng-false-value="''">
+                                    </th>
+
+                                    <td ng-bind="entrada.nombre"></td>
                                     <td>
                                         <label>No hay asesoría</label>
-                                        <form class="form-inline" ng-show="entrada.horaInicio != '' && entrada.horFin!='' ">
+                                        <form class="form-inline"
+<%--                                              ng-show="entrada.horaInicio != '' && entrada.horFin!='' "--%>
+                                        >
                                             <div class="form-group">
-                                                <input type="text" class="form-control" ng-value="entrada.horaInicio | date: 'HH:mm'" readonly required>
+                                                <input type="text" class="form-control"
+<%--                                                       ng-value="entrada.horaInicio | date: 'HH:mm'" --%>
+                                                       readonly required>
                                             </div>
                                             <div class="form-group">
                                                 <label>-</label>
-                                                <input type="text" class="form-control" ng-value="entrada.horaFin | date: 'HH:mm'" readonly required>
+                                                <input type="text" class="form-control"
+<%--                                                       ng-value="entrada.horaFin | date: 'HH:mm'" --%>
+                                                       readonly required>
                                             </div>
                                         </form>
                                     </td>
