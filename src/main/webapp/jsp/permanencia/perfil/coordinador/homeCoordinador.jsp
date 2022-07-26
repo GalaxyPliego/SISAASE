@@ -76,7 +76,17 @@
                 z-index: 9;
                 width: 13%;
             }
+            .iconsCards{
+                font-size: 90px;
+            }
         }
+        @media (min-width:768px){
+            .iconsCards{
+                font-size: 150px;
+            }
+        }
+
+
     </style>
     <style>
         /* Paste this css to your style sheet file or under head tag */

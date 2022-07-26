@@ -11,13 +11,17 @@ public class BeanAsesorias {
     private String dudasEspecificas;
     private int aclaracionDudas;
     private int asistenciaDocente;
+    private int asistenciaAlumno;
     private String motivosCancelacion;
     private String motivosRechazo;
     private String horarioSolicitado;
     private BeanDiaSemana idDiaSemana;
     private BeanPeriodoCuatrimestral idPeriodoCuatrimestral;
 
-    public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
+    public BeanAsesorias() {
+    }
+
+    public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
         this.idAsesoria = idAsesoria;
         this.matricula = matricula;
         this.idMateria = idMateria;
@@ -28,6 +32,7 @@ public class BeanAsesorias {
         this.dudasEspecificas = dudasEspecificas;
         this.aclaracionDudas = aclaracionDudas;
         this.asistenciaDocente = asistenciaDocente;
+        this.asistenciaAlumno = asistenciaAlumno;
         this.motivosCancelacion = motivosCancelacion;
         this.motivosRechazo = motivosRechazo;
         this.horarioSolicitado = horarioSolicitado;
@@ -35,8 +40,24 @@ public class BeanAsesorias {
         this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
     }
 
-    public BeanAsesorias() {
+    public BeanAsesorias(BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
+        this.matricula = matricula;
+        this.idMateria = idMateria;
+        this.idProfesor = idProfesor;
+        this.duracion = duracion;
+        this.idEstadoAsesoria = idEstadoAsesoria;
+        this.tema = tema;
+        this.dudasEspecificas = dudasEspecificas;
+        this.aclaracionDudas = aclaracionDudas;
+        this.asistenciaDocente = asistenciaDocente;
+        this.asistenciaAlumno = asistenciaAlumno;
+        this.motivosCancelacion = motivosCancelacion;
+        this.motivosRechazo = motivosRechazo;
+        this.horarioSolicitado = horarioSolicitado;
+        this.idDiaSemana = idDiaSemana;
+        this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
     }
+
 
     public int getIdAsesoria() {
         return idAsesoria;
@@ -118,6 +139,14 @@ public class BeanAsesorias {
         this.asistenciaDocente = asistenciaDocente;
     }
 
+    public int getAsistenciaAlumno() {
+        return asistenciaAlumno;
+    }
+
+    public void setAsistenciaAlumno(int asistenciaAlumno) {
+        this.asistenciaAlumno = asistenciaAlumno;
+    }
+
     public String getMotivosCancelacion() {
         return motivosCancelacion;
     }
@@ -171,6 +200,7 @@ public class BeanAsesorias {
                 ", dudasEspecificas='" + dudasEspecificas + '\'' +
                 ", aclaracionDudas=" + aclaracionDudas +
                 ", asistenciaDocente=" + asistenciaDocente +
+                ", asistenciaAlumno=" + asistenciaAlumno +
                 ", motivosCancelacion='" + motivosCancelacion + '\'' +
                 ", motivosRechazo='" + motivosRechazo + '\'' +
                 ", horarioSolicitado='" + horarioSolicitado + '\'' +
