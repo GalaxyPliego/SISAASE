@@ -15,7 +15,8 @@ public class BeanRol {
         this.nombreRol = nombreRol;
         this.descripcion = descripcion;
     }
-
+    public BeanRol() {
+    }
     public int getIdRol() {
         return idRol;
     }

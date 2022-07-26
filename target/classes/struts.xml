@@ -7,13 +7,37 @@
 
     <constant name="struts.devMode" value="true" />
 
-    <package name="basicstruts2" extends="struts-default, json-default">
+    <package name="basicstruts2" extends="struts-default, json-default, loginInterceptor">
+
         <action name="index">
             <result>/index.jsp</result>
         </action>
+        <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/index.jsp</result>
+        </action>
+        <action name="perfil">
+            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+    </package>
+    <package name="loginInterceptor" extends="struts-default">
+        <interceptors>
+            <interceptor name="validateSession" class="mx.edu.utez.sisaase.interceptor.LoginInterceptor"/>
+            <interceptor-stack name="session">
+                <interceptor-ref name="validateSession"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
 
-
+        </interceptors>
+        <default-interceptor-ref name="session"/>
+        <global-results>
+            <result name="notFound" type="httpheader">
+                <param name="error">403</param>
+            </result>
+            <result name="loginRequired">/index.jsp</result>
+        </global-results>
 
     </package>
-
 </struts>
