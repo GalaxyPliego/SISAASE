@@ -272,9 +272,8 @@
                                 <img align="left" class="fb-image-lg"  src="/SISAASE_war_exploded/img/utez/header-bg.jpg" alt="Profile image example"/>
                                 <img align="left" class="fb-image-profile thumbnail" src="/SISAASE_war_exploded/img/system/photo.jpg" alt="Profile image example"/>
                                 <div class="fb-profile-text">
-                                    <h1 ng-class="{'text-danger':perfil.estadoAcademico !== 'Activo'}" style="margin-top: 0px;" ><span ng-bind="perfil.nombre + ' ' + perfil.apPaterno + ' ' + perfil.apMaterno" ></span><br/><span ng-bind="perfil.claveIdentidad"></span>  </h1>
-
-
+                                    <h1><span>${sessionScope.datosPersonales.nombres} ${sessionScope.datosPersonales.aPaterno} ${sessionScope.datosPersonales.aMaterno}</span><br/><span>${sessionScope.datosPersonales.matricula}</span>  </h1>
+                                    <h1>${sessionScope.datosPersonales}</h1>
                                 </div>
                             </div>
 
@@ -295,7 +294,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="" >Cuatrimestre:</label>
-                                            <div ng-bind="perfil.grupo.cuatrimestre" ></div>
+                                            <div>${sessionScope.datosPersonales.idGrupoActual.cuatrimestre}</div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="" >Grupo:</label>

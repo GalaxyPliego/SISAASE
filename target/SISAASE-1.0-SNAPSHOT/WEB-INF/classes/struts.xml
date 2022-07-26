@@ -13,7 +13,9 @@
             <result>/index.jsp</result>
         </action>
         <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+            <result name="alumno">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+            <result name="docente">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
+            <result name="multiRol">/jsp/multiRol.jsp</result>
         </action>
         <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/index.jsp</result>

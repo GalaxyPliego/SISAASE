@@ -1,9 +1,14 @@
 package mx.edu.utez.sisaase.permanencia.bean;
 
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpSession;
+
 public class BeanRol {
     private int idRol;
     private String nombreRol;
     private String descripcion;
+
 
     public BeanRol(int idRol, String nombreRol, String descripcion) {
         this.idRol = idRol;

@@ -18,6 +18,7 @@ public class ActionUsuario {
     private String data;
     private BeanUsuario beanUsuario;
     Map<String,Object> result = new HashMap<>();
+    HttpSession session;
 
     public String getMessage() {
         return message;
@@ -51,9 +52,14 @@ public class ActionUsuario {
         this.beanUsuario = beanUsuario;
     }
     public String iniciarSesion() throws SQLException {
-
-        if(new DaoUsuario().iniciarSesion(beanUsuario)){
-            return SUCCESS;
+        String result = new DaoUsuario().iniciarSesion(beanUsuario);
+        session = ServletActionContext.getRequest().getSession();
+        if(result.equals("multiRol")){
+            return "multiRol";
+        }else if(result.equals("alumno")){
+            return "alumno";
+        }else if(result.equals("docente")){
+            return "docente";
         }else{
             return ERROR;
         }

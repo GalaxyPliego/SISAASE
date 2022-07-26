@@ -9,8 +9,9 @@ public class BeanUsuario {
     private String ultimoAcceso;
     private String estado;
     private String codigoSeguridad;
+    private String claveIdentidad;
 
-    public BeanUsuario(int idUsuario, String usuario, String contrasena, String tipoUsuario, int noIntentosFallidos, String ultimoAcceso, String estado, String codigoSeguridad) {
+    public BeanUsuario(int idUsuario, String usuario, String contrasena, String tipoUsuario, int noIntentosFallidos, String ultimoAcceso, String estado, String codigoSeguridad, String claveIdentidad) {
         this.idUsuario = idUsuario;
         Usuario = usuario;
         this.contrasena = contrasena;
@@ -19,9 +20,18 @@ public class BeanUsuario {
         this.ultimoAcceso = ultimoAcceso;
         this.estado = estado;
         this.codigoSeguridad = codigoSeguridad;
+        this.claveIdentidad = claveIdentidad;
     }
 
     public BeanUsuario() {
+    }
+
+    public String getClaveIdentidad() {
+        return claveIdentidad;
+    }
+
+    public void setClaveIdentidad(String claveIdentidad) {
+        this.claveIdentidad = claveIdentidad;
     }
 
     public int getIdUsuario() {

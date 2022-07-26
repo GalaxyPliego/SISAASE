@@ -28,6 +28,10 @@ public class BeanCarrera {
         this.idNivelAcademico = idNivelAcademico;
     }
 
+    public BeanCarrera() {
+
+    }
+
     public int getIdCarrera() {
         return idCarrera;
     }
