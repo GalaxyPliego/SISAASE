@@ -45,108 +45,22 @@ public class DaoUsuario {
                         beanRol.setDescripcion(rs.getString("rol.descripcion"));
                         roles.add(beanRol);
                     }
-                    if(roles.size()>1){
+                    if (roles.size() > 1) {
                         HttpSession session = ServletActionContext.getRequest().getSession();
-                        session.setAttribute("usuario", beanUsuario.getUsuario());
+                        session.setAttribute("usuario", beanUsuario);
                         return "multiRol";
-                    }else{
+                    } else {
                         if (roles.get(0).getNombreRol().equals("alumno")) {
-                            BeanAlumnoInscrito alumnoInscrito = new BeanAlumnoInscrito();
-                            String script = "select alumnoinscrito.matricula, alumnoinscrito.aPaterno, alumnoinscrito.aMaterno, alumnoinscrito.Nombres, alumnoinscrito.FechaNac, alumnoinscrito.Edad, alumnoinscrito.Sexo, alumnoinscrito.EstadoCivil, alumnoinscrito.DomActual, alumnoinscrito.Colonia, alumnoinscrito.CP, alumnoinscrito.Telefono, alumnoinscrito.Cel, alumnoinscrito.Email, alumnoinscrito.CURP, alumnoinscrito.Nacionalidad, alumnoinscrito.Trabaja, alumnoinscrito.IngresoMensual, alumnoinscrito.TipoSangre, alumnoinscrito.NomTutor, alumnoinscrito.NoIMSS, alumnoinscrito.Status, alumnoinscrito.LocalidadRadica, alumnoinscrito.unidad_imss,\n" +
-                                    "generacion.idGeneracion, generacion.NoGeneracion, generacion.IngresoMes, generacion.IngresoAxo, generacion.EgresoMes, generacion.EgresoAxo, generacion.Estado, \n" +
-                                    "nivelacademico.idNivelAcademico, nivelacademico.Nivel, nivelacademico.Descripcion,\n" +
-                                    "grupos.idGrupo, grupos.cuatrimestre, grupos.grupo,\n" +
-                                    "carrera.idCarrera, carrera.nombreCarrera\n" +
-                                    "from alumnoinscrito \n" +
-                                    "inner join generacion on alumnoinscrito.idGeneracion = generacion.idGeneracion \n" +
-                                    "inner join nivelacademico on nivelacademico.idNivelAcademico = generacion.idNivelAcademico \n" +
-                                    "inner join grupos on grupos.idGrupo = alumnoinscrito.idGrupoActual \n" +
-                                    "inner join carrera on alumnoinscrito.idCarrera = carrera.idCarrera where alumnoinscrito.matricula = ?;";
-                            pstm = connection.prepareStatement(script);
-                            pstm.setString(1,beanUsuario.getUsuario());
-                            rs = pstm.executeQuery();
-                            if (rs.next()) {
-                                BeanGrupos beanGrupos = new BeanGrupos();
-                                beanGrupos.setIdGrupo(rs.getInt("grupos.idGrupo"));
-                                beanGrupos.setCuatrimestre(rs.getInt("grupos.cuatrimestre"));
-                                beanGrupos.setGrupo(rs.getString("grupos.grupo"));
-
-                                BeanGeneracion beanGeneracion = new BeanGeneracion();
-                                beanGeneracion.setIdGeneracion(rs.getInt("generacion.idGeneracion"));
-                                beanGeneracion.setNoGeneracion(rs.getInt("generacion.NoGeneracion"));
-                                beanGeneracion.setIngresoMes(rs.getString("generacion.IngresoMes"));
-                                beanGeneracion.setIngresoAxo(rs.getString("generacion.IngresoAxo"));
-                                beanGeneracion.setEgresoMes(rs.getString("generacion.EgresoMes"));
-                                beanGeneracion.setEstado(rs.getString("generacion.Estado"));
-
-                                BeanCarrera beanCarrera = new BeanCarrera();
-                                beanCarrera.setIdCarrera(rs.getInt("carrera.idCarrera"));
-                                beanCarrera.setNombreCarrera(rs.getString("carrera.nombreCarrera"));
-
-                                alumnoInscrito.setIdGrupoActual(beanGrupos);
-                                alumnoInscrito.setIdGeneracion(beanGeneracion);
-                                alumnoInscrito.setIdCarrera(beanCarrera);
-
-                                alumnoInscrito.setMatricula(rs.getString("alumnoInscrito.matricula"));
-                                alumnoInscrito.setaPaterno(rs.getString("alumnoinscrito.aPaterno"));
-                                alumnoInscrito.setaMaterno(rs.getString("alumnoinscrito.aMaterno"));
-                                alumnoInscrito.setNombres(rs.getString("alumnoinscrito.Nombres"));
-                                alumnoInscrito.setFechaNac(rs.getString("alumnoinscrito.FechaNac"));
-                                alumnoInscrito.setEdad(rs.getInt("alumnoinscrito.Edad"));
-                                alumnoInscrito.setSexo(rs.getString("alumnoinscrito.Sexo"));
-                                alumnoInscrito.setEstadoCivil(rs.getString("alumnoinscrito.EstadoCivil"));
-                                alumnoInscrito.setDomActual(rs.getString("alumnoinscrito.DomActual"));
-                                alumnoInscrito.setColonia(rs.getString("alumnoinscrito.Colonia"));
-                                alumnoInscrito.setCp(rs.getInt("alumnoinscrito.CP"));
-                                alumnoInscrito.setTelefono(rs.getString("alumnoinscrito.Telefono"));
-                                alumnoInscrito.setCel(rs.getString("alumnoinscrito.Cel"));
-                                alumnoInscrito.setEmail(rs.getString("alumnoinscrito.Email"));
-                                alumnoInscrito.setCurp(rs.getString("alumnoinscrito.CURP"));
-                                alumnoInscrito.setNacionalidad(rs.getString("alumnoinscrito.Nacionalidad"));
-                                alumnoInscrito.setTrabaja(rs.getString("alumnoinscrito.Trabaja"));
-                                alumnoInscrito.setIngresoMensual(rs.getInt("alumnoinscrito.IngresoMensual"));
-                                alumnoInscrito.setTipoSangre(rs.getString("alumnoinscrito.TipoSangre"));
-                                alumnoInscrito.setNombreTutor(rs.getString("alumnoinscrito.NomTutor"));
-                                alumnoInscrito.setNoIMSS(rs.getString("alumnoinscrito.NoIMSS"));
-                                alumnoInscrito.setStatus(rs.getString("alumnoinscrito.Status"));
-                                alumnoInscrito.setLocalidadRadica(rs.getString("alumnoinscrito.LocalidadRadica"));
-                                alumnoInscrito.setUnidadImss(rs.getString("alumnoinscrito.unidad_imss"));
-
-                            }
                             HttpSession session = ServletActionContext.getRequest().getSession();
-                            session.setAttribute("usuario", beanUsuario.getUsuario());
+                            session.setAttribute("usuario", beanUsuario);
                             session.setAttribute("rol", roles.get(0).getIdRol());
                             session.setAttribute("rolView", roles.get(0).getNombreRol());
-                            session.setAttribute("datosPersonales", alumnoInscrito);
-
                             return "alumno";
-                        }else if(roles.get(0).getNombreRol().equals("docente")){
-                            BeanProfesor profesor = new BeanProfesor();
-                            String script = "SELECT profesor.idProfesor, profesor.Nombres, profesor.APaterno, profesor.aMaterno, profesor.EmailInst, profesor.cedulaProf, profesor.NivelMaxEstudios, profesor.Titulo, profesor.emailPart, profesor.TipoProfesor, profesor.Telefono, profesor.semblanza, profesor.CURP, profesor.estado, profesor.sexo FROM sisa_ase.profesor where profesor.idProfesor = ?;";
-                            pstm = connection.prepareStatement(script);
-                            pstm.setString(1, beanUsuario.getClaveIdentidad());
-                            rs = pstm.executeQuery();
-                            if (rs.next()) {
-                                profesor.setIdProfesor(rs.getInt("profesor.idProfesor"));
-                                profesor.setNombres(rs.getString("profesor.Nombres"));
-                                profesor.setaPaterno(rs.getString("profesor.APaterno"));
-                                profesor.setaMaterno(rs.getString("profesor.aMaterno"));
-                                profesor.setEmailInst(rs.getString("profesor.EmailInst"));
-                                profesor.setCedulaProf(rs.getString("profesor.cedulaProf"));
-                                profesor.setNivelMaxEstudios(rs.getString("profesor.NivelMaxEstudios"));
-                                profesor.setEmailPart(rs.getString("profesor.emailPart"));
-                                profesor.setTipoProfesor(rs.getString("profesor.TipoProfesor"));
-                                profesor.setTelefono(rs.getString("profesor.Telefono"));
-                                profesor.setSemblanza(rs.getString("profesor.semblanza"));
-                                profesor.setCurp(rs.getString("profesor.CURP"));
-                                profesor.setEstado(rs.getString("profesor.estado"));
-                                profesor.setSexo(rs.getString("profesor.sexo"));
-                            }
+                        } else if (roles.get(0).getNombreRol().equals("docente")) {
                             HttpSession session = ServletActionContext.getRequest().getSession();
-                            session.setAttribute("usuario", beanUsuario.getUsuario());
+                            session.setAttribute("usuario", beanUsuario);
                             session.setAttribute("rol", roles.get(0).getIdRol());
                             session.setAttribute("rolView", roles.get(0).getNombreRol());
-                            session.setAttribute("datosPersonales", profesor);
                             return "docente";
                         }
                     }
@@ -163,6 +77,106 @@ public class DaoUsuario {
         return ERROR;
     }
 
+    public BeanAlumnoInscrito consultarPerfil() throws SQLException {
+        connection = ConnectionMysql.getConnection();
+        BeanAlumnoInscrito alumnoInscrito = new BeanAlumnoInscrito();
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        BeanUsuario beanUsuario = (BeanUsuario) session.getAttribute("usuario");
+        String script = "select alumnoinscrito.matricula, alumnoinscrito.aPaterno, alumnoinscrito.aMaterno, alumnoinscrito.Nombres, alumnoinscrito.FechaNac, alumnoinscrito.Edad, alumnoinscrito.Sexo, alumnoinscrito.EstadoCivil, alumnoinscrito.DomActual, alumnoinscrito.Colonia, alumnoinscrito.CP, alumnoinscrito.Telefono, alumnoinscrito.Cel, alumnoinscrito.Email, alumnoinscrito.CURP, alumnoinscrito.Nacionalidad, alumnoinscrito.Trabaja, alumnoinscrito.IngresoMensual, alumnoinscrito.TipoSangre, alumnoinscrito.NomTutor, alumnoinscrito.NoIMSS, alumnoinscrito.Status, alumnoinscrito.LocalidadRadica, alumnoinscrito.unidad_imss,\n" +
+                "generacion.idGeneracion, generacion.NoGeneracion, generacion.IngresoMes, generacion.IngresoAxo, generacion.EgresoMes, generacion.EgresoAxo, generacion.Estado, \n" +
+                "nivelacademico.idNivelAcademico, nivelacademico.Nivel, nivelacademico.Descripcion,\n" +
+                "grupos.idGrupo, grupos.cuatrimestre, grupos.grupo,\n" +
+                "carrera.idCarrera, carrera.nombreCarrera\n" +
+                "from alumnoinscrito \n" +
+                "inner join generacion on alumnoinscrito.idGeneracion = generacion.idGeneracion \n" +
+                "inner join nivelacademico on nivelacademico.idNivelAcademico = generacion.idNivelAcademico \n" +
+                "inner join grupos on grupos.idGrupo = alumnoinscrito.idGrupoActual \n" +
+                "inner join carrera on alumnoinscrito.idCarrera = carrera.idCarrera where alumnoinscrito.matricula = ?;";
+        pstm = connection.prepareStatement(script);
+        pstm.setString(1, beanUsuario.getUsuario());
+        rs = pstm.executeQuery();
+        if (rs.next()) {
+            BeanGrupos beanGrupos = new BeanGrupos();
+            beanGrupos.setIdGrupo(rs.getInt("grupos.idGrupo"));
+            beanGrupos.setCuatrimestre(rs.getInt("grupos.cuatrimestre"));
+            beanGrupos.setGrupo(rs.getString("grupos.grupo"));
+
+            BeanGeneracion beanGeneracion = new BeanGeneracion();
+            beanGeneracion.setIdGeneracion(rs.getInt("generacion.idGeneracion"));
+            beanGeneracion.setNoGeneracion(rs.getInt("generacion.NoGeneracion"));
+            beanGeneracion.setIngresoMes(rs.getString("generacion.IngresoMes"));
+            beanGeneracion.setIngresoAxo(rs.getString("generacion.IngresoAxo"));
+            beanGeneracion.setEgresoMes(rs.getString("generacion.EgresoMes"));
+            beanGeneracion.setEgresoAxo(rs.getString("generacion.EgresoAxo"));
+
+            beanGeneracion.setEstado(rs.getString("generacion.Estado"));
+
+            BeanCarrera beanCarrera = new BeanCarrera();
+            beanCarrera.setIdCarrera(rs.getInt("carrera.idCarrera"));
+            beanCarrera.setNombreCarrera(rs.getString("carrera.nombreCarrera"));
+
+            alumnoInscrito.setIdGrupoActual(beanGrupos);
+            alumnoInscrito.setIdGeneracion(beanGeneracion);
+            alumnoInscrito.setIdCarrera(beanCarrera);
+
+            alumnoInscrito.setMatricula(rs.getString("alumnoInscrito.matricula"));
+            alumnoInscrito.setaPaterno(rs.getString("alumnoinscrito.aPaterno"));
+            alumnoInscrito.setaMaterno(rs.getString("alumnoinscrito.aMaterno"));
+            alumnoInscrito.setNombres(rs.getString("alumnoinscrito.Nombres"));
+            alumnoInscrito.setFechaNac(rs.getString("alumnoinscrito.FechaNac"));
+            alumnoInscrito.setEdad(rs.getInt("alumnoinscrito.Edad"));
+            alumnoInscrito.setSexo(rs.getString("alumnoinscrito.Sexo"));
+            alumnoInscrito.setEstadoCivil(rs.getString("alumnoinscrito.EstadoCivil"));
+            alumnoInscrito.setDomActual(rs.getString("alumnoinscrito.DomActual"));
+            alumnoInscrito.setColonia(rs.getString("alumnoinscrito.Colonia"));
+            alumnoInscrito.setCp(rs.getInt("alumnoinscrito.CP"));
+            alumnoInscrito.setTelefono(rs.getString("alumnoinscrito.Telefono"));
+            alumnoInscrito.setCel(rs.getString("alumnoinscrito.Cel"));
+            alumnoInscrito.setEmail(rs.getString("alumnoinscrito.Email"));
+            alumnoInscrito.setCurp(rs.getString("alumnoinscrito.CURP"));
+            alumnoInscrito.setNacionalidad(rs.getString("alumnoinscrito.Nacionalidad"));
+            alumnoInscrito.setTrabaja(rs.getString("alumnoinscrito.Trabaja"));
+            alumnoInscrito.setIngresoMensual(rs.getInt("alumnoinscrito.IngresoMensual"));
+            alumnoInscrito.setTipoSangre(rs.getString("alumnoinscrito.TipoSangre"));
+            alumnoInscrito.setNombreTutor(rs.getString("alumnoinscrito.NomTutor"));
+            alumnoInscrito.setNoIMSS(rs.getString("alumnoinscrito.NoIMSS"));
+            alumnoInscrito.setStatus(rs.getString("alumnoinscrito.Status"));
+            alumnoInscrito.setLocalidadRadica(rs.getString("alumnoinscrito.LocalidadRadica"));
+            alumnoInscrito.setUnidadImss(rs.getString("alumnoinscrito.unidad_imss"));
+
+        }
+        session.setAttribute("datosPersonales", alumnoInscrito);
+        return alumnoInscrito;
+    }
+
+    public BeanProfesor consultarPerfilProfesor() throws SQLException {
+        connection = ConnectionMysql.getConnection();
+        BeanProfesor profesor = new BeanProfesor();
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        BeanUsuario beanUsuario = (BeanUsuario) session.getAttribute("usuario");
+        String script = "SELECT profesor.idProfesor, profesor.Nombres, profesor.APaterno, profesor.aMaterno, profesor.EmailInst, profesor.cedulaProf, profesor.NivelMaxEstudios, profesor.Titulo, profesor.emailPart, profesor.TipoProfesor, profesor.Telefono, profesor.semblanza, profesor.CURP, profesor.estado, profesor.sexo FROM sisa_ase.profesor where profesor.idProfesor = ?;";
+        pstm = connection.prepareStatement(script);
+        pstm.setString(1, beanUsuario.getClaveIdentidad());
+        rs = pstm.executeQuery();
+        if (rs.next()) {
+            profesor.setIdProfesor(rs.getInt("profesor.idProfesor"));
+            profesor.setNombres(rs.getString("profesor.Nombres"));
+            profesor.setaPaterno(rs.getString("profesor.APaterno"));
+            profesor.setaMaterno(rs.getString("profesor.aMaterno"));
+            profesor.setEmailInst(rs.getString("profesor.EmailInst"));
+            profesor.setCedulaProf(rs.getString("profesor.cedulaProf"));
+            profesor.setNivelMaxEstudios(rs.getString("profesor.NivelMaxEstudios"));
+            profesor.setEmailPart(rs.getString("profesor.emailPart"));
+            profesor.setTipoProfesor(rs.getString("profesor.TipoProfesor"));
+            profesor.setTelefono(rs.getString("profesor.Telefono"));
+            profesor.setSemblanza(rs.getString("profesor.semblanza"));
+            profesor.setCurp(rs.getString("profesor.CURP"));
+            profesor.setEstado(rs.getString("profesor.estado"));
+            profesor.setSexo(rs.getString("profesor.sexo"));
+        }
+        session.setAttribute("datosPersonales", profesor);
+        return profesor;
+    }
 
     public boolean recuperarContrasexa(BeanUsuario beanUsuario) throws SQLException {
         boolean result = false;

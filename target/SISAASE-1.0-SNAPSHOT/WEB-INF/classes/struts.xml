@@ -17,11 +17,14 @@
             <result name="docente">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
             <result name="multiRol">/jsp/multiRol.jsp</result>
         </action>
+        <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
+        <action name="consultarPerfilProfesor" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
         <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/index.jsp</result>
-        </action>
-        <action name="perfil">
-            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
     </package>
     <package name="loginInterceptor" extends="struts-default">

@@ -25,19 +25,15 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
 //        }
 
         $scope.consultarPerfil = function () {
-            $http({method: 'POST', url: '/SISAVA/consultarPerfil'}).success(function (data) {
-                
+            console.log("aaaa")
+            $http({method: 'POST', url: '/SISAASE_war_exploded/consultarPerfil'}).success(function (data) {
                 $scope.estados = data.estados;
                 $scope.municipiosNacimiento = data.municipiosNacimiento;
                 $scope.municipiosRadica = data.municipiosRadica;
 
-//                angular.copy($scope.perfil.fechaNacimiento,$scope.modDate);
-
                 $scope.perfil = data.alumno;
                 $scope.perfil.apMaterno = $scope.perfil.apMaterno === "." ? "" : $scope.perfil.apMaterno;
-                var fechaNacimiento = data.alumno.fechaNacimiento.split("-");
-                $scope.modDate = new Date(fechaNacimiento[0], (fechaNacimiento[1] - 1), fechaNacimiento[2]);
-                $scope.carreraPerfil = $scope.perfil.carrera.nombreCarrera + ' ' + ($scope.perfil.especialidad.nombreEspecialidad === 'Sin área' && ' ' || '- ' + $scope.perfil.especialidad.nombreEspecialidad);
+
             }).error($rootScope.errorhttp);
         };
 
@@ -48,7 +44,7 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
             } else {
                 estado = angular.toJson($scope.perfil.estadoRadica);
             }
-            $http({method: 'POST', url: '/SISAVA/consultarMunicipiosEstado', data: 'parametros=' + estado}).success(function (data) {
+            $http({method: 'POST', url: '/SISAASE_war_exploded/consultarMunicipiosEstado', data: 'parametros=' + estado}).success(function (data) {
                 if (tipo === "nacimiento") {
                     $scope.municipiosNacimiento = data.municipios;
                 } else {
@@ -80,7 +76,7 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
                     $scope.perfil.fechaNacimiento = d;
                     $scope.perfil.apMaterno = $scope.perfil.apMaterno === "" ? "." : $scope.perfil.apMaterno;
                     var alumno = angular.toJson($scope.perfil);
-                    $http({method: 'POST', url: '/SISAVA/modificarPerfilAlumno', data: 'parametros=' + alumno}).success(function (data) {
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarPerfilAlumno', data: 'parametros=' + alumno}).success(function (data) {
                         if (data.respuesta === "ok") {
                             $scope.perfil.apMaterno = $scope.perfil.apMaterno === "." ? "" : $scope.perfil.apMaterno;
                             SweetAlert.swal({timer: 3000, type: "success", title: "Perfil actualizado correctamente."});
@@ -134,12 +130,12 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
                     $scope.usuario.contrasexa = $scope.usuario.contrasexa.replace(/#|%/g, "%25");
                     $scope.usuario.contrasexa = $scope.usuario.contrasexa.replace(/#|&/g, "%26");
                     var usuario = angular.toJson($scope.usuario);
-                    $http({method: 'POST', url: '/SISAVA/modificarContrasexa', data: 'parametros=' + usuario}).success(function (data) {
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarContrasexa', data: 'parametros=' + usuario}).success(function (data) {
                     
                         if (data.respuesta === "ok") {
                             SweetAlert.swal({showCancelButton: false, closeOnConfirm: false, showConfirmButton: false, allowEscapeKey: false, type: "success", title: "Contraseña actualizada correctamente.", text: "La sesión será cerrada por seguridad."});
                             setTimeout(function () {
-                                window.location.replace("/SISAVA/cerrarSesion");
+                                window.location.replace("/SISAASE_war_exploded/cerrarSesion");
                             }, 4000);
 
                         } else {
@@ -174,7 +170,7 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
                 case 401:
                     SweetAlert.swal({title: "Sesión expirada", text: "Por tu seguridad tu sesión ha sido cerrada.", type: "error", timer: 5000, allowEscapeKey: false, showCancelButton: false, showConfirmButton: false});
                     setTimeout(function () {
-                        window.location.replace("/SISAVA");
+                        window.location.replace("/SISAASE_war_exploded");
                     }, 5000);
                     break;
                 case 403:
@@ -189,7 +185,7 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
         };
 
         $scope.consultarPerfilProfesor = function () {
-            $http({method: 'POST', url: '/SISAVA/consultarPerfilProfesor'}).success(function (data) {
+            $http({method: 'POST', url: '/SISAASE_war_exploded/consultarPerfilProfesor'}).success(function (data) {
                 $scope.perfil = data.profesor;
                 $scope.contrasenaRestablecida = data.contrasenaRestablecida;
                 if ($scope.contrasenaRestablecida === "true" || $scope.contrasenaRestablecida === true) {
@@ -228,7 +224,7 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
                     $scope.perfil.semblanza = $scope.perfil.semblanza.replace(/#|%/g, "%25");
                     $scope.perfil.semblanza = $scope.perfil.semblanza.replace(/#|&/g, "%26");
                     var profesor = angular.toJson($scope.perfil);
-                    $http({method: 'POST', url: '/SISAVA/modificarPerfilProfesor', data: 'parametros=' + profesor}).success(function (data) {
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarPerfilProfesor', data: 'parametros=' + profesor}).success(function (data) {
                         if (data.respuesta === "ok") {
                             SweetAlert.swal({timer: 3000, type: "success", title: "Perfil actualizado correctamente."});
                         } else {

@@ -1,6 +1,7 @@
 package mx.edu.utez.sisaase.permanencia.action;
 
-import com.google.gson.Gson;
+import mx.edu.utez.sisaase.permanencia.bean.BeanAlumnoInscrito;
+import mx.edu.utez.sisaase.permanencia.bean.BeanProfesor;
 import mx.edu.utez.sisaase.permanencia.bean.BeanUsuario;
 import mx.edu.utez.sisaase.permanencia.dao.DaoUsuario;
 import org.apache.struts2.ServletActionContext;
@@ -17,8 +18,26 @@ public class ActionUsuario {
     private String message;
     private String data;
     private BeanUsuario beanUsuario;
+    private BeanProfesor profesor;
+    private BeanAlumnoInscrito alumno;
     Map<String,Object> result = new HashMap<>();
     HttpSession session;
+
+    public BeanProfesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(BeanProfesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public BeanAlumnoInscrito getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(BeanAlumnoInscrito alumno) {
+        this.alumno = alumno;
+    }
 
     public String getMessage() {
         return message;
@@ -63,6 +82,14 @@ public class ActionUsuario {
         }else{
             return ERROR;
         }
+    }
+    public String consultarPerfil() throws SQLException {
+        alumno = new DaoUsuario().consultarPerfil();
+        return SUCCESS;
+    }
+    public String consultarPerfilProfesor() throws SQLException {
+        profesor = new DaoUsuario().consultarPerfilProfesor();
+        return SUCCESS;
     }
     public String cerrarSesion() throws SQLException {
         HttpSession session = ServletActionContext.getRequest().getSession();
