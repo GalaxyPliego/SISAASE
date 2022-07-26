@@ -17,8 +17,14 @@ public class BeanAsesorias {
     private String horarioSolicitado;
     private BeanDiaSemana idDiaSemana;
     private BeanPeriodoCuatrimestral idPeriodoCuatrimestral;
+    private int noAsesorias;
 
     public BeanAsesorias() {
+    }
+
+    public BeanAsesorias(BeanAlumnoInscrito matricula, int noAsesorias) {
+        this.matricula = matricula;
+        this.noAsesorias = noAsesorias;
     }
 
     public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
@@ -185,6 +191,14 @@ public class BeanAsesorias {
 
     public void setIdPeriodoCuatrimestral(BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
         this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
+    }
+
+    public int getNoAsesorias() {
+        return noAsesorias;
+    }
+
+    public void setNoAsesorias(int noAsesorias) {
+        this.noAsesorias = noAsesorias;
     }
 
     @Override

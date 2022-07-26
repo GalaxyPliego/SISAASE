@@ -13,6 +13,17 @@
         </action>
 
         <!-- COORDINADOR -->
+            <!-- RESUMEN -->
+                <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+                    <result type="json"/>
+                </action>
+
+            <!-- HISTORIAL DETALLADO -->
+                <action name="findHistorialDetallado" method="findHistorialDetallado" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+                    <result type="json"/>
+                </action>
+
+
         <action name="coordinador">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
         </action>

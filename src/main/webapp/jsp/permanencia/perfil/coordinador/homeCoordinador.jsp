@@ -106,7 +106,7 @@
     </style>
 </head>
 
-<body ng-controller="ControlPerfil" ng-init="consultarPerfil()">
+<body ng-controller="resumenHistorial" ng-init="consultarPerfil()">
     <div class="se-pre-con text-center"></div>
     <div id="wrapper">
         <!-- Navigation -->
@@ -175,6 +175,20 @@
                 <!-- Panel body -->
                 <div class="panel-body">
                     <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <!-- filtrado con un select por periodo cuatrimestral -->
+                            <div class="form-group" ng-init="findPeriodoCuatrimestral()">
+                                <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
+                                <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
+                                    <option value="">Seleccione un periodo</option>
+                                    <option value="" ></option>
+                                    <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
                         <div class="col-md-6 col-xs-12">
                             <div class="panel panel-green">
                                 <div class="panel-body bg-danger "  style="background-color: #009574; padding: 25px;">
@@ -377,7 +391,7 @@
 
 
     <!--Script Angular Perfil-->
-    <script src="/SISAASE_war_exploded/js/control/permanencia/perfil/coordinador/coordinador.js"></script>
+    <script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/gestionHistorial.js"></script>
 
 
     <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
