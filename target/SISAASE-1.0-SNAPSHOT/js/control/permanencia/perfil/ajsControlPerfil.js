@@ -95,15 +95,15 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
 
             }, function (isConfirm) {
                 if (isConfirm) {
-                    $scope.usuario.nuevaContrasexa = $scope.usuario.nuevaContrasexa.replace(/#|%/g, "%25");
-                    $scope.usuario.nuevaContrasexa = $scope.usuario.nuevaContrasexa.replace(/#|&/g, "%26");
+                    $scope.usuario.usuario = $scope.usuario.nuevaContrasexa.replace(/#|%/g, "%25");
+                    $scope.usuario.usuario = $scope.usuario.nuevaContrasexa.replace(/#|&/g, "%26");
                     $scope.usuario.confirmaContrasexa = $scope.usuario.confirmaContrasexa.replace(/#|%/g, "%25");
                     $scope.usuario.confirmaContrasexa = $scope.usuario.confirmaContrasexa.replace(/#|&/g, "%26");
-                    $scope.usuario.contrasexa = $scope.usuario.contrasexa.replace(/#|%/g, "%25");
-                    $scope.usuario.contrasexa = $scope.usuario.contrasexa.replace(/#|&/g, "%26");
+                    $scope.usuario.contrasena = $scope.usuario.contrasexa.replace(/#|%/g, "%25");
+                    $scope.usuario.contrasena = $scope.usuario.contrasexa.replace(/#|&/g, "%26");
                     var usuario = angular.toJson($scope.usuario);
-                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarContrasexa', data: 'parametros=' + usuario}).success(function (data) {
-                    
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarContrasexa', data: 'data=' + usuario}).success(function (data) {
+                        console.log(data)
                         if (data.respuesta === "ok") {
                             SweetAlert.swal({showCancelButton: false, closeOnConfirm: false, showConfirmButton: false, allowEscapeKey: false, type: "success", title: "Contraseña actualizada correctamente.", text: "La sesión será cerrada por seguridad."});
                             setTimeout(function () {

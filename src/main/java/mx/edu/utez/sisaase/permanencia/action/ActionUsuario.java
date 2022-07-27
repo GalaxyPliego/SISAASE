@@ -106,6 +106,17 @@ public class ActionUsuario {
 
     }
 
+    public String modificarContrasexa() throws SQLException {
+        beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
+        if(new DaoUsuario().modificarContrasexa(beanUsuario)){
+            respuesta="ok";
+            return SUCCESS;
+        }else{
+            respuesta="error";
+            return ERROR;
+        }
+    }
+
     public String cerrarSesion() throws SQLException {
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.invalidate();

@@ -110,7 +110,35 @@ public class DaoUsuario {
         }
         return status;
     }
+    public boolean modificarContrasexa(BeanUsuario usuario) throws SQLException {
+        boolean status = false;
+        try {
+            connection=ConnectionMysql.getConnection();
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            BeanUsuario beanUsuario = (BeanUsuario) session.getAttribute("usuario");
 
+            String comprobar="select Contrasena from usuario where Usuario=?;";
+            pstm = connection.prepareStatement(comprobar);
+            pstm.setString(1,beanUsuario.getUsuario());
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                if (usuario.getContrasena().equals(rs.getString("Contrasena"))){
+                    String query = "UPDATE usuario SET Contrasena=? where Usuario = ?;";
+                    pstm = connection.prepareStatement(query);
+                    pstm.setString(1, usuario.getContrasena());
+                    pstm.setString(2, beanUsuario.getUsuario());
+                    status = pstm.executeUpdate()==1;
+                }else{
+                    return false;
+                }
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return status;
+    }
     public BeanAlumnoInscrito consultarPerfil() throws SQLException {
         try{
             connection = ConnectionMysql.getConnection();
