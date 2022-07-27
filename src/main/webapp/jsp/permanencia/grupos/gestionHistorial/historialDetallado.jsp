@@ -97,7 +97,7 @@
     </style>
 </head>
 
-<body ng-controller="historialAlumno" ng-init="">
+<body ng-controller="historialDetallado" ng-init="">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -154,8 +154,6 @@
 
 
     </nav>
-
-
     <!-- Page Content -->
     <div id="page-wrapper">
         <br/>
@@ -169,53 +167,60 @@
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4">
                         <!-- filtrado con un select por periodo cuatrimestral -->
-                        <div class="form-group">
-                            <label for="periodo">Periodo Cuatrimestral:</label>
-                            <select class="form-control" id="periodo" ng-model="periodo" ng-change="cambioPeriodo()">
+                        <div class="form-group" ng-init="findPeriodoCuatrimestral()">
+                            <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
+                            <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
                                 <option value="">Seleccione un periodo</option>
-                                <option >Opcion 1</option>
-                                <option >Opcion 2</option>
+                                <option value="" ></option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
                             </select>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table st-safe-src="rowCollection" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
+                            <table ng-init="findHistorialDetallado()" st-safe-src="arrayHistorialDetallado" st-table="displayCollection" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <th>#</th>
-                                    <th st-sort="fecha">Fecha</th>
-                                    <th st-sort="hora">Hora</th>
-                                    <th st-sort="duracion">Duración</th>
-                                    <th st-sort="docente">Docente</th>
-                                    <th st-sort="asignatura">Asignatura</th>
-                                    <th st-sort="tema">Tema</th>
-                                    <th st-sort="estado">Estado</th>
-                                    <th st-sort="dudas">¿Resolvió dudas?</th>
+                                    <th st-sort="matricula">Matrícula</th>
+                                    <th st-sort="nombres">Nombre</th>
+                                    <th st-sort="sexo">Sexo</th>
+                                    <th st-sort="carrera">Carrera</th>
+                                    <th st-sort="cuatrimestre">Cuatrimestre</th>
+                                    <th st-sort="grupo">Grupo</th>
+                                    <th st-sort="noAsesorias">No. Aseorías</th>
                                 </tr>
                                 </thead>
                                 <tbody><!-- ngRepeat: pago in historial.lista -->
-                                <tr ng-repeat="row in rowCollection | orderBy : 'fecha'" class="ng-scope">
+                                <tr >
+                                    <td></td>
+                                    <td><input st-search="matricula" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="nombre" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="sexo" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="carrera" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="grado" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="grupo" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                    <td><input st-search="noAsesorias" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
+                                </tr>
+                                <tr ng-repeat="historial in displayCollection" class="ng-scope">
 
-                                    <td ng-bind="$index + 1"> </td>
-                                    <td ng-bind="row.fecha"></td>
-                                    <td ng-bind="row.hora"></td>
-                                    <td ng-bind="row.duracion"></td>
-                                    <td ng-bind="row.docente"></td>
-                                    <td ng-bind="row.asignatura"></td>
-                                    <td ng-bind="row.tema "></td>
-                                    <td ng-bind="row.estado"></td>
-                                    <td ng-bind="row.dudas"></td>
+                                    <td ng-bind="$index + 1" st-skip-natural="true"> </td>
+                                    <td ng-bind="historial.matricula.matricula | uppercase "></td>
+                                    <td ng-bind="historial.matricula.nombres"></td>
+                                    <td ng-bind="historial.matricula.sexo"></td>
+                                    <td ng-bind="historial.matricula.idCarrera.nombreCarrera"></td>
+                                    <td ng-bind="historial.matricula.idGrupoActual.cuatrimestre"></td>
+                                    <td ng-bind="historial.matricula.idGrupoActual.grupo | uppercase "></td>
+                                    <td ng-bind="historial.noAsesorias"></td>
 
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
+                                </tr><!-- end ngRepeat -->
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <td colspan="9" class="text-center">
-                                        <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                        </td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -254,7 +259,7 @@
 
 
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/historialAlumno.js"></script>
+<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/gestionHistorial.js"></script>
 
 
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>

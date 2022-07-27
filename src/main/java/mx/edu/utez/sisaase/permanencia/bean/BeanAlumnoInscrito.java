@@ -62,6 +62,16 @@ public class BeanAlumnoInscrito {
     public BeanAlumnoInscrito() {
     }
 
+    public BeanAlumnoInscrito(String matricula, String nombres, String sexo, String nombreCarrera, String cuatrimestre, String grupo) {
+        this.matricula = matricula;
+        this.nombres = nombres;
+        this.sexo = sexo;
+        this.idCarrera.setNombreCarrera(nombreCarrera);
+        this.idGrupoActual.setCuatrimestre(Integer.parseInt(cuatrimestre));
+        this.idGrupoActual.setGrupo(grupo);
+
+    }
+
     public String getLocalidadRadica() {
         return localidadRadica;
     }
