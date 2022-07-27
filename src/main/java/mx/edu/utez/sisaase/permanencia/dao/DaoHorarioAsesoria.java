@@ -22,7 +22,7 @@ public class DaoHorarioAsesoria {
         List<BeanHorariosAsesoria> listBeanHorarioAsesoria = new ArrayList<>();
         try {
             connection = ConnectionMysql.getConnection();
-            String script = "SELECT d.idDia, d.nombre, ha.idHorario, ha.horaInicio, ha.horaFin, ha.idDia, ha.idProfesor, ha.idPeriodoCuatrimestral FROM diasemana d LEFT JOIN horariosasesoria ha ON ha.idDia = d.idDia AND ha.idProfesor=2 ORDER BY d.idDia ASC";
+            String script = "SELECT d.idDia, d.nombre, ha.idHorario, ha.horaInicio, ha.horaFin, ha.idDia, ha.idProfesor, ha.idPeriodoCuatrimestral FROM diasemana d LEFT JOIN horariosasesoria ha ON ha.idDia = d.idDia AND ha.idProfesor=1 ORDER BY d.idDia ASC";
             pstm = connection.prepareStatement(script);
             rs = pstm.executeQuery();
             while (rs.next()){
