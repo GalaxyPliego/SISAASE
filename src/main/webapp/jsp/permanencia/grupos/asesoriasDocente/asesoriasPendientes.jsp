@@ -252,30 +252,30 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="font-size:medium ">Solicitudes</div>
             <div class="panel-body">
-<%--                <div ng-show="!historial" class="text-center ng-hide">--%>
-<%--                    <img src="SISAASE_war_exploded/preloader.gif">--%>
-<%--                </div>--%>
-<%--                <div ng-show="historial" class="row">--%>
-    <div class="row">
+                <%--                <div ng-show="!historial" class="text-center ng-hide">--%>
+                <%--                    <img src="SISAASE_war_exploded/preloader.gif">--%>
+                <%--                </div>--%>
+                <%--                <div ng-show="historial" class="row">--%>
+                <div class="row">
                     <div class="col-md-12">
-                            <h2 style="color: #345177 ; margin-top: -5px">Asesorias pendientes</h2>
+                        <h2 style="color: #345177 ; margin-top: -5px">Asesorias pendientes</h2>
 
                         <div class="table-responsive">
-                            <table st-table="listPending" st-safe-src="rowCollection" class="table table-striped">
+                            <table st-table="listPending" st-safe-src="rowCollection" class="table table-bordered table-striped">
                                 <thead  style="background-color: #676f77 ; color: #fff">
                                 <tr>
-                                    <th rowspan="2">#</th>
+                                    <th rowspan="2" style="vertical-align: middle">#</th>
                                     <th st-sort="fecha">Fecha</th>
                                     <th st-sort="hora">Hora</th>
                                     <th st-sort="nombre">Nombre</th>
                                     <th st-sort="tema">Tema</th>
-                                    <th st-sort="estado" rowspan="2">Estado</th>
-                                    <th rowspan="2">Acciones</th>
+                                    <th st-sort="estado" rowspan="2" style="vertical-align: middle">Estado</th>
+                                    <th rowspan="2" style="vertical-align: middle">Acciones</th>
                                 </tr>
                                 <tr>
                                     <th><input st-search="fecha" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="hora" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="nombre" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="estudiante.nombre" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="tema" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                 </tr>
                                 </thead>
@@ -286,10 +286,10 @@
                                     <td ng-bind="$index + 1"></td>
                                     <td ng-bind="row.fecha"></td>
                                     <td ng-bind="row.hora"></td>
-                                    <td ng-bind="row.nombre"></td>
+                                    <td ng-bind="row.estudiante.nombre"></td>
                                     <td ng-bind="row.tema"></td>
-                                    <td ng-bind="row.estado" style="color:#F0AD4E ;"></td>
-                                    <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR()"><i class="fa fa-search"></i></button></td>
+                                    <td ng-bind="row.estado.nombre" style="color:#F0AD4E ;"></td>
+                                    <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR(row)"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody>
@@ -309,21 +309,21 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table st-table="listAccepted" st-safe-src="rowCollection2" class="table table-striped">
+                            <table st-table="listAccepted" st-safe-src="rowCollection2" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
-                                    <th rowspan="2">#</th>
+                                    <th rowspan="2" style="vertical-align: middle">#</th>
                                     <th st-sort="fecha">Fecha</th>
                                     <th st-sort="hora">Hora</th>
                                     <th st-sort="nombre">Nombre</th>
                                     <th st-sort="tema">Tema</th>
-                                    <th st-sort="estado" rowspan="2">Estado</th>
-                                    <th rowspan="2">Acciones</th>
+                                    <th st-sort="estado" rowspan="2" style="vertical-align: middle">Estado</th>
+                                    <th rowspan="2" style="vertical-align: middle">Acciones</th>
                                 </tr>
                                 <tr>
                                     <th><input st-search="fecha" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="hora" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="nombre" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="estudiante.nombre" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="tema" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                 </tr>
                                 </thead>
@@ -334,10 +334,10 @@
                                     <td ng-bind="$index + 1"></td>
                                     <td ng-bind="row2.fecha"></td>
                                     <td ng-bind="row2.hora"></td>
-                                    <td ng-bind="row2.nombre"></td>
+                                    <td ng-bind="row2.estudiante.nombre"></td>
                                     <td ng-bind="row2.tema"></td>
-                                    <td ng-bind="row2.estado" style="color:#069779 ;">Aceptada</td>
-                                    <td ><button class="btn btn-success" ng-click="modalFinalizar()" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger" ng-click="modalCancelar()"><i class="fa fa-calendar-times-o"></i></button></td>
+                                    <td ng-bind="row2.estado.nombre" style="color:#069779 ;"></td>
+                                    <td style="white-space: nowrap"><button class="btn btn-success" ng-click="modalFinalizar(row2)" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger" ng-click="modalCancelar(row2)"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody>
@@ -362,154 +362,148 @@
 
 
 <!--Modal aceptar o rechazar asesoría -->
-<div class="modal fade" id="aceptarRechazar" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color:#345177; color: white;">
-                <button type="button" class="close" ng-click="cerrarModalAceptarR()" aria-label="Close"
-                        style="color: white ;"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Aceptar / rechazar Asesoría</h4>
-            </div>
-            <div class="modal-body">
+<form novalidate name="formularioAceptarAsesoria" id="formularioAceptarAsesoria" ng-submit="aceptarAsesoria()">
+    <div class="modal fade" id="aceptarRechazar" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#345177; color: white;">
+                    <button type="button" class="close" ng-click="cerrarModalAceptarR()" aria-label="Close"
+                            style="color: white ;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Aceptar / rechazar Asesoría</h4>
+                </div>
+                <div class="modal-body">
 
-               <div>
-                    <h3 style="margin-left: 15px; color: #345177">Información del estudiante</h3>
-               </div>
+                    <div>
+                        <h3 style="margin-left: 15px; color: #345177">Información del estudiante</h3>
+                    </div>
                     <div class="panel-body" >
 
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label >Nombre:</label>
-                                <div>Nathaly Escalona Ruiz
+                                <div ng-bind="infoAsesoria.estudiante.nombre">
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
                                 <label >Matrícula:</label>
-                                <div >20203TN082</div>
+                                <div ng-bind="infoAsesoria.estudiante.matricula"></div>
                             </div>
                             <div class="form-group col-md-4">
                                 <label >Carrera:</label>
-                                <div >Desarrollo de Software
-                                    Multiplataforma</div>
+                                <div ng-bind="infoAsesoria.estudiante.carrera"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label >Grado:</label>
-                                    <div><span >6</span></div>
+                                    <div ng-bind="infoAsesoria.estudiante.grado"><span ></span></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label >Grupo:</label>
-                                    <div><span >C</span></div>
+                                    <div ng-bind="infoAsesoria.estudiante.grupo"><span ></span></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label >Riesgo:</label>
-                                    <div> <span >No</span></div>
+                                    <div ng-bind="infoAsesoria.estudiante.riesgo"><span></span></div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
 
-                <div>
-<%--                    <div >--%>
-                        <h3 style="margin-left: 15px; color: #345177">Información Académica</h3>
-<%--                    </div>--%>
-                    <div class="panel-body" >
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label >Fecha:</label>
-                                <div >04/02/2022</div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label >Hora:</label>
-                                <div >14:00</div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label >Asignatura:</label>
-                                <div >Base de Datos</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label >Tema:</label>
-                                    <div><span >Sentencias
-                                                MySQL</span></div>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <label >Dudas Específicas:</label>
-                                    <div><span >Sentencias
-                                                básicas, create, alter table, etc.</span></div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div>
                     <div>
-                        <h3 style="margin-left: 15px; color: #345177">Aceptar / rechazar asesoría académica</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label >¿Aceptar asesoría?:</label>
-
-                                <div>
-                                    <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
-                                    <label class="checkbox-inline">
-                                        <input ng-change="checkOptions()" type="radio" name="aceptarRechazar"  id="siu" value="0"
-                                               required="" ng-model="aceptarRechazar"
-                                        ><strong>Si</strong>
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input ng-change="checkOptions()" type="radio" name="aceptarRechazar"  id="nou" value="1"
-                                               required="" ng-model="aceptarRechazar"
-                                        ><strong>No</strong>
-                                    </label>
+                        <%--                    <div >--%>
+                        <h3 style="margin-left: 15px; color: #345177">Información Académica</h3>
+                        <%--                    </div>--%>
+                        <div class="panel-body" >
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label >Fecha:</label>
+                                    <div ng-bind="infoAsesoria.fecha"></div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label >Hora:</label>
+                                    <div ng-bind="infoAsesoria.hora"></div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label >Asignatura:</label>
+                                    <div ng-bind="infoAsesoria.asignatura"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label >Tema:</label>
+                                        <div ng-bind="infoAsesoria.tema"><span></span></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label >Dudas Específicas:</label>
+                                        <div ng-bind="infoAsesoria.dudas"><span></span></div>
+                                    </div>
 
                                 </div>
-
-
                             </div>
-                            <div class="col-md-8" hidden="true" id="motivosRechazo">
 
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h3 style="margin-left: 15px; color: #345177">Aceptar / rechazar asesoría académica</h3>
+                        </div>
+                        <div class="panel-body">
 
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label >¿Aceptar asesoría?:</label>
 
-                                <label>
-                                    <strong>Motivos</strong>
+                                    <div>
+                                        <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
+                                        <label class="checkbox-inline">
+                                            <input type="radio" name="aceptarRechazar"  ng-value="estados[1]"
+                                                   required ng-model="infoAsesoria.estado" ng-required="true"
+                                            ><strong>Si</strong>
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="radio" name="aceptarRechazar"   ng-value="estados[2]"
+                                                   required ng-model="infoAsesoria.estado"  ng-required="true"
+                                            ><strong>No</strong>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div ng-if="infoAsesoria.estado.nombre === 'Rechazada'" class="col-md-8"  >
+                                    <label>
+                                        <strong>Motivos:*</strong>
 
-                                </label>
-                                <br>
-                                <textarea class="col-md-12" name="textarea"  name="sexo" id="rechaz0"
-                                          required="" style="resize:none;height: 50%" placeholder="Motivos de rechazo"></textarea>
+                                    </label>
+                                    <textarea ng-model="infoAsesoria.motivoRechazo" class="form-control"
+                                              style="resize:none;height: 50%" placeholder="Motivos de rechazo"
+                                              ng-required="true" ></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div
-                      >
+                    </div>
+                    <div class="modal-footer">
 
-                </div>
-                <div class="modal-footer">
-
-                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                    <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
-                    <input class="btn"  id="aceptarR" value="Aceptar" type="button" style="background-color:#019979 ; color: white;" ></input>
-                    <input  hidden="true" id="rechazarR" value="Rechazar" type="button" style="background-color:tomato ; color: white;" ></input>
-                    <input type="button" class="btn" ng-click="cerrarModalAceptarR()" value="Cerrar" style="background-color:#6C757D; color:white"></input>
-                </div>
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
+                        <button class="btn " ng-disabled="formularioAceptarAsesoria.$invalid "
+                                ng-class="infoAsesoria.estado.nombre === 'Rechazada' ? 'btn-danger' : 'btn-success'"
+                                ng-bind="infoAsesoria.estado.nombre === 'Rechazada' ? 'Rechazar' : 'Aceptar'"  type="submit"></button>
+                        <!--{{formularioAceptarAsesoria | json}}-->
+                        <button type="button" class="btn" ng-click="cerrarModalAceptarR()"  style="background-color:#6C757D; color:white">Cerrar</button>
+                    </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+</form>
 </div>
 
 <!-- Modal Finalizar asesoría -->
@@ -524,94 +518,90 @@
             <div class="modal-body">
 
 
-                    <div>
-                        <h3 style="margin-left: 15px; color: #345177">Información del estudiante</h3>
+                <div>
+                    <h3 style="margin-left: 15px; color: #345177">Información del estudiante</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label >Nombre:</label>
+                            <div ng-bind="infoAsesoria.estudiante.nombre"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label >Matrícula:</label>
+                            <div ng-bind="infoAsesoria.estudiante.matricula"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label >Carrera:</label>
+                            <div ng-bind="infoAsesoria.estudiante.carrera"></div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label >Nombre:</label>
-                                <div >Nathaly Escalona Ruiz
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label >Matrícula:</label>
-                                <div >20203TN082</div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label >Carrera:</label>
-                                <div >Desarrollo de Software
-                                    Multiplataforma</div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label >Grado:</label>
+                                <div ng-bind="infoAsesoria.estudiante.grado"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label >Grado:</label>
-                                    <div><span >6</span></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label >Grupo:</label>
-                                    <div><span >C</span></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label >Riesgo:</label>
-                                    <div> <span >No</span></div>
-                                </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label >Grupo:</label>
+                                <div ng-bind="infoAsesoria.estudiante.grupo"></div>
                             </div>
                         </div>
-
-                    </div>
-
-
-                    <div>
-                        <h3 style="margin-left: 15px; color: #345177">Información Académica</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label >Fecha:</label>
-                                <div >04/02/2022</div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label >Hora:</label>
-                                <div >14:00</div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label >Asignatura:</label>
-                                <div >Base de Datos</div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label >Riesgo:</label>
+                                <div ng-bind="infoAsesoria.estudiante.riesgo"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label >Tema:</label>
-                                    <div><span >Sentencias
-                                                MySQL</span></div>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <label >Dudas Específicas:</label>
-                                    <div><span >Sentencias
-                                                básicas, create, alter table, etc.</span></div>
-                                </div>
+                    </div>
 
+                </div>
+
+
+                <div>
+                    <h3 style="margin-left: 15px; color: #345177">Información Académica</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label >Fecha:</label>
+                            <div ng-bind="infoAsesoria.fecha"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label >Hora:</label>
+                            <div ng-bind="infoAsesoria.hora"></div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label >Asignatura:</label>
+                            <div ng-bind="infoAsesoria.asignatura"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label >Tema:</label>
+                                <div ng-bind="infoAsesoria.tema"></div>
                             </div>
                         </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label >Dudas Específicas:</label>
+                                <div ng-bind="infoAsesoria.dudas"></div>
+                            </div>
 
+                        </div>
                     </div>
 
+                </div>
 
-                    <div>
-                        <h3 style="margin-left: 15px; color: #345177">Asistencia</h3>
-                    </div>
-                    <div class="panel-body">
+
+                <div>
+                    <h3 style="margin-left: 15px; color: #345177">Asistencia</h3>
+                </div>
+                <div class="panel-body">
+                    <form name="formularioAsesoriaImpartida" id="formularioAsesoriaImpartida" ng-submit="aceptarAsesoriaImpartida()">
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label >¿Asistió el estudiante?:</label>
@@ -619,13 +609,13 @@
                                 <div>
                                     <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
                                     <label class="checkbox-inline">
-                                        <input ng-change="checkOptions()" type="radio" name="asesoriaImpartida"  id="siS" value="0"
-                                               required="" ng-model="asesoriaImpartida"
+                                        <input type="radio" name="asesoriaImpartida"  value="asistio"
+                                               required ng-model="infoAsesoria.asistencia"
                                         ><strong>Si</strong>
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input ng-change="checkOptions()" type="radio" name="asesoriaImpartida"  id="noN" value="1"
-                                               required="" ng-model="asesoriaImpartida"
+                                        <input  type="radio" name="asesoriaImpartida"  value="noAsistio"
+                                                required ng-model="infoAsesoria.asistencia"
                                         ><strong>No</strong>
                                     </label>
 
@@ -633,13 +623,13 @@
 
 
                             </div>
-                            <div class="form-group col-md-8" hidden="true" id="duracion">
+                            <div ng-show="infoAsesoria.asistencia === 'asistio'" class="form-group col-md-8">
 
                                 <label>
                                     <strong>Duración en minutos</strong>
                                     <br>
-                                    <input type="number" name="sexo" id="duracionMin"
-                                           placeholder="30" required="" min="0"  pattern="[0-9]+"
+                                    <input type="number" name="duracionMin" ng-required="infoAsesoria.asistencia === 'asistio'"
+                                           placeholder="30"  min="0"  ng-model="infoAsesoria.duracion"
                                     >
 
                                 </label>
@@ -647,11 +637,12 @@
 
                             </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
 
 
                 <div class="modal-footer">
-                    <button id="aceptarF" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
+                    <button ng-disabled="formularioAsesoriaImpartida.$invalid" type="submit" class="btn btn-success" form="formularioAsesoriaImpartida">Aceptar</button>
                     <button type="button" class="btn" ng-click="cerrarModalFinalizar()" style="background-color:#6C757D; color:white">Cerrar</button>
 
                     <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
@@ -672,20 +663,19 @@
                 <h4 class="modal-title">Cancelación Asesoría</h4>
             </div>
             <div class="modal-body" >
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <h3 style=" color: #345177; margin-top: 5px;">Motivos de cancelación :</h3>
+                <form name="formularioCancelacionAsesoria" id="formularioCancelacionAsesoria" ng-submit="cancelarAsesoria()">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <h3 style=" color: #345177; margin-top: 5px;">Motivos de cancelación :</h3>
 
-                        <input type="text" name="sexo" id="motCancelacion" style="width: 100%; height: 80px; margin-top: 5px;"
-                               placeholder="Motivos" required=""
-                        >
-
+                            <input type="text" name="motivoCancelacion" ng-model="infoAsesoria.motivoCancelacion" style="width: 100%; height: 80px; margin-top: 5px;"
+                                   placeholder="Motivos" required>
+                        </div>
                     </div>
-
-                </div>
+                </form>
 
                 <div class="modal-footer">
-                    <button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>
+                    <button  type="submit" class="btn btn-success" form="formularioCancelacionAsesoria" ng-disabled="formularioCancelacionAsesoria.$invalid " >Aceptar</button>
                     <button type="button" class="btn" ng-click="cerrarModalCancelar()" style="background-color:#6C757D; color:white">Cerrar</button>
 
                     <!--<input class="btn"  id="aceptar" value="Guardar" type="button" style="background-color:#019979 ; color: white;" ></input>-->
@@ -697,35 +687,6 @@
 </div>
 
 
-
-<script>
-    var discounted = document.getElementById('siu');
-    var no_discounted = document.getElementById('nou')
-    var discount_percentage = document.getElementById('motivosRechazo')
-    var aceptarR = document.getElementById('aceptarR');
-    var rechazarR= document.getElementById('rechazarR')
-    function updateStatus() {
-        if (discounted.checked) {
-            discount_percentage.hidden = true;
-            rechazarR.classList.remove("btn");
-            aceptarR.classList.add("btn");
-            rechazarR.hidden = true;
-            aceptarR.hidden = false;
-
-        } else {
-            discount_percentage.hidden = false;
-            aceptarR.classList.remove("btn");
-            rechazarR.classList.add("btn");
-            rechazarR.hidden = false;
-            aceptarR.hidden = true;
-
-        }
-    }
-
-    discounted.addEventListener('change', updateStatus)
-    no_discounted.addEventListener('change', updateStatus)
-</script>
-
 <%--<script>--%>
 <%--    const modalAceptarR = () => {--%>
 
@@ -736,27 +697,6 @@
 <%--    }--%>
 
 <%--</script>--%>
-
-<script>
-    var discounteds = document.getElementById('siS');
-    var no_discounteds = document.getElementById('noN')
-    var discount_percentages = document.getElementById('duracion')
-    function updateStatus() {
-        if (discounteds.checked) {
-            discount_percentages.hidden = false;
-        } else {
-            discount_percentages.hidden = true;
-        }
-    }
-
-    discounteds.addEventListener('change', updateStatus)
-    no_discounteds.addEventListener('change', updateStatus)
-</script>
-
-
-
-
-
 
 
 <!-- /#wrapper -->
