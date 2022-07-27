@@ -148,7 +148,7 @@
                         <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
                     </li>
                     <li class="sidebar-search text-center" style="color: #fff;">
-                        <h5>Roy Axxel Salgado Mart&iacute;nez</h5>
+                        <h5>${sessionScope.datosPersonales.nombres} ${sessionScope.datosPersonales.aPaterno} ${sessionScope.datosPersonales.aMaterno}</h5>
                         <h4>Estudiante</h4>
                     </li>
                     <li>
@@ -272,8 +272,7 @@
                                 <img align="left" class="fb-image-lg"  src="/SISAASE_war_exploded/img/utez/header-bg.jpg" alt="Profile image example"/>
                                 <img align="left" class="fb-image-profile thumbnail" src="/SISAASE_war_exploded/img/system/photo.jpg" alt="Profile image example"/>
                                 <div class="fb-profile-text">
-                                    <h1><span>${sessionScope.datosPersonales.nombres} ${sessionScope.datosPersonales.aPaternbo} </span><br/><span></span>  </h1>
-
+                                    <h1 ng-class="{'text-danger':perfil.status !== 'Activo'}" style="margin-top: 0px;" ><span ng-bind="perfil.nombres + ' ' + perfil.aPaterno + ' ' + perfil.aMaterno" ></span><br/><span ng-bind="perfil.matricula"></span>  </h1>
                                 </div>
                             </div>
 
@@ -294,24 +293,24 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="" >Cuatrimestre:</label>
-                                            <div ng-bind="perfil.grupo.cuatrimestre" ></div>
+                                            <div ng-bind="perfil.idGrupoActual.cuatrimestre" ></div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="" >Grupo:</label>
-                                            <div ng-bind="perfil.grupo.grupo"></div>
+                                            <div ng-bind="perfil.idGrupoActual.grupo"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="" >Generación Ingreso:</label>
-                                                <div  >No. <span ng-bind="perfil.genIngreso.estado"></span></div>
+                                                <div  >No. <span ng-bind="perfil.genIngreso"></span></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="" >Generación Egreso:</label>
-                                                <div>No. <span ng-bind="perfil.genEgreso.estado"></span></div>
+                                                <div>No. <span ng-bind="perfil.genEgreso"></span></div>
                                             </div>
 
                                         </div>
@@ -326,7 +325,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="" >Estado académico:</label>
-                                                <div ng-bind="perfil.estadoAcademico"></div>
+                                                <div ng-bind="perfil.status"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -342,21 +341,21 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="form-group" ng-class="{'has-success': form1.nombre.$valid, 'has-error': form1.nombre.$invalid && form1.nombre.$dirty}">
-                                                    <label class="control-label" for="nombre">Nombre: </label>
-                                                    <input type="text" class="form-control" id="nombre" name="nombre" ng-pattern="/^[A-Za-záéíóúÁÉÍÓÚÑñ ]{3,50}$/" ng-model="perfil.nombre" maxlength="50" required />
+                                                <div class="form-group" ng-class="{'has-success': form1.nombres.$valid, 'has-error': form1.nombres.$invalid && form1.nombres.$dirty}">
+                                                    <label class="control-label" for="nombres">Nombre: </label>
+                                                    <input type="text" class="form-control" id="nombres" name="nombres" ng-pattern="/^[A-Za-záéíóúÁÉÍÓÚÑñ ]{3,50}$/" ng-model="perfil.nombres" maxlength="50" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-4" >
-                                                <div class="form-group" ng-class="{'has-success': form1.apPaterno.$valid, 'has-error': form1.apPaterno.$invalid && form1.apPaterno.$dirty}">
-                                                    <label class="control-label" for="apPaterno">Primer apellido: </label>
-                                                    <input type="text" class="form-control" id="apPaterno" name="apPaterno" ng-pattern="/^[A-Za-záéíóúÁÉÍÓÚÑñ ]{3,40}$/" ng-model="perfil.apPaterno" maxlength="40" required />
+                                                <div class="form-group" ng-class="{'has-success': form1.aPaterno.$valid, 'has-error': form1.aPaterno.$invalid && form1.aPaterno.$dirty}">
+                                                    <label class="control-label" for="aPaterno">Primer apellido: </label>
+                                                    <input type="text" class="form-control" id="aPaterno" name="aPaterno" ng-pattern="/^[A-Za-záéíóúÁÉÍÓÚÑñ ]{3,40}$/" ng-model="perfil.aPaterno" maxlength="40" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="form-group" ng-class="{'has-success': form1.apMaterno.$valid, 'has-error': form1.apMaterno.$invalid && form1.apMaterno.$dirty}">
-                                                    <label class="control-label" for="apMaterno">Segundo apellido: </label>
-                                                    <input type="text" class="form-control" id="apMaterno" name="apMaterno" ng-pattern="/^[A-Za-záéíóúÁÉÍÓÚÑñ ]{3,40}$/" ng-model="perfil.apMaterno" maxlength="40" />
+                                                <div class="form-group" ng-class="{'has-success': form1.aMaterno.$valid, 'has-error': form1.aMaterno.$invalid && form1.aMaterno.$dirty}">
+                                                    <label class="control-label" for="aMaterno">Segundo apellido: </label>
+                                                    <input type="text" class="form-control" id="aMaterno" name="aMaterno" ng-pattern="/^[A-Za-záéíóúÁÉÍÓÚÑñ ]{3,40}$/" ng-model="perfil.aMaterno" maxlength="40" />
                                                 </div>
                                             </div>
                                         </div>
@@ -399,15 +398,14 @@
                                             </div>
 
 
-                                            <div class="col-md-4 form-group" ng-class="{'has-success': form1.numeroSeguro.$valid, 'has-error': form1.numeroSeguro.$invalid && form1.numeroSeguro.$dirty}">
-                                                <label class="control-label" for="numeroSeguro">Número IMSS: </label>
-                                                <input type="text" class="form-control" name="numeroSeguro" id="numeroSeguro" readonly="" ng-model="perfil.numeroSeguro" required />
+                                            <div class="col-md-4 form-group" ng-class="{'has-success': form1.noIMSS.$valid, 'has-error': form1.noIMSS.$invalid && form1.noIMSS.$dirty}">
+                                                <label class="control-label" for="noIMSS">Número IMSS: </label>
+                                                <input type="text" class="form-control" name="noIMSS" id="noIMSS" readonly="" ng-model="perfil.noIMSS" required />
                                             </div>
                                             <div class="col-md-4 form-group" ng-class="{'has-success': form1.sexo.$valid, 'has-error': form1.sexo.$invalid && form1.sexo.$dirty}">
                                                 <label class="control-label" for="sexo">Sexo:  </label>
                                                 <br/>
                                                 <div class="text-center" >
-                                                    <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
                                                     <label class="checkbox-inline">
                                                         <input type="radio" name="sexo" ng-model="perfil.sexo"  id="sexoM" value="Masculino" required><strong>Masculino</strong>
                                                     </label>
@@ -422,9 +420,9 @@
                                                 <label class="control-label" for="fechaNacimiento">Fecha de nacimiento: </label>
 
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="fechaNacimiento" id="fechaNacimiento" ng-change="calcularEdad()" ng-model="modDate" uib-datepicker-popup="{{format}}" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" required readonly />
+                                                    <input type="text" class="form-control" name="fechaNacimiento" id="fechaNacimiento" ng-model="modDate" uib-datepicker-popup="{{format}}" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" show-button-bar="false" show-weeks="false" required readonly />
                                                     <div class="input-group-btn">
-                                                        <a class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar" ></i></a>
+                                                        <a class="btn btn-default"><i class="fa fa-calendar" ></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -451,9 +449,9 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="form-group col-md-12" ng-class="{'has-success': form1.calle.$valid, 'has-error': form1.calle.$invalid && form1.calle.$dirty}">
-                                                <label class="control-label" for="calle">Domicilio:  </label>
-                                                <input type="text" class="form-control" name="calle" id="calle" ng-model="perfil.calle" maxlength="60" required />
+                                            <div class="form-group col-md-12" ng-class="{'has-success': form1.domActual.$valid, 'has-error': form1.domActual.$invalid && form1.domActual.$dirty}">
+                                                <label class="control-label" for="domActual">Domicilio:  </label>
+                                                <input type="text" class="form-control" name="domActual" id="domActual" ng-model="perfil.domActual" maxlength="60" required />
                                             </div>
 
                                         </div>
@@ -466,9 +464,9 @@
                                                 <label class="control-label" for="localidad">Localidad:  </label>
                                                 <input type="text" class="form-control" name="localidad" id="localidad" ng-model="perfil.localidad" maxlength="150" required/>
                                             </div>
-                                            <div class="form-group col-md-4" ng-class="{'has-success': form1.codigoPostal.$valid, 'has-error': form1.codigoPostal.$invalid && form1.codigoPostal.$dirty}">
-                                                <label class="control-label" for="codigoPostal">Código postal:  </label>
-                                                <input type="number" class="form-control" name="codigoPostal" id="codigoPostal"  ng-model="perfil.codigoPostal" minlength="5" maxlength="5" required/>
+                                            <div class="form-group col-md-4" ng-class="{'has-success': form1.cp.$valid, 'has-error': form1.cp.$invalid && form1.cp.$dirty}">
+                                                <label class="control-label" for="cp">Código postal:  </label>
+                                                <input type="number" class="form-control" name="cp" id="cp"  ng-model="perfil.cp" minlength="5" maxlength="5" required/>
                                             </div>
 
                                         </div>
@@ -498,9 +496,9 @@
                                                 <input type="text" class="form-control" name="telefono" id="telefono" ng-model="perfil.telefono" maxlength="15" required />
 
                                             </div>
-                                            <div class="form-group col-md-4" ng-class="{'has-success': form1.celular.$valid, 'has-error': form1.celular.$invalid && form1.celular.$dirty}">
-                                                <label class="control-label" for="celular">Celular:  </label>
-                                                <input type="text" class="form-control" name="celular" id="celular" ng-model="perfil.celular" maxlength="15" required />
+                                            <div class="form-group col-md-4" ng-class="{'has-success': form1.cel.$valid, 'has-error': form1.cel.$invalid && form1.cel.$dirty}">
+                                                <label class="control-label" for="cel">Celular:  </label>
+                                                <input type="text" class="form-control" name="cel" id="cel" ng-model="perfil.cel" maxlength="15" required />
                                             </div>
                                             <div class="form-group col-md-4" ng-class="{'has-success': form1.email.$valid, 'has-error': !form1.email.$valid && form1.email.$dirty}">
                                                 <label class="control-label" for="email">Correo electrónico:  </label>

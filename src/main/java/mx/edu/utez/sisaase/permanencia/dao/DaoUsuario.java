@@ -86,12 +86,15 @@ public class DaoUsuario {
                 "generacion.idGeneracion, generacion.NoGeneracion, generacion.IngresoMes, generacion.IngresoAxo, generacion.EgresoMes, generacion.EgresoAxo, generacion.Estado, \n" +
                 "nivelacademico.idNivelAcademico, nivelacademico.Nivel, nivelacademico.Descripcion,\n" +
                 "grupos.idGrupo, grupos.cuatrimestre, grupos.grupo,\n" +
-                "carrera.idCarrera, carrera.nombreCarrera\n" +
+                "carrera.idCarrera, carrera.nombreCarrera,\n" +
+                "especialidad.Descripcion \n"+
                 "from alumnoinscrito \n" +
                 "inner join generacion on alumnoinscrito.idGeneracion = generacion.idGeneracion \n" +
                 "inner join nivelacademico on nivelacademico.idNivelAcademico = generacion.idNivelAcademico \n" +
                 "inner join grupos on grupos.idGrupo = alumnoinscrito.idGrupoActual \n" +
-                "inner join carrera on alumnoinscrito.idCarrera = carrera.idCarrera where alumnoinscrito.matricula = ?;";
+                "inner join carrera on alumnoinscrito.idCarrera = carrera.idCarrera \n" +
+                "inner join especialidad on especialidad.idEspecialidad = grupos.idEspecialidad \n" +
+                "where alumnoinscrito.matricula = ?;";
         pstm = connection.prepareStatement(script);
         pstm.setString(1, beanUsuario.getUsuario());
         rs = pstm.executeQuery();
@@ -108,12 +111,15 @@ public class DaoUsuario {
             beanGeneracion.setIngresoAxo(rs.getString("generacion.IngresoAxo"));
             beanGeneracion.setEgresoMes(rs.getString("generacion.EgresoMes"));
             beanGeneracion.setEgresoAxo(rs.getString("generacion.EgresoAxo"));
-
             beanGeneracion.setEstado(rs.getString("generacion.Estado"));
+
+            BeanEspecialidad beanEspecialidad = new BeanEspecialidad();
+            beanEspecialidad.setDescripcion(rs.getString("especialidad.Descripcion"));
 
             BeanCarrera beanCarrera = new BeanCarrera();
             beanCarrera.setIdCarrera(rs.getInt("carrera.idCarrera"));
             beanCarrera.setNombreCarrera(rs.getString("carrera.nombreCarrera"));
+            beanCarrera.setIdEspecialidad(beanEspecialidad);
 
             alumnoInscrito.setIdGrupoActual(beanGrupos);
             alumnoInscrito.setIdGeneracion(beanGeneracion);

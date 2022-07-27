@@ -31,8 +31,15 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
                 $scope.municipiosNacimiento = data.municipiosNacimiento;
                 $scope.municipiosRadica = data.municipiosRadica;
 
+//                angular.copy($scope.perfil.fechaNacimiento,$scope.modDate);
+
                 $scope.perfil = data.alumno;
                 $scope.perfil.apMaterno = $scope.perfil.apMaterno === "." ? "" : $scope.perfil.apMaterno;
+                var fechaNacimiento = data.alumno.fechaNac.split("-");
+                $scope.modDate = new Date(fechaNacimiento[0], (fechaNacimiento[1] - 1), fechaNacimiento[2]);
+                $scope.carreraPerfil = $scope.perfil.idCarrera.nombreCarrera + ' ' + ($scope.perfil.idCarrera.idEspecialidad.descripcion === 'Sin área' && ' ' || '- ' + $scope.perfil.idCarrera.idEspecialidad.descripcion );
+                $scope.perfil.genIngreso = `${$scope.perfil.idGeneracion.noGeneracion} ${$scope.perfil.idGeneracion.ingresoMes}-${$scope.perfil.idGeneracion.ingresoAxo} / ${$scope.perfil.idGeneracion.egresoMes}-${$scope.perfil.idGeneracion.egresoAxo}`
+                $scope.perfil.genEgreso = `${$scope.perfil.idGeneracion.noGeneracion} ${$scope.perfil.idGeneracion.ingresoMes}-${$scope.perfil.idGeneracion.ingresoAxo} / ${$scope.perfil.idGeneracion.egresoMes}-${$scope.perfil.idGeneracion.egresoAxo}`
 
             }).error($rootScope.errorhttp);
         };
@@ -91,22 +98,6 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
 
 
 
-        }
-        $scope.calcularEdad = function () {
-            var today = new Date();
-            var birthDate = $scope.modDate;
-            var age = today.getFullYear() - birthDate.getFullYear();
-            var m = today.getMonth() - birthDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                age--;
-            }
-            if (age < 18 && age < 99) {
-                var fechaNacimiento = $scope.perfil.fechaNacimiento.split("-");
-                $scope.modDate = new Date(fechaNacimiento[0], (fechaNacimiento[1] - 1), fechaNacimiento[2]);
-                SweetAlert.swal({timer: 5000, type: "error", title: "Edad minima 18.", text: "La edad minima para poder registrar es de 18 años."});
-            } else {
-                $scope.perfil.edad = age;
-            }
         }
         $scope.modificarContrasexa = function () {
             SweetAlert.swal({
