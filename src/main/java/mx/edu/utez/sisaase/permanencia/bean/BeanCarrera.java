@@ -33,8 +33,7 @@ public class BeanCarrera {
         this.idEspecialidad = idEspecialidad;
     }
 
-    public BeanCarrera() {
-    }
+
 
     public int getIdCarrera() {
         return idCarrera;

@@ -38,6 +38,42 @@
             <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
         </action>
 
+        <!-- COORDINADOR -->
+        <!-- RESUMEN -->
+        <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
+
+        <!-- HISTORIAL DETALLADO -->
+        <action name="findHistorialDetallado" method="findHistorialDetallado" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
+
+
+        <action name="coordinador">
+            <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
+        </action>
+
+        <action name="historialDetallado">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialDetallado.jsp</result>
+        </action>
+
+        <action name="historialGeneral">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialGeneral.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
+
+        <!-- ALUMNO -->
+        <action name="historialAlumno">
+            <result>/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
+
+        <!-- DOCENTE -->
+        <action name="historialDocente">
+            <result>/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
 
     </package>
     <package name="loginInterceptor" extends="struts-default">
