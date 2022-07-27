@@ -12,17 +12,11 @@
             <result>/index.jsp</result>
         </action>
 
-        <action name="horario">
-            <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
-        </action>
 
         <action name="coordinador">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
         </action>
 
-        <action name="consultarDias" method="consultarDias" class="mx.edu.utez.sisaase.permanencia.action.ActionDiaSemana">
-            <result type="json"/>
-        </action>
 
 
     </package>

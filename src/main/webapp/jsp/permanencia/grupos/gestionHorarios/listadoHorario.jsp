@@ -201,7 +201,7 @@
                             </select>
                         </div>
 
-                            <table class="table table-bordered table-striped" ng-init="consultarDias()">
+                            <table class="table table-bordered table-striped" ng-init="consultarHorarioAsesoria()">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <td>#</td>
@@ -210,7 +210,7 @@
                                     <td>Acciones</td>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="entrada in arrayDias">
+                                <tr ng-repeat="entrada in arrayHorario">
                                     <th>
                                         <input type="checkbox"
                                                ng-model="dia.selected[entrada.idDia]"
@@ -218,7 +218,7 @@
                                                ng-false-value="''">
                                     </th>
 
-                                    <td ng-bind="entrada.nombre"></td>
+                                    <td ng-bind="entrada.diaSemana.nombre"></td>
                                     <td>
                                         <label>No hay asesoría</label>
                                         <form class="form-inline"
