@@ -16,6 +16,49 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
         $scope.txtBtnIniciar = "Iniciando...";
         $scope.btnIniciar = false;
     }
+    $scope.recuperarContrasexa = function () {
+        console.log("aaaaaa")
+        SweetAlert.swal({
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar",
+            type: "info",
+            title: "¿Estás seguro?",
+            text: "Se realizará una petición de cambio de contraseña."
+        }, function (isConfirm) {
+            $scope.usuario.usuario = $scope.email
+
+            if (isConfirm) {
+                $http({
+                    method: 'POST',
+                    url: '/SISAASE_war_exploded/recuperarContrasexa',
+                    data: 'data=' + angular.toJson($scope.usuario)
+                }).success(function (data) {
+                    console.log(data)
+                    if (data.respuesta === "ok") {
+                        SweetAlert.swal({
+                            title: "Recuperación existosa",
+                            text: "En breve recibirás un correo para restablecer tu contraseña.",
+                            type: "info"
+                        });
+                        $scope.email = '';
+                        setTimeout(function () {
+                            window.location.replace("/SISAASE_war_exploded/index");
+                        }, 6000);
+                    } else if (data.respuesta === "error") {
+                        SweetAlert.swal({
+                            timer: 6000,
+                            type: "error",
+                            title: "Usuario inválido.",
+                            text: " No existe un usuario con este correo electrónico, por favor solicita ayuda a soporte técnico."
+                        });
+                    }
+                }).error($rootScope.errorhttp);
+            }
+        });
+    };
 
     $scope.redireccionSISE = function () {
         SweetAlert.swal({
@@ -47,7 +90,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
 
                     var parametros = $scope.matricula + "," + $scope.curp;
                     console.log(parametros);
-                    $http({method: 'POST', url: '/SISAASE_war/recuperarContrasexa', data: 'parametros=' + parametros}).success(function (data) {
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/recuperarContrasexa', data: 'parametros=' + parametros}).success(function (data) {
                         if (data.respuesta === "correo_enviado") {
                             SweetAlert.swal({
                                 title: "Recuperación existosa",
@@ -57,7 +100,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
                             $scope.matricula = '';
                             $scope.curp = '';
                             setTimeout(function () {
-                                window.location.replace("/SISAASE_war");
+                                window.location.replace("/SISAASE_war_exploded");
                             }, 3000);
                         } else if (data.respuesta === "correo_no_enviado") {
                             SweetAlert.swal({timer: 2000, type: "error", title: "Correo no enviado.", text: "Algo salio mal al intentar recuperar tu contraseña, intentalo de nuevo."});
@@ -74,42 +117,6 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
             });
     };
 
-    $scope.recuperarContrasexa = function () {
-        SweetAlert.swal({
-            showCancelButton: true,
-            closeOnConfirm: false,
-            showLoaderOnConfirm: true,
-            confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar",
-            type: "info",
-            title: "¿Estás seguro?",
-            text: "Se realizará una petición de cambio de contraseña."
-        }, function (isConfirm) {
-            if (isConfirm) {
-                $http({
-                    method: 'POST',
-                    url: '/SISAASE_war/recuperarContrasexa',
-                    data: 'parametros=' + angular.toJson($scope.email)
-                }).success(function (data) {
-                    if (data.respuesta === "correo_enviado") {
-                        SweetAlert.swal({
-                            title: "Recuperación existosa",
-                            text: "En breve recibirás un correo para restablecer tu contraseña.",
-                            type: "info"
-                        });
-                        $scope.email = '';
-                        setTimeout(function () {
-                            window.location.replace("/SISAASE_war");
-                        }, 6000);
-                    } else if (data.respuesta === "correo_no_valido") {
-                        SweetAlert.swal({timer: 6000, type: "error", title: "Usuario inválido.", text: " No existe un usuario con este correo electrónico, por favor solicita ayuda a soporte técnico."});
-                    } else if (data.respuesta === "correo_no_enviado") {
-                        SweetAlert.swal({timer: 3000, type: "error", title: "Correo no enviado.", text: "Algo salio mal al intentar recuperar tu contraseña, intentalo de nuevo."});
-                    }
-                }).error($rootScope.errorhttp);
-            }
-        });
-    };
 
     $scope.modificarContrasexa = function () {
         if ($scope.nuevaContrasexa === $scope.confirmarContrasexa) {
@@ -128,7 +135,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
                     $scope.usuario.nuevaContrasexa = $scope.nuevaContrasexa;
                     $http({
                         method: 'POST',
-                        url: '/SISAASE_war/modificarContrasexaRestablecida',
+                        url: '/SISAASE_war_exploded/modificarContrasexaRestablecida',
                         data: 'parametros=' + angular.toJson($scope.usuario)
                     }).success(function (data) {
                         if (data.respuesta === "contrasexa_modificada") {
@@ -139,7 +146,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
                                 closeOnConfirm: false
                             });
                             setTimeout(function () {
-                                window.location.replace("/SISAASE_war");
+                                window.location.replace("/SISAASE_war_exploded");
                             }, 3000);
                         } else {
                             SweetAlert.swal({timer: 3000, type: "error", title: "Error!", text: "La contraseña no ha sido restablecida exitosamente."});
@@ -167,7 +174,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
             }, function (isConfirm) {
                 if (isConfirm) {
                     var parametros = $scope.correoInst;
-                    $http({method: 'POST', url: '/SISAASE_war/recuperarContrasexaProfesor', data: 'parametros=' + parametros}).success(function (data) {
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/recuperarContrasexaProfesor', data: 'parametros=' + parametros}).success(function (data) {
                         console.log(data);
                         if (data.respuesta === "correo_enviado") {
                             SweetAlert.swal({
@@ -177,7 +184,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
                             });
                             $scope.correoInst = '';
                             setTimeout(function () {
-                                window.location.replace("/SISAASE_war");
+                                window.location.replace("/SISAASE_war_exploded");
                             }, 3000);
                         } else if (data.respuesta === "correo_no_enviado") {
                             SweetAlert.swal({timer: 2000, type: "error", title: "Correo no enviado.", text: "Algo salio mal al intentar recuperar tu contraseña, intentalo de nuevo."});
@@ -200,7 +207,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
             case 401:
                 SweetAlert.swal({title: "Sesión expirada", text: "Por tu seguridad tu sesión ha sido cerrada.", type: "error", timer: 5000, allowEscapeKey: false, showCancelButton: false, showConfirmButton: false});
                 setTimeout(function () {
-                    window.location.replace("/SISAASE_war");
+                    window.location.replace("/SISAASE_war_exploded");
                 }, 5000);
                 break;
             case 403:

@@ -48,6 +48,9 @@
         <action name="modificarContrasexa" method="modificarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
+        <action name="recuperarContrasexa" method="recuperarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
         <action name="horario">
             <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
         </action>

@@ -107,6 +107,16 @@ public class ActionUsuario {
         }
 
     }
+    public String recuperarContrasexa() throws SQLException {
+        beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
+        if(new DaoUsuario().recuperarContrasexa(beanUsuario)){
+            respuesta="ok";
+            return SUCCESS;
+        }else{
+            respuesta="error";
+            return ERROR;
+        }
+    }
 
     public String modificarContrasexa() throws SQLException {
         beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
@@ -123,9 +133,6 @@ public class ActionUsuario {
     public String cerrarSesion() throws SQLException {
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.invalidate();
-        return SUCCESS;
-    }
-    public String recuperarContrasexa() throws SQLException {
         return SUCCESS;
     }
     public String nuevaContrasexa() throws SQLException {

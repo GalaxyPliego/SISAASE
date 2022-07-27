@@ -13,8 +13,7 @@ public class LoginInterceptor extends AbstractInterceptor {
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
         String action = (String) ActionContext.getContext().get(ActionContext.ACTION_NAME);
-        System.out.println(action);
-        if (actionInvocation.getInvocationContext().getSession().containsKey("usuario") || action.contains("iniciarSesion"))
+        if (actionInvocation.getInvocationContext().getSession().containsKey("usuario") || action.contains("iniciarSesion") || action.contains("recuperarContrasexa"))
         {
             return actionInvocation.invoke();
         }else {
