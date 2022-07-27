@@ -14,13 +14,24 @@
         </action>
         <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result name="alumno" type="redirectAction">
-                <param name="actionName">perfil</param>
+                <param name="actionName">perfilAlumno</param>
             </result>
-            <result name="docente">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
+            <result name="docente" type="redirectAction">
+                <param name="actionName">perfilDocente</param>
+            </result>
+            <result name="coordinador" type="redirectAction">
+                <param name="actionName">perfilCoordinador</param>
+            </result>
             <result name="multiRol">/jsp/multiRol.jsp</result>
         </action>
-        <action name="perfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="perfilAlumno" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="perfilCoordinador" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
+        </action>
+        <action name="perfilDocente" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
         </action>
         <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json"></result>

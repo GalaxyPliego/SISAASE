@@ -62,6 +62,12 @@ public class DaoUsuario {
                             session.setAttribute("rol", roles.get(0).getIdRol());
                             session.setAttribute("rolView", roles.get(0).getNombreRol());
                             return "docente";
+                        }else if (roles.get(0).getNombreRol().equals("coordinador")) {
+                            HttpSession session = ServletActionContext.getRequest().getSession();
+                            session.setAttribute("usuario", beanUsuario);
+                            session.setAttribute("rol", roles.get(0).getIdRol());
+                            session.setAttribute("rolView", roles.get(0).getNombreRol());
+                            return "coordinador";
                         }
                     }
 
@@ -125,7 +131,7 @@ public class DaoUsuario {
                 if (usuario.getContrasena().equals(rs.getString("Contrasena"))){
                     String query = "UPDATE usuario SET Contrasena=? where Usuario = ?;";
                     pstm = connection.prepareStatement(query);
-                    pstm.setString(1, usuario.getContrasena());
+                    pstm.setString(1, usuario.getUsuario());
                     pstm.setString(2, beanUsuario.getUsuario());
                     status = pstm.executeUpdate()==1;
                 }else{

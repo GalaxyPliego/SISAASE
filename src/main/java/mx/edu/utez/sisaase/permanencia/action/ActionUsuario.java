@@ -81,6 +81,8 @@ public class ActionUsuario {
             return "alumno";
         }else if(result.equals("docente")){
             return "docente";
+        }else if(result.equals("coordinador")){
+            return "coordinador";
         }else{
             return ERROR;
         }
@@ -108,6 +110,7 @@ public class ActionUsuario {
 
     public String modificarContrasexa() throws SQLException {
         beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
+        System.out.println(beanUsuario.getUsuario());
         if(new DaoUsuario().modificarContrasexa(beanUsuario)){
             respuesta="ok";
             return SUCCESS;
