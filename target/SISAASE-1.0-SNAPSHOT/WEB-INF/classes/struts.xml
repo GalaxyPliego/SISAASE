@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+
+    <package name="basicstruts2" extends="struts-default, json-default, loginInterceptor">
+
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+        <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result name="alumno" type="redirectAction">
+                <param name="actionName">perfil</param>
+            </result>
+            <result name="docente">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
+            <result name="multiRol">/jsp/multiRol.jsp</result>
+        </action>
+        <action name="perfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"></result>
+        </action>
+        <action name="consultarPerfilProfesor" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
+        <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/index.jsp</result>
+        </action>
+        <action name="modificarPerfilAlumno" method="modificarPerfilAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="modificarContrasexa" method="modificarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="horario">
+            <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
+        </action>
+
+        <!-- COORDINADOR -->
+        <!-- RESUMEN -->
+        <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
+
+        <!-- HISTORIAL DETALLADO -->
+        <action name="findHistorialDetallado" method="findHistorialDetallado" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
+
+
+
+        <action name="coordinador">
+            <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
+        </action>
+
+        <action name="historialDetallado">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialDetallado.jsp</result>
+        </action>
+
+        <action name="historialGeneral">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialGeneral.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
+
+        <!-- ALUMNO -->
+        <action name="historialAlumno">
+            <result>/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
+
+        <!-- DOCENTE -->
+        <action name="historialDocente">
+            <result>/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp</result>
+        </action>
+        <!-- +++++++++++++++++++ -->
+
+
+    </package>
+    <package name="loginInterceptor" extends="struts-default">
+        <interceptors>
+            <interceptor name="validateSession" class="mx.edu.utez.sisaase.interceptor.LoginInterceptor"/>
+            <interceptor-stack name="session">
+                <interceptor-ref name="validateSession"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
+        </interceptors>
+        <default-interceptor-ref name="session"/>
+        <global-results>
+            <result name="notFound" type="httpheader">
+                <param name="error">403</param>
+            </result>
+            <result name="loginRequired">/index.jsp</result>
+        </global-results>
+
+    </package>
+</struts>

@@ -17,12 +17,14 @@ public class BeanAsesorias {
     private String horarioSolicitado;
     private BeanDiaSemana idDiaSemana;
     private BeanPeriodoCuatrimestral idPeriodoCuatrimestral;
+
     private int riesgo;
     private String fechaAsesoria;
     private String horaCancelacion;
-    private String rolCancelacion;
-    private int noAsesorias;
 
+    private String rolCancelacion;
+
+    private int noAsesorias;
 
     public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion) {
         this.idAsesoria = idAsesoria;
@@ -75,7 +77,7 @@ public class BeanAsesorias {
     }
 
     public String getRolCancelacion() {
-        return this.rolCancelacion;
+        return rolCancelacion;
     }
 
     public void setRolCancelacion(String rolCancelacion) {
@@ -83,7 +85,7 @@ public class BeanAsesorias {
     }
 
     public int getRiesgo() {
-        return this.riesgo;
+        return riesgo;
     }
 
     public void setRiesgo(int riesgo) {
@@ -91,7 +93,7 @@ public class BeanAsesorias {
     }
 
     public String getFechaAsesoria() {
-        return this.fechaAsesoria;
+        return fechaAsesoria;
     }
 
     public void setFechaAsesoria(String fechaAsesoria) {
@@ -99,7 +101,7 @@ public class BeanAsesorias {
     }
 
     public String getHoraCancelacion() {
-        return this.horaCancelacion;
+        return horaCancelacion;
     }
 
     public void setHoraCancelacion(String horaCancelacion) {
@@ -110,7 +112,7 @@ public class BeanAsesorias {
     }
 
     public int getAsistenciaAlumno() {
-        return this.asistenciaAlumno;
+        return asistenciaAlumno;
     }
 
     public void setAsistenciaAlumno(int asistenciaAlumno) {
@@ -118,7 +120,7 @@ public class BeanAsesorias {
     }
 
     public int getIdAsesoria() {
-        return this.idAsesoria;
+        return idAsesoria;
     }
 
     public void setIdAsesoria(int idAsesoria) {
@@ -126,7 +128,7 @@ public class BeanAsesorias {
     }
 
     public BeanAlumnoInscrito getMatricula() {
-        return this.matricula;
+        return matricula;
     }
 
     public void setMatricula(BeanAlumnoInscrito matricula) {
@@ -134,7 +136,7 @@ public class BeanAsesorias {
     }
 
     public BeanMaterias getIdMateria() {
-        return this.idMateria;
+        return idMateria;
     }
 
     public void setIdMateria(BeanMaterias idMateria) {
@@ -142,7 +144,7 @@ public class BeanAsesorias {
     }
 
     public BeanProfesor getIdProfesor() {
-        return this.idProfesor;
+        return idProfesor;
     }
 
     public void setIdProfesor(BeanProfesor idProfesor) {
@@ -150,7 +152,7 @@ public class BeanAsesorias {
     }
 
     public int getDuracion() {
-        return this.duracion;
+        return duracion;
     }
 
     public void setDuracion(int duracion) {
@@ -158,7 +160,7 @@ public class BeanAsesorias {
     }
 
     public BeanEstadoAsesoria getIdEstadoAsesoria() {
-        return this.idEstadoAsesoria;
+        return idEstadoAsesoria;
     }
 
     public void setIdEstadoAsesoria(BeanEstadoAsesoria idEstadoAsesoria) {
@@ -166,7 +168,7 @@ public class BeanAsesorias {
     }
 
     public String getTema() {
-        return this.tema;
+        return tema;
     }
 
     public void setTema(String tema) {
@@ -174,7 +176,7 @@ public class BeanAsesorias {
     }
 
     public String getDudasEspecificas() {
-        return this.dudasEspecificas;
+        return dudasEspecificas;
     }
 
     public void setDudasEspecificas(String dudasEspecificas) {
@@ -182,7 +184,7 @@ public class BeanAsesorias {
     }
 
     public int getAclaracionDudas() {
-        return this.aclaracionDudas;
+        return aclaracionDudas;
     }
 
     public void setAclaracionDudas(int aclaracionDudas) {
@@ -190,7 +192,7 @@ public class BeanAsesorias {
     }
 
     public int getAsistenciaDocente() {
-        return this.asistenciaDocente;
+        return asistenciaDocente;
     }
 
     public void setAsistenciaDocente(int asistenciaDocente) {
@@ -198,7 +200,7 @@ public class BeanAsesorias {
     }
 
     public String getMotivosCancelacion() {
-        return this.motivosCancelacion;
+        return motivosCancelacion;
     }
 
     public void setMotivosCancelacion(String motivosCancelacion) {
@@ -206,7 +208,7 @@ public class BeanAsesorias {
     }
 
     public String getMotivosRechazo() {
-        return this.motivosRechazo;
+        return motivosRechazo;
     }
 
     public void setMotivosRechazo(String motivosRechazo) {
@@ -214,7 +216,7 @@ public class BeanAsesorias {
     }
 
     public String getHorarioSolicitado() {
-        return this.horarioSolicitado;
+        return horarioSolicitado;
     }
 
     public void setHorarioSolicitado(String horarioSolicitado) {
@@ -222,7 +224,7 @@ public class BeanAsesorias {
     }
 
     public BeanDiaSemana getIdDiaSemana() {
-        return this.idDiaSemana;
+        return idDiaSemana;
     }
 
     public void setIdDiaSemana(BeanDiaSemana idDiaSemana) {
@@ -230,7 +232,7 @@ public class BeanAsesorias {
     }
 
     public BeanPeriodoCuatrimestral getIdPeriodoCuatrimestral() {
-        return this.idPeriodoCuatrimestral;
+        return idPeriodoCuatrimestral;
     }
 
     public void setIdPeriodoCuatrimestral(BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
@@ -238,14 +240,34 @@ public class BeanAsesorias {
     }
 
     public int getNoAsesorias() {
-        return this.noAsesorias;
+        return noAsesorias;
     }
 
     public void setNoAsesorias(int noAsesorias) {
         this.noAsesorias = noAsesorias;
     }
 
+
+
+
+    @Override
     public String toString() {
-        return "BeanAsesorias{idAsesoria=" + this.idAsesoria + ", matricula=" + this.matricula + ", idMateria=" + this.idMateria + ", idProfesor=" + this.idProfesor + ", duracion=" + this.duracion + ", idEstadoAsesoria=" + this.idEstadoAsesoria + ", tema='" + this.tema + '\'' + ", dudasEspecificas='" + this.dudasEspecificas + '\'' + ", aclaracionDudas=" + this.aclaracionDudas + ", asistenciaDocente=" + this.asistenciaDocente + ", motivosCancelacion='" + this.motivosCancelacion + '\'' + ", motivosRechazo='" + this.motivosRechazo + '\'' + ", horarioSolicitado='" + this.horarioSolicitado + '\'' + ", idDiaSemana=" + this.idDiaSemana + ", idPeriodoCuatrimestral=" + this.idPeriodoCuatrimestral + '}';
+        return "BeanAsesorias{" +
+                "idAsesoria=" + idAsesoria +
+                ", matricula=" + matricula +
+                ", idMateria=" + idMateria +
+                ", idProfesor=" + idProfesor +
+                ", duracion=" + duracion +
+                ", idEstadoAsesoria=" + idEstadoAsesoria +
+                ", tema='" + tema + '\'' +
+                ", dudasEspecificas='" + dudasEspecificas + '\'' +
+                ", aclaracionDudas=" + aclaracionDudas +
+                ", asistenciaDocente=" + asistenciaDocente +
+                ", motivosCancelacion='" + motivosCancelacion + '\'' +
+                ", motivosRechazo='" + motivosRechazo + '\'' +
+                ", horarioSolicitado='" + horarioSolicitado + '\'' +
+                ", idDiaSemana=" + idDiaSemana +
+                ", idPeriodoCuatrimestral=" + idPeriodoCuatrimestral +
+                '}';
     }
 }

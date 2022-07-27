@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ConnectionMysql {
-
     private static String ipAddress;
     private static String dbName;
     private static String user;
@@ -28,6 +27,7 @@ public class ConnectionMysql {
             password = propiedadesBD.getString("password");
             service = propiedadesBD.getString("service");
         }
+
         return DriverManager.getConnection("jdbc:mysql://"+ipAddress+":"+service+"/"+dbName,user,password);
     }
 
