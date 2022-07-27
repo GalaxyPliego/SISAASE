@@ -28,6 +28,11 @@ public class BeanPeriodoCuatrimestral {
         this.nombreCuatrimestre = nombreCuatrimestre;
     }
 
+    public BeanPeriodoCuatrimestral(int idPeriodoCuatrimestral) {
+        this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
+    }
+
+
     public int getIdPeriodoCuatrimestral() {
         return idPeriodoCuatrimestral;
     }

@@ -54,6 +54,10 @@ public class BeanProfesor {    private int idProfesor;
     public BeanProfesor() {
     }
 
+    public BeanProfesor(int idProfesor) {
+        this.idProfesor = idProfesor;
+    }
+
     public int getIdProfesor() {
         return idProfesor;
     }

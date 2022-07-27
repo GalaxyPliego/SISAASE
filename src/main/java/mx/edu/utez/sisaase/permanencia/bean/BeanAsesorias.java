@@ -18,7 +18,15 @@ public class BeanAsesorias {
     private BeanDiaSemana idDiaSemana;
     private BeanPeriodoCuatrimestral idPeriodoCuatrimestral;
 
-    public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
+    private int riesgo;
+    private String fechaAsesoria;
+    private String horaCancelacion;
+
+    private String rolCancelacion;
+
+    private int noAsesorias;
+
+    public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion) {
         this.idAsesoria = idAsesoria;
         this.matricula = matricula;
         this.idMateria = idMateria;
@@ -35,9 +43,13 @@ public class BeanAsesorias {
         this.horarioSolicitado = horarioSolicitado;
         this.idDiaSemana = idDiaSemana;
         this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
+        this.riesgo = riesgo;
+        this.fechaAsesoria = fechaAsesoria;
+        this.horaCancelacion = horaCancelacion;
+        this.rolCancelacion = rolCancelacion;
     }
 
-    public BeanAsesorias(BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
+    public BeanAsesorias(BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion) {
         this.matricula = matricula;
         this.idMateria = idMateria;
         this.idProfesor = idProfesor;
@@ -53,6 +65,47 @@ public class BeanAsesorias {
         this.horarioSolicitado = horarioSolicitado;
         this.idDiaSemana = idDiaSemana;
         this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
+        this.riesgo = riesgo;
+        this.fechaAsesoria = fechaAsesoria;
+        this.horaCancelacion = horaCancelacion;
+        this.rolCancelacion = rolCancelacion;
+    }
+
+    public BeanAsesorias(BeanAlumnoInscrito matricula, int noAsesorias) {
+        this.matricula = matricula;
+        this.noAsesorias = noAsesorias;
+    }
+
+    public String getRolCancelacion() {
+        return rolCancelacion;
+    }
+
+    public void setRolCancelacion(String rolCancelacion) {
+        this.rolCancelacion = rolCancelacion;
+    }
+
+    public int getRiesgo() {
+        return riesgo;
+    }
+
+    public void setRiesgo(int riesgo) {
+        this.riesgo = riesgo;
+    }
+
+    public String getFechaAsesoria() {
+        return fechaAsesoria;
+    }
+
+    public void setFechaAsesoria(String fechaAsesoria) {
+        this.fechaAsesoria = fechaAsesoria;
+    }
+
+    public String getHoraCancelacion() {
+        return horaCancelacion;
+    }
+
+    public void setHoraCancelacion(String horaCancelacion) {
+        this.horaCancelacion = horaCancelacion;
     }
 
     public BeanAsesorias() {
@@ -185,6 +238,17 @@ public class BeanAsesorias {
     public void setIdPeriodoCuatrimestral(BeanPeriodoCuatrimestral idPeriodoCuatrimestral) {
         this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
     }
+
+    public int getNoAsesorias() {
+        return noAsesorias;
+    }
+
+    public void setNoAsesorias(int noAsesorias) {
+        this.noAsesorias = noAsesorias;
+    }
+
+
+
 
     @Override
     public String toString() {

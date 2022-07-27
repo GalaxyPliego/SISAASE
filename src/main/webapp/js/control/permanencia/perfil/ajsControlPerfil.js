@@ -6,8 +6,10 @@
 
 var sisa = angular.module("sisa", ['ui.bootstrap', 'oitozero.ngSweetAlert']);
 
+
 sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert', function ($rootScope, $scope, $http, SweetAlert) {
-        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
         $scope.usuario = '';
         $scope.respuesta = '';
         $scope.perfil = '';
@@ -44,26 +46,7 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
             }).error($rootScope.errorhttp);
         };
 
-        $scope.consultarMunicipios = function (tipo) {
-            var estado = "";
-            if (tipo === "nacimiento") {
-                estado = angular.toJson($scope.perfil.estadoNacimiento);
-            } else {
-                estado = angular.toJson($scope.perfil.estadoRadica);
-            }
-            $http({method: 'POST', url: '/SISAASE_war_exploded/consultarMunicipiosEstado', data: 'parametros=' + estado}).success(function (data) {
-                if (tipo === "nacimiento") {
-                    $scope.municipiosNacimiento = data.municipios;
-                } else {
-                    $scope.municipiosRadica = data.municipios;
-                }
-            }).error($rootScope.errorhttp);
-
-        };
-
         $scope.guardarInformacion = function () {
-
-
             SweetAlert.swal({
                 title: "¿Estas seguro?",
                 text: "Tus datos deben ser correctos ya que serán usados en la elaboración de tus documentos oficiales.",
@@ -78,14 +61,12 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
 
             }, function (isConfirm) {
                 if (isConfirm) {
-                    var d = $scope.modDate;
-                    d = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-                    $scope.perfil.fechaNacimiento = d;
-                    $scope.perfil.apMaterno = $scope.perfil.apMaterno === "" ? "." : $scope.perfil.apMaterno;
+
+                    $scope.perfil.aMaterno = $scope.perfil.aMaterno === "" ? "." : $scope.perfil.aMaterno;
                     var alumno = angular.toJson($scope.perfil);
-                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarPerfilAlumno', data: 'parametros=' + alumno}).success(function (data) {
+                    $http({method: 'POST', url: '/SISAASE_war_exploded/modificarPerfilAlumno', data: 'data=' + alumno}).success(function (data) {
                         if (data.respuesta === "ok") {
-                            $scope.perfil.apMaterno = $scope.perfil.apMaterno === "." ? "" : $scope.perfil.apMaterno;
+                            $scope.perfil.aMaterno = $scope.perfil.apMaterno === "." ? "" : $scope.perfil.aMaterno;
                             SweetAlert.swal({timer: 3000, type: "success", title: "Perfil actualizado correctamente."});
                         } else {
                             SweetAlert.swal({timer: 2000, type: "error", title: "Perfil no actualizado.", text: "Algo salió mal al intentar modificar tus datos."});

@@ -13,12 +13,17 @@
             <result>/index.jsp</result>
         </action>
         <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result name="alumno">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+            <result name="alumno" type="redirectAction">
+                <param name="actionName">perfil</param>
+            </result>
             <result name="docente">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
             <result name="multiRol">/jsp/multiRol.jsp</result>
         </action>
+        <action name="perfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
         <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result type="json"/>
+            <result type="json"></result>
         </action>
         <action name="consultarPerfilProfesor" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json"/>
@@ -26,6 +31,14 @@
         <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/index.jsp</result>
         </action>
+        <action name="modificarPerfilAlumno" method="modificarPerfilAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="horario">
+            <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
+        </action>
+
+
     </package>
     <package name="loginInterceptor" extends="struts-default">
         <interceptors>

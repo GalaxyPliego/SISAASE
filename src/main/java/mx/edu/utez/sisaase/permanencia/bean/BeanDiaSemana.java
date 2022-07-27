@@ -12,6 +12,10 @@ public class BeanDiaSemana {
         this.nombre = nombre;
     }
 
+    public BeanDiaSemana(int idDia) {
+        this.idDia = idDia;
+    }
+
     public BeanDiaSemana(String nombre) {
         this.nombre = nombre;
     }
