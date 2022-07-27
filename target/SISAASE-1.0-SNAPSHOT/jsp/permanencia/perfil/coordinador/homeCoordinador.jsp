@@ -1,11 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%String context = request.getContextPath();%>
-<!DOCTYPE html>
-<html lang="es" id="ng-app" ng-app="sisa">
 
+<!DOCTYPE html>
+<html lang="es" ng-app="sisa">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -18,14 +18,24 @@
     <!-- MetisMenu CSS -->
     <link href="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+    <!-- Timeline CSS -->
+    <link href="/SISAASE_war_exploded/css/general.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/timeline.css" rel="stylesheet">
+
     <!-- Custom CSS -->
-    <link href="/SISAASE_war_exploded/css/gestionHistorial/stylesGestionHistorial.css" rel="stylesheet">
+    <link href="/SISAASE_war_exploded/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/SISAASE_war_exploded/components/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/SISAASE_war_exploded/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- include the core styles -->
+    <link rel="stylesheet" href="/SISAASE_war_exploded/css/alertify.core.css" />
+    <!-- include a theme, can be included into the core instead of 2 separate files -->
     <link rel="stylesheet" href="/SISAASE_war_exploded/css/sweetalert.css" />
-    <link rel="icon" href="/SISAASE_war_exploded/img/utez/favicon.ico" />
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,38 +43,50 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <style>
-        /* Sticky footer styles-------------------------------------------------- */
-        .footer {
-            position: absolute;
-            bottom: 0;
+
+        body
+        {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .fb-profile img.fb-image-lg{
+            z-index: 0;
             width: 100%;
-            /* Set the fixed height of the footer here */
-            height: 60px;
-            /*background-color: #f5f5f5;*/
+            margin-bottom: 10px;
         }
-        @media only screen and (max-width: 600px) {
-            .footer {
-                position: relative;
-                bottom: 0;
-                width: 100%;
-                height:60px;
+
+        .fb-image-profile
+        {
+            margin: -90px 10px 0px 50px;
+            z-index: 9;
+            width: 13%;
+        }
+
+        @media (max-width:768px)
+        {
+
+            .fb-profile-text>h1{
+                font-size:14px;
+            }
+
+            .fb-image-profile
+            {
+                margin: -45px 10px 0px 25px;
+                z-index: 9;
+                width: 13%;
+            }
+            .iconsCards{
+                font-size: 90px;
             }
         }
-        @media only screen and (max-height: 600px) and (max-height: 600px){
-            .footer {
-                position: relative;
-                bottom: 0;
-                width: 100%;
-                height:60px;
+        @media (min-width:768px){
+            .iconsCards{
+                font-size: 150px;
             }
         }
-        /* Custom page CSS-------------------------------------------------- */
-        /* Not required for template or sticky footer method. */
-        .container .text-muted {
-            margin: 20px 0;
-        }
+
+
     </style>
     <style>
         /* Paste this css to your style sheet file or under head tag */
@@ -83,16 +105,10 @@
         }
     </style>
 </head>
-<body ng-controller="controller" ng-init="consultarHistorialPagos()">
-<div class="se-pre-con text-center"></div>
-<div id="wrapper">
-    <div id="page-wrapper">
 
-
-
-
-
-
+<body ng-controller="resumenHistorial" ng-init="consultarPerfil()">
+    <div class="se-pre-con text-center"></div>
+    <div id="wrapper">
         <!-- Navigation -->
         <nav id="topMenu" class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -102,87 +118,42 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/SISAVA/iniciarSesion" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISA</a>
+                <a class="navbar-brand" href="/SISAASE_war_exploded/iniciarSesion" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISA</a>
             </div>
-            <!-- /.navbar-header -->
 
+            <!-- /.navbar-header -->
             <ul id="rightMenu" class="nav navbar-top-links navbar-right">
 
                 <li class="dropdown">
 
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" id="cerrarSesion" href="/SISAVA/cerrarSesion">
+                    <a class="dropdown-toggle" id="cerrarSesion" href="/SISAASE_war_exploded/cerrarSesion">
                         <i class="fa fa-power-off fa-fw"></i>  Salir
                     </a>
                 </li>
                 <!-- /.dropdown -->
             </ul>
-            <!-- /.navbar-top-links -->
 
-
-
-
-
-            <!DOCTYPE html>
+            <!-- sideBar-->
             <div id="leftMenu" class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search text-center hidden-xs " style="background-color: #fff;padding: 15px 0 5px 0;">
-                            <img width="100%" src="/SISAVA/img/utez/lenguaje-incluyente.png" />
+                            <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
                         </li>
                         <li class="sidebar-search text-center" style="color: #fff;">
-                            <h5>Carlos Ricardo Espinoza Pliego</h5>
-                            <h4>Estudiante</h4>
+                            <h5>Jazmin Isabel Rogel Arizmendi</h5>
+                            <h4>Coordinador</h4>
                         </li>
                         <li>
-                            <a href="/SISAVA/jsp/permanencia/seguimiento/historialAcademico/historialAcademico.jsp"><i class="fa fa-book fa-fw"></i> Historial académico</a>
+                            <a href="/SISAASE_war_exploded/coordinador"><i class="fa fa-book fa-fw"></i>Resumen</a>
                         </li>
                         <li>
-                            <a href="/SISAVA/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-file-text"></i> Evaluación docente</a>
+                            <a href="/SISAASE_war_exploded/historialDetallado"><i class="fa fa-file-text"></i> Historial Detallado</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Bajas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/baja/solicitudBaja/bajasRegistroSolicitud.jsp">Registrar solicitud</a>
-                                </li>
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/baja/historialBajas/historialBajas.jsp">Historial de  bajas</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-usd fa-fw"></i> Pagos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/seguimiento/pagos/pagosFicha.jsp">Fichas de pago</a>
-                                </li>
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/seguimiento/pagos/pagosHistorial.jsp">Historial de pagos</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Estadías<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/estadia/cartaPresentacion/cartaPresentacion.jsp">Carta Presentación</a>
-                                </li>
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/estadia/convenioIndividual/convenionIndividual.jsp">Asignación y aceptación de estadía</a>
-                                </li>
-                                <li>
-                                    <a href="/SISAVA/jsp/permanencia/estadia/resumenEstadia/resumenEstadia.jsp">Resumen estadía</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--            <li>
-                                        <a href="/SISAVA/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-braille fa-fw"></i> Evaluación Docente</a>
-                                    </li>-->
-                        <li>
-                            <a href="/SISAVA/jsp/permanencia/perfil/alumno/perfilAlumno.jsp"><i class="fa fa-user-o fa-fw"></i>Mi Perfil</a>
+                            <a href="/SISAASE_war_exploded/historialGeneral"><i class="fa fa-file-text"></i> Historial General</a>
                         </li>
                     </ul>
                 </div>
@@ -191,141 +162,245 @@
             <!-- /.navbar-static-side -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </nav>
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header" style="background: #345177; color: white;">
-                        <h4 class="modal-title" id="myModalLabel">Roles</h4>
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <br/>
+
+            <!-- Panel principal -->
+            <div class="panel panel-primary">
+                <!-- Panel heading -->
+                <div class="panel-heading">Resumen de Asesorías</div>
+                <!-- Panel body -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <!-- filtrado con un select por periodo cuatrimestral -->
+                            <div class="form-group" ng-init="findPeriodoCuatrimestral()">
+                                <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
+                                <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
+                                    <option value="">Seleccione un periodo</option>
+                                    <option value="" ></option>
+                                    <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <h4>Selecciona el rol para acceder a las funcionalidades correspondientes.</h4>
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="col-md-12">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <a href="/SISAVA/cambiarSesion?idRolCambiar=Alumno&rolCambiar=Estudiante" style="color: white;">
-                                                <div class="col-md-8">Estudiante</div>
-                                                <div class="col-md-4 text-right"><span class="text-right"><i class="fa fa-angle-right"></i></span></div>
-                                            </a>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="panel panel-green">
+                                <div class="panel-body bg-danger "  style="background-color: #009574; padding: 25px;">
+                                    <div class="row" style="display: flex;">
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="display: flex; justify-content: center; align-items: center">
+                                            <i class="fa fa-calendar-check-o fa-5x iconsCards " style="color: white;" aria-hidden="true"></i>
                                         </div>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>Estudiante.</p>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <h2 style="color: white; letter-spacing: 5px;"><strong>Sesiones</strong></h2>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 20px;">Hombres: <strong>30</strong></p>
+                                                <p style="color: white; font-size: 20px;">Mujeres: <strong>56</strong></p>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
+
+                                <div class="panel-footer text-center">
+                                    <h2 class="titlesCards" style="color: #009574; margin: 0px; padding: 0;">Total: <strong>86</strong></h2>
+                                </div>
                             </div>
+                        </div>
 
+                        <div class="col-md-6 col-xs-12">
+                            <div class="panel panel-green">
+                                <div class="panel-body bg-danger "  style="background-color: #009574; padding: 25px;">
+                                    <div class="row" style="display: flex;">
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12 mar" style="display: flex; justify-content: center; align-items: center">
+                                            <i class="fa fa-calendar-check-o fa-5x iconsCards" style="color: white; " aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <h2 class="titlesCards" style="color: white;"><strong>Atendidos</strong></h2>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 20px;">Hombres: <strong>23</strong></p>
+                                                <p style="color: white; font-size: 20px;">Mujeres: <strong>35</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <h2 style="color: #009574; margin: 0px; padding: 0;">Total: <strong>58</strong></h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">Cerrar</button>
+
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel panel-green">
+                                <div class="panel-body" style="background-color: #009574; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-check-o fa-5x iconsCardsSecondary " style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 class="titleLargeCards" style="color: white; letter-spacing: 1px;"><strong>Aceptadas</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>16</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>25</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #009574; margin: 0px; padding: 0;">Total: <strong>41</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel" style="border: 1px solid #F0AD4E">
+                                <div class="panel-body" style="background-color: #F0AD4E; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-minus-o fa-5x iconsCardsSecondary" style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 style="color: white; letter-spacing: 1px;"><strong>Pendientes</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>5</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>2</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #F0AD4E; margin: 0px; padding: 0;">Total: <strong>7</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel" style="border: 1px solid #E74C3C">
+                                <div class="panel-body" style="background-color: #E74C3C; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-times-o fa-5x iconsCardsSecondary" style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 class="titleLargeCards" style="color: white;"><strong>Rechazadas</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>22</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>14</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #E74C3C; margin: 0px; padding: 0;">Total: <strong>36</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="panel" style="border: 1px solid #E74C3C">
+                                <div class="panel-body" style="background-color: #E74C3C; padding-left: 25px; padding-top: 25px">
+                                    <div class="row" style="">
+                                        <div class="col-lg-4 col-md-12 col-sm-12" style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                            <i class="fa fa-calendar-times-o fa-5x iconsCardsSecondary" style="color: white;" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="col-lg-6 col-lg-offset-1 col-md-12 col-sm-12" style="margin-top: -20px">
+                                            <div class="row">
+                                                <h3 class="titleLargeCards" style="color: white; "><strong>Canceladas</strong></h3>
+                                            </div>
+                                            <div class="row ">
+                                                <p style="color: white; font-size: 16px;">Hombres: <strong>30</strong></p>
+                                                <p style="color: white; font-size: 16px;">Mujeres: <strong>50</strong></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <h3 class="titlesCards" style="color: #E74C3C; margin: 0px; padding: 0;">Total: <strong>80</strong></h3>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
-        </div>
-        <div id="wrapper"></div>
 
-        <br/>
-        <div class="panel panel-primary">
-            <div class="panel-heading">Historial de pagos</div>
-            <div class="panel-body">
-                <div ng-show="!historial" class="text-center">
-                    <img src="/SISAVA/img/system/preloader.gif"/>
-                </div>
-                <div ng-show="historial" class="row">
-                    <div class="col-md-12" >
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead style="background-color: #676f77 ; color: #fff">
-                                <tr>
-                                    <td>#</td>
-                                    <td>Concepto del pago</td>
-                                    <td>Costo</td>
-                                    <td>Pagado</td>
-                                    <td>Fecha pago</td>
-                                    <td>Tipo</td>
-                                </tr>
-                                </thead>
-                                <tr ng-repeat="pago in historial.lista">
-                                    <td ng-cloak>{{$index + 1}}</td>
-                                    <td ng-cloak>{{pago.id > 11 ? pago.descripcion :pago.id > 1 && pago.id < 7 ? 'Colegiatura '+pago.id+"°"+pago.descripcion.split("°")[1].replace("TSU","") : pago.id > 7 && pago.id <= 11 ? 'Colegiatura '+pago.id+"°"+pago.descripcion.split("°")[1].replace("ING","") : 'Inscripción y colegiatura'}}</td>
-                                    <td ng-cloak>$ {{pago.totalPago}}</td>
-                                    <td ng-cloak>$ {{pago.pago}}</td>
-                                    <td ng-cloak>{{pago.registroFecha}}</td>
-                                    <td ng-cloak>{{pago.tipo}}</td>
-                                </tr>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div ng-show="historial" class="row">
-                    <div class="col-md-12 text-center" >
-                        <div class="form-group">
-                            <button type="submit" ng-click="generarReporteHistorialPagos()" class="btn btn-danger">Exportar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        <!-- /#page-wrapper -->
     </div>
-</div>
-<!-- /#wrapper -->
-<!-- jQuery -->
-<script src="/SISAVA/components/jquery/dist/jquery.min.js"></script>
-<script>
-    //paste this code under the head tag or in a separate js file.
-    // Wait for window load
-    $(window).load(function () {
-        // Animate loader off screen
-        $(".se-pre-con").fadeOut("slow");
-        ;
-    });
-</script>
-<!-- Angular -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>-->
-<script src="/SISAVA/js/angular-1.4.6.min.js"></script>
-<script src="/SISAVA/js/control/permanencia/seguimiento/pagos/ajsPagosHistorial.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="/SISAVA/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+    <script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>
+    <script>
+        //paste this code under the head tag or in a separate js file.
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+            ;
+        });
+    </script>
+    <!--<script src="/SISAASE_war_exploded/js/configuracion.js"></script>-->
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="/SISAVA/components/metisMenu/dist/metisMenu.min.js"></script>
-<!--         Morris Charts JavaScript
-        <script src="/SISAVA/components/raphael/raphael-min.js"></script>
-        <script src="/SISAVA/components/morrisjs/morris.min.js"></script>
-        <script src="/SISAVA/js/morris-data.js"></script>-->
-<!-- Custom Theme JavaScript -->
-<script src="/SISAVA/js/sb-admin-2.js"></script>
-<script src="/SISAVA/js/sweetalert.min_1.js"></script>
-<script src="/SISAVA/js/SweetAlert.min.js"></script>
-<script src="/SISAVA/js/smart-table.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/SISAASE_war_exploded/components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/SISAASE_war_exploded/components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/SISAASE_war_exploded/js/sb-admin-2.js"></script>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>-->
+
+    <script src="/SISAASE_war_exploded/js/angular-1.4.6.min.js"></script>
+
+
+    <!--Script Angular Perfil-->
+    <script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/gestionHistorial.js"></script>
+
+
+    <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>
+    <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
+    <script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
+    <script src="/SISAASE_war_exploded/js/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
+
+
 </body>
+
 </html>

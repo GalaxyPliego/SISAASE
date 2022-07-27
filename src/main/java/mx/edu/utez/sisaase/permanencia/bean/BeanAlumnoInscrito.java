@@ -22,12 +22,14 @@ public class BeanAlumnoInscrito {
     private String tipoSangre;
     private String nombreTutor;
     private String noIMSS;
+    private String localidadRadica;
     private String status;
+    private String unidadImss;
     private BeanGeneracion idGeneracion;
     private BeanGrupos idGrupoActual;
     private BeanCarrera idCarrera;
 
-    public BeanAlumnoInscrito(String matricula, String aPaterno, String aMaterno, String nombres, String fechaNac, int edad, String sexo, String estadoCivil, String domActual, String colonia, int cp, String telefono, String cel, String email, String curp, String nacionalidad, String trabaja, int ingresoMensual, String tipoSangre, String nombreTutor, String noIMSS, String status, BeanGeneracion idGeneracion, BeanGrupos idGrupoActual, BeanCarrera idCarrera) {
+    public BeanAlumnoInscrito(String matricula, String aPaterno, String aMaterno, String nombres, String fechaNac, int edad, String sexo, String estadoCivil, String domActual, String colonia, int cp, String telefono, String cel, String email, String curp, String nacionalidad, String trabaja, int ingresoMensual, String tipoSangre, String nombreTutor, String noIMSS, String localidadRadica, String status, String unidadImss, BeanGeneracion idGeneracion, BeanGrupos idGrupoActual, BeanCarrera idCarrera) {
         this.matricula = matricula;
         this.aPaterno = aPaterno;
         this.aMaterno = aMaterno;
@@ -49,10 +51,41 @@ public class BeanAlumnoInscrito {
         this.tipoSangre = tipoSangre;
         this.nombreTutor = nombreTutor;
         this.noIMSS = noIMSS;
+        this.localidadRadica = localidadRadica;
         this.status = status;
+        this.unidadImss = unidadImss;
         this.idGeneracion = idGeneracion;
         this.idGrupoActual = idGrupoActual;
         this.idCarrera = idCarrera;
+    }
+
+    public BeanAlumnoInscrito() {
+    }
+
+    public BeanAlumnoInscrito(String matricula, String nombres, String sexo, String nombreCarrera, String cuatrimestre, String grupo) {
+        this.matricula = matricula;
+        this.nombres = nombres;
+        this.sexo = sexo;
+        this.idCarrera.setNombreCarrera(nombreCarrera);
+        this.idGrupoActual.setCuatrimestre(Integer.parseInt(cuatrimestre));
+        this.idGrupoActual.setGrupo(grupo);
+
+    }
+
+    public String getLocalidadRadica() {
+        return localidadRadica;
+    }
+
+    public String getUnidadImss() {
+        return unidadImss;
+    }
+
+    public void setUnidadImss(String unidadImss) {
+        this.unidadImss = unidadImss;
+    }
+
+    public void setLocalidadRadica(String localidadRadica) {
+        this.localidadRadica = localidadRadica;
     }
 
     public String getMatricula() {

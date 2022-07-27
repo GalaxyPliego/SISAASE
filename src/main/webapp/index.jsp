@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%String context = request.getContextPath();%>
 
@@ -112,14 +113,13 @@
                 </div>
                 <div class="panel-body">
 
-
                     <form ng-submit="iniciarSesion()" role="form" method="post" name="formLogin" action="/SISAASE_war_exploded/iniciarSesion" ng-submit="formLogin.$valid" >
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" ng-model="usuario.nick" placeholder="Tu usuario" name="usuario.nick" type="text" autofocus required>
+                                <input class="form-control" ng-model="beanUsuario.usuario" placeholder="Tu usuario" name="beanUsuario.usuario" type="text" autofocus required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" ng-model="usuario.contrasexa" placeholder="Tu contraseña" name="usuario.contrasexa" type="password"  maxlength="30" value="" required>
+                                <input class="form-control" ng-model="beanUsuario.contrasena" placeholder="Tu contraseña" name="beanUsuario.contrasena" type="password"  maxlength="30" value="" required>
                             </div>
                             <div>
                                 <label>

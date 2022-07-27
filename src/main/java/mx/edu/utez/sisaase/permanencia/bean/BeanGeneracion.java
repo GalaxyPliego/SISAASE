@@ -31,6 +31,10 @@ public class BeanGeneracion {
         this.nivelAcademico = nivelAcademico;
     }
 
+    public BeanGeneracion() {
+
+    }
+
     public int getIdGeneracion() {
         return idGeneracion;
     }

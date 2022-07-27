@@ -28,6 +28,10 @@ public class BeanEspecialidad {
         this.idCarrera = idCarrera;
     }
 
+    public BeanEspecialidad() {
+
+    }
+
     public int getIdEspecialidad() {
         return idEspecialidad;
     }

@@ -8,8 +8,9 @@ public class BeanCarrera {
     private String oferta;
     private BeanDivisionAcademica idDivision;
     private BeanNivelAcademico idNivelAcademico;
+    private BeanEspecialidad idEspecialidad;
 
-    public BeanCarrera(int idCarrera, String nombreCarrera, String estado, String mCarrera, String oferta, BeanDivisionAcademica idDivision, BeanNivelAcademico idNivelAcademico) {
+    public BeanCarrera(int idCarrera, String nombreCarrera, String estado, String mCarrera, String oferta, BeanDivisionAcademica idDivision, BeanNivelAcademico idNivelAcademico, BeanEspecialidad idEspecialidad) {
         this.idCarrera = idCarrera;
         this.nombreCarrera = nombreCarrera;
         this.estado = estado;
@@ -17,16 +18,22 @@ public class BeanCarrera {
         this.oferta = oferta;
         this.idDivision = idDivision;
         this.idNivelAcademico = idNivelAcademico;
+        this.idEspecialidad = idEspecialidad;
     }
 
-    public BeanCarrera(String nombreCarrera, String estado, String mCarrera, String oferta, BeanDivisionAcademica idDivision, BeanNivelAcademico idNivelAcademico) {
-        this.nombreCarrera = nombreCarrera;
-        this.estado = estado;
-        this.mCarrera = mCarrera;
-        this.oferta = oferta;
-        this.idDivision = idDivision;
-        this.idNivelAcademico = idNivelAcademico;
+    public BeanCarrera() {
+
     }
+
+    public BeanEspecialidad getIdEspecialidad() {
+        return idEspecialidad;
+    }
+
+    public void setIdEspecialidad(BeanEspecialidad idEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
+    }
+
+
 
     public int getIdCarrera() {
         return idCarrera;

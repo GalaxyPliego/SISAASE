@@ -40,6 +40,9 @@ public class BeanGrupos {
         this.idCarrera = idCarrera;
     }
 
+    public BeanGrupos() {
+    }
+
     public int getIdGrupo() {
         return idGrupo;
     }

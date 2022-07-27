@@ -210,35 +210,35 @@
                                     <td>Acciones</td>
                                 </tr>
                                 </thead>
-                                <tr ng-repeat="horario in arrayHorario">
+                                <tr ng-repeat="entrada in arrayHorario">
                                     <th>
                                         <input type="checkbox"
-                                               ng-model="dia.selected[horario.idDia]"
-                                               ng-true-value="'{{horario.idDia}}'"
+                                               ng-model="dia.selected[entrada.idDia]"
+                                               ng-true-value="'{{entrada.idDia}}'"
                                                ng-false-value="''">
                                     </th>
 
-                                    <td ng-bind="horario.diaSemana.nombre"></td>
+                                    <td ng-bind="entrada.diaSemana.nombre"></td>
                                     <td>
                                         <label>No hay asesoría</label>
                                         <form class="form-inline"
-                                              ng-show="horario.horaInicio != '' && horario.horFin!='' "
+<%--                                              ng-show="entrada.horaInicio != '' && entrada.horFin!='' "--%>
                                         >
                                             <div class="form-group">
                                                 <input type="text" class="form-control"
-                                                       ng-value="horario.horaInicio | date: 'HH:mm'"
+<%--                                                       ng-value="entrada.horaInicio | date: 'HH:mm'" --%>
                                                        readonly required>
                                             </div>
                                             <div class="form-group">
                                                 <label>-</label>
                                                 <input type="text" class="form-control"
-                                                       ng-value="horario.horaFin | date: 'HH:mm'"
+<%--                                                       ng-value="entrada.horaFin | date: 'HH:mm'" --%>
                                                        readonly required>
                                             </div>
                                         </form>
                                     </td>
                                     <td>
-                                            <button type="button" class="btn btn-success" ng-click="agregarHorario(entrada)">
+                                            <button type="button" class="btn btn-success" ng-show="mostrarBotonAgregar" ng-click="agregarHorario(entrada)">
                                                 <span class="fa fa-plus"></span>
                                             </button>
 
