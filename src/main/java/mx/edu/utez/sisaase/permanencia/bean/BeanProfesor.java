@@ -1,6 +1,7 @@
 package mx.edu.utez.sisaase.permanencia.bean;
 
-public class BeanProfesor {    private int idProfesor;
+public class BeanProfesor {
+    private int idProfesor;
     private String nombres;
     private String aPaterno;
     private String aMaterno;

@@ -32,7 +32,6 @@ public class BeanPeriodoCuatrimestral {
         this.idPeriodoCuatrimestral = idPeriodoCuatrimestral;
     }
 
-
     public int getIdPeriodoCuatrimestral() {
         return idPeriodoCuatrimestral;
     }
