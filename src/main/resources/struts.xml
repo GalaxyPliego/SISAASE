@@ -23,6 +23,14 @@
                     <result type="json"/>
                 </action>
 
+            <!-- HISTORIAL GENERAL -->
+                <action name="findCarreras" method="findCarreras" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+                    <result type="json"/>
+                </action>
+                <action name="findHistorialGeneral" method="findHistorialGeneral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+                    <result type="json"/>
+                </action>
+
 
         <action name="coordinador">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>

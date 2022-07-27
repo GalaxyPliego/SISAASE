@@ -9,6 +9,9 @@ public class BeanEstadoAsesoria {
         this.nombre = nombre;
     }
 
+    public BeanEstadoAsesoria() {
+    }
+
     public BeanEstadoAsesoria(String nombre) {
         this.nombre = nombre;
     }

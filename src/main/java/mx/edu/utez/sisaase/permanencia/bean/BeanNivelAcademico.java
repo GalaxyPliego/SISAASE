@@ -16,6 +16,9 @@ public class BeanNivelAcademico {
         this.descripcion = descripcion;
     }
 
+    public BeanNivelAcademico() {
+    }
+
     public int getIdNivelAcademico() {
         return idNivelAcademico;
     }

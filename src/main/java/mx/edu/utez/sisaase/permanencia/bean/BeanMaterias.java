@@ -31,6 +31,9 @@ public class BeanMaterias {
         this.idPlan = idPlan;
     }
 
+    public BeanMaterias() {
+    }
+
     public int getIdMateria() {
         return idMateria;
     }
