@@ -50,6 +50,7 @@
         </action>
 
 
+
         <action name="coordinador">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
         </action>
@@ -74,6 +75,7 @@
             <result>/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp</result>
         </action>
         <!-- +++++++++++++++++++ -->
+
 
     </package>
     <package name="loginInterceptor" extends="struts-default">
