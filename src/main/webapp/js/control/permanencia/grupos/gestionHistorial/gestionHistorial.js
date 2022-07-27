@@ -52,6 +52,8 @@ sisa.controller("historialDetallado", ['$rootScope', '$scope', '$http', 'SweetAl
             console.log($scope.arrayHistorialDetallado)
         })
     }
+    $scope.predicates = ['matricula', 'nombre', 'sexo', 'carrera', 'grado', 'grupo', 'noAsesorias'];
+    $scope.selectedPredicate = $scope.predicates[0];
 
 }]);
 

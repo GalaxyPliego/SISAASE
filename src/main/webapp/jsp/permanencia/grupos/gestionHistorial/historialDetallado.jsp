@@ -178,7 +178,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table ng-init="findHistorialDetallado()" st-safe-src="rowCollection" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
+                            <table ng-init="findHistorialDetallado()" st-safe-src="arrayHistorialDetallado" st-table="displayCollection" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <th>#</th>
@@ -202,9 +202,9 @@
                                     <td><input st-search="grupo" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
                                     <td><input st-search="noAsesorias" class="input-sm form-control" type="search" placeholder="Buscar"/></td>
                                 </tr>
-                                <tr ng-repeat="historial in arrayHistorialDetallado | orderBy : 'fecha'" class="ng-scope">
+                                <tr ng-repeat="historial in displayCollection" class="ng-scope">
 
-                                    <td ng-bind="$index + 1"> </td>
+                                    <td ng-bind="$index + 1" st-skip-natural="true"> </td>
                                     <td ng-bind="historial.matricula.matricula | uppercase "></td>
                                     <td ng-bind="historial.matricula.nombres"></td>
                                     <td ng-bind="historial.matricula.sexo"></td>
@@ -213,7 +213,7 @@
                                     <td ng-bind="historial.matricula.idGrupoActual.grupo | uppercase "></td>
                                     <td ng-bind="historial.noAsesorias"></td>
 
-                                </tr><!-- end ngRepeat: pago in historial.lista -->
+                                </tr><!-- end ngRepeat -->
                                 </tbody>
                                 <tfoot>
                                     <tr>
