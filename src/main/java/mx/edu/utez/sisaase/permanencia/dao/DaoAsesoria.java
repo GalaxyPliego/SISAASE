@@ -69,12 +69,28 @@ public class DaoAsesoria {
                 );
                 asesoriasList.add(asesoria);
             }
-        }catch (SQLException exception){
-            Logger.getLogger(DaoAsesoria.class.getName()).log(Level.SEVERE,"Ha ocurrido un error en el método consultarAsesoriasDocente " + exception);
+        }catch (SQLException e){
+            Logger.getLogger(DaoAsesoria.class.getName()).log(Level.SEVERE,"Ha ocurrido un error en el método consultarAsesoriasDocente " + e);
         }finally {
             closeConnection();
         }
         return asesoriasList;
+    }
+
+    public boolean isAceptada(BeanAsesorias asesoria) throws SQLException {
+
+        boolean aceptada = false;
+
+        try {
+            connection = ConnectionMysql.getConnection();
+            //HttpSession session = ServletActionContext.getRequest().getSession();
+//            BeanUsuario usuario = (BeanUsuario) session.getAttribute("usuario");
+        }catch (SQLException e){
+            Logger.getLogger(DaoAsesoria.class.getName()).log(Level.SEVERE,"Ha ocurrido un error en el método isAceptada " + e);
+        }finally {
+            closeConnection();
+        }
+
     }
 
     private static void closeConnection() throws SQLException {
