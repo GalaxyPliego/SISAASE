@@ -103,7 +103,7 @@
     </style>
 </head>
 
-<body ng-controller="ControlAsesorias" ng-init="consultarPerfil()">
+<body ng-controller="ControlAsesorias" ng-init="consultarHorarios()">
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -260,32 +260,41 @@
 
                                     <td class="ng-binding">1</td>
                                     <td class="ng-binding">Roy Axxel Salgado Martinez</td>
-                                    <td class="ng-binding"> <strong>Lunes  </strong>14:00</td>
+                                    <td class="ng-binding"><strong>Lunes </strong>14:00</td>
                                     <td class="ng-binding">
                                         <button class="btn btn-success"
-                                                style="margin-right:5px ;"><i class="fa fa-calendar" ng-click="abrirModalSolicitar()"></i></button></td>
+                                                style="margin-right:5px ;"><i class="fa fa-calendar"
+                                                                              ng-click="abrirModalSolicitar()"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr class="ng-scope">
 
                                     <td class="ng-binding">2</td>
                                     <td class="ng-binding">Miriam Guadalupe Saucedo Bustamante</td>
                                     <td class="ng-binding">
-                                        <strong>Martes  </strong>15:00
+                                        <strong>Martes </strong>15:00
                                         <br>
-                                        <strong>Jueves  </strong>14:00
+                                        <strong>Jueves </strong>14:00
                                     </td>
                                     <td class="ng-binding">
                                         <button class="btn btn-success"
-                                                style="margin-right:5px ;"><i class="fa fa-calendar" ng-click="abrirModalSolicitar()"></i></button></td>
+                                                style="margin-right:5px ;"><i class="fa fa-calendar"
+                                                                              ng-click="abrirModalSolicitar()"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr class="ng-scope">
 
                                     <td class="ng-binding">3</td>
                                     <td class="ng-binding">Monica Samantha Salgado Saucedo</td>
-                                    <td class="ng-binding"> <strong>Lunes  </strong>16:00</td>
+                                    <td class="ng-binding"><strong>Lunes </strong>16:00</td>
                                     <td class="ng-binding">
                                         <button class="btn btn-success"
-                                                style="margin-right:5px ;"><i class="fa fa-calendar" ng-click="abrirModalSolicitar()"></i></button></td>
+                                                style="margin-right:5px ;"><i class="fa fa-calendar"
+                                                                              ng-click="abrirModalSolicitar()"></i>
+                                        </button>
+                                    </td>
                                 </tr>
 
                                 </tbody>
@@ -294,11 +303,12 @@
                         <center>
                             <nav aria-label="...">
                                 <ul class="pagination">
-                                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                                    </li>
                                     <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                                     <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
                                     <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                                    <li ><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                                    <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
                                     <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                                 </ul>
                             </nav>
@@ -313,85 +323,91 @@
 </div>
 <!-- /#wrapper -->
 <!-- jQuery -->
-<form name="formSolicitarAsesoria" role="form" ng-submit="formSolicitarAsesoria.$valid">
-    <fieldset>
-        <div class="modal fade" id="modalSolicitar" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:#345177; color: white;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                style="color: white ;"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Solicitar asesoría</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
-                                <h3>Información del docente</h3>
-                            </div>
+<form name="formSolicitarAsesoria" role="form">
 
-                            <div class="form-group col-md-6">
-                                <label>Nombre:</label>
-                                <div class="ng-binding">Roy Axxel Salgado Martinez
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Materia:</label>
-                                <div class="ng-binding">Cálculo</div>
-                            </div>
-                            <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
-                                <h3>Información de la asesoría</h3>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Día:</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="">Lunes</option>
-                                    <option value="">Martes</option>
-                                    <option value="">Miércoles</option>
-                                    <option value="">Jueves</option>
-                                    <option value="">Viernes</option>
-                                    <option value="">Sábado</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Horario:</label>
-                                <input type="time" class="form-control">
-                                <label for="" class="text-warning">El horario de asesorías es de 14:00 hrs a 17:00 hrs, ten en cuenta que si solicitas una asesoría fuera de este horario el docente podría rechazar tu asesoría</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Tema:</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Dudas específicas:</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>
-                                    ¿Estás en recuperación?
-                                </label>
-                                <br>
-                                <input type="checkbox" value=""> Sí
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button ng-disabled="!formValid"
-                                    type="button" style="background-color:#019979 ; color: white;" class="btn"
-                                    ng-click="solicitarAsesoria()">Finalizar
-                                asesoría
-                            </button>
-                            <button ng-click="cerrarModalSolicitar()" class="btn" type="button"
-                                    style="background-color:#D9534F ; color: white;">Cancelar
-                            </button>
-
-
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
+    <div class="modal fade" id="modalSolicitar" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#345177; color: white;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            style="color: white ;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Solicitar asesoría</h4>
                 </div>
-                <!-- /.modal-dialog -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
+                            <h3>Información del docente</h3>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Nombre:</label>
+                            <div class="ng-binding">Roy Axxel Salgado Martinez
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Materia:</label>
+                            <div class="ng-binding">Cálculo</div>
+                        </div>
+                        <div class="form-group col-12" style="margin-top: -20px; margin-left: 15px; color: #345177">
+                            <h3>Información de la asesoría</h3>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Día:</label>
+                            <select required ng-model="asesoria.idDiaSemana" name="idDiaSemana" id="idDiaSemana"
+                                    class="form-control">
+                                <option value="1">Lunes</option>
+                                <option value="2">Martes</option>
+                                <option value="3">Miércoles</option>
+                                <option value="4">Jueves</option>
+                                <option value="5">Viernes</option>
+                                <option value="6">Sábado</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Horario:</label>
+                            <input type="time" class="form-control" ng-model="asesoria.horarioSolicitado"
+                                   name="horarioSolicitado" id="horarioSolicitado" required>
+                            <label class="text-warning">El horario de asesorías es de 14:00 hrs a 17:00 hrs, ten en
+                                cuenta que si solicitas una asesoría fuera de este horario el docente podría rechazar tu
+                                asesoría</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Tema:</label>
+                            <textarea required ng-model="asesoria.tema" name="tema" id="tema" class="form-control"
+                                      rows="3"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Dudas específicas:</label>
+                            <textarea required ng-model="asesoria.dudasEspecificas" name="dudasEspecificas" id="dudasEspecificas"
+                                      class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>
+                                ¿Estás en recuperación?
+                            </label>
+                            <br>
+                            <input type="checkbox" value="" ng-model="asesoria.riesgo" name="riesgo" id="riesgo"> Sí
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button ng-disabled="formSolicitarAsesoria.$invalid"
+                                type="button" style="background-color:#019979 ; color: white;" class="btn"
+                                ng-click="solicitarAsesoria()">Finalizar
+                            asesoría
+                        </button>
+                        <button ng-click="cerrarModalSolicitar()" class="btn" type="button"
+                                style="background-color:#D9534F ; color: white;">Cancelar
+                        </button>
+
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
             </div>
+            <!-- /.modal-dialog -->
         </div>
-    </fieldset>
+    </div>
+
 </form>
 
 

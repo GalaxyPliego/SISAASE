@@ -53,7 +53,15 @@ sisa.controller("ControlAsesorias", ['$rootScope', '$scope', '$http', 'SweetAler
         }
     }
 
-
+    $scope.consultarHorarios = function (){
+        $http({
+            method: 'POST',
+            url: '/SISAASE_war_exploded/consultarHorarios'
+        }).success(function (data) {
+            $scope.horarios = data;
+            console.log(data)
+        }).error($rootScope.errorhttp);
+    }
 
     $scope.finalizarAsesoria = function () {
         SweetAlert.swal({

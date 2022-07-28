@@ -1,5 +1,7 @@
 package mx.edu.utez.sisaase.permanencia.bean;
 
+import java.util.List;
+
 public class BeanProfesor {
     private int idProfesor;
     private String nombres;
@@ -16,6 +18,8 @@ public class BeanProfesor {
     private String curp;
     private String estado;
     private String sexo;
+    private List<BeanHorariosAsesoria> horarios;
+
 
     public BeanProfesor(int idProfesor, String nombres, String aPaterno, String aMaterno, String emailInst, String cedulaProf, String nivelMaxEstudios, String titulo, String emailPart, String tipoProfesor, String telefono, String semblanza, String curp, String estado, String sexo) {
         this.idProfesor = idProfesor;
@@ -73,6 +77,14 @@ public class BeanProfesor {
 
     public void setNombres(String nombres) {
         this.nombres = nombres;
+    }
+
+    public List<BeanHorariosAsesoria> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<BeanHorariosAsesoria> horarios) {
+        this.horarios = horarios;
     }
 
     public String getaPaterno() {
