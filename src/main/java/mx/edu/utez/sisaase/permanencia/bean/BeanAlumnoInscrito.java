@@ -62,6 +62,13 @@ public class BeanAlumnoInscrito {
     public BeanAlumnoInscrito() {
     }
 
+    public BeanAlumnoInscrito(String matricula, String aPaterno, String aMaterno, String nombres) {
+        this.matricula = matricula;
+        this.aPaterno = aPaterno;
+        this.aMaterno = aMaterno;
+        this.nombres = nombres;
+    }
+
     public BeanAlumnoInscrito(String matricula, String nombres, String sexo, String nombreCarrera, String cuatrimestre, String grupo) {
         this.matricula = matricula;
         this.nombres = nombres;

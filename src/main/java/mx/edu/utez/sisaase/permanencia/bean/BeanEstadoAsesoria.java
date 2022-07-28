@@ -4,14 +4,11 @@ public class BeanEstadoAsesoria {
     private int idEstadoAsesoria;
     private String nombre;
 
-    public BeanEstadoAsesoria(int idEstadoAsesoria, String nombre) {
-        this.idEstadoAsesoria = idEstadoAsesoria;
-        this.nombre = nombre;
-    }
-
     public BeanEstadoAsesoria(String nombre) {
         this.nombre = nombre;
     }
+
+
 
     public int getIdEstadoAsesoria() {
         return idEstadoAsesoria;

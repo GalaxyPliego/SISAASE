@@ -43,6 +43,11 @@ public class BeanGrupos {
     public BeanGrupos() {
     }
 
+    public BeanGrupos(int cuatrimestre, String grupo) {
+        this.cuatrimestre = cuatrimestre;
+        this.grupo = grupo;
+    }
+
     public int getIdGrupo() {
         return idGrupo;
     }

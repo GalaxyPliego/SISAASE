@@ -22,7 +22,10 @@ public class BeanCarrera {
     }
 
     public BeanCarrera() {
+    }
 
+    public BeanCarrera(String nombreCarrera) {
+        this.nombreCarrera = nombreCarrera;
     }
 
     public BeanEspecialidad getIdEspecialidad() {
