@@ -1,7 +1,7 @@
 package mx.edu.utez.sisaase.permanencia.bean;
 
 public class BeanMaterias {
-    private int idMateria;
+    private String idMateria;
     private String nombre;
     private int horas;
     private int cuatrimestre;
@@ -10,7 +10,11 @@ public class BeanMaterias {
     private int orden;
     private BeanPlanesEstudio idPlan;
 
-    public BeanMaterias(int idMateria, String nombre, int horas, int cuatrimestre, String clasificacion, int noUnidades, int orden, BeanPlanesEstudio idPlan) {
+
+    public BeanMaterias() {
+    }
+
+    public BeanMaterias(String idMateria, String nombre, int horas, int cuatrimestre, String clasificacion, int noUnidades, int orden, BeanPlanesEstudio idPlan) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.horas = horas;
@@ -31,11 +35,11 @@ public class BeanMaterias {
         this.idPlan = idPlan;
     }
 
-    public int getIdMateria() {
+    public String getIdMateria() {
         return idMateria;
     }
 
-    public void setIdMateria(int idMateria) {
+    public void setIdMateria(String idMateria) {
         this.idMateria = idMateria;
     }
 

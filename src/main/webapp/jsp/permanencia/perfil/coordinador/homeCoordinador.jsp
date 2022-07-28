@@ -143,7 +143,7 @@
                             <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
                         </li>
                         <li class="sidebar-search text-center" style="color: #fff;">
-                            <h5>Jazmin Isabel Rogel Arizmendi</h5>
+                            <h5>${sessionScope.datosPersonales.nombres} ${sessionScope.datosPersonales.aPaterno} ${sessionScope.datosPersonales.aMaterno}</h5>
                             <h4>Coordinador</h4>
                         </li>
                         <li>

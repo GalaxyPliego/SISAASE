@@ -27,10 +27,10 @@
         <action name="perfilAlumno" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
-        <action name="perfilCoordinador" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="perfilCoordinador" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
         </action>
-        <action name="perfilDocente" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="perfilDocente" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
         </action>
         <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
@@ -45,12 +45,22 @@
         <action name="modificarPerfilAlumno" method="modificarPerfilAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
+        <action name="modificarPerfilProfesor" method="modificarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
+        </action>
         <action name="modificarContrasexa" method="modificarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+            <result type="json"></result>
         </action>
         <action name="recuperarContrasexa" method="recuperarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json"/>
         </action>
+        <action name="contrasexaRecuperada" method="contrasexaRecuperada" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
+        <action name="cambiarContrasexa">
+            <result>/jsp/cambiarContrasexa.jsp</result>
+        </action>
+
         <action name="horario">
             <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
         </action>
@@ -107,7 +117,10 @@
         <default-interceptor-ref name="session"/>
         <global-results>
             <result name="notFound" type="httpheader">
-                <param name="error">403</param>
+                <param name="error">404</param>
+            </result>
+            <result name="notAuthorized" type="httpheader">
+                <param name="error">401</param>
             </result>
             <result name="loginRequired">/index.jsp</result>
         </global-results>

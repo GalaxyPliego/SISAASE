@@ -16,6 +16,7 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
         $scope.txtBtnIniciar = "Iniciando...";
         $scope.btnIniciar = false;
     }
+
     $scope.recuperarContrasexa = function () {
         console.log("aaaaaa")
         SweetAlert.swal({
@@ -53,6 +54,51 @@ sisa.controller("ControlLogin", ['$rootScope', '$scope', '$http', 'SweetAlert', 
                             type: "error",
                             title: "Usuario inválido.",
                             text: " No existe un usuario con este correo electrónico, por favor solicita ayuda a soporte técnico."
+                        });
+                    }
+                }).error($rootScope.errorhttp);
+            }
+        });
+    };
+
+    $scope.contrasexaRecuperada = function () {
+        SweetAlert.swal({
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar",
+            type: "info",
+            title: "¿Estás seguro?",
+            text: "Se realizará el cambio de contraseña."
+        }, function (isConfirm) {
+            const valores = window.location.search;
+            const urlParams = new URLSearchParams(valores);
+            let codigoSeguridad = urlParams.get('codigoSeguridad');
+            $scope.usuario.codigoSeguridad = codigoSeguridad;
+            if (isConfirm) {
+                $http({
+                    method: 'POST',
+                    url: '/SISAASE_war_exploded/contrasexaRecuperada',
+                    data: 'data=' + angular.toJson($scope.usuario)
+                }).success(function (data) {
+                    console.log(data)
+                    if (data.respuesta === "ok") {
+                        SweetAlert.swal({
+                            title: "Recuperación existosa",
+                            text: "A continuación inicia sesión de nuevo.",
+                            type: "info"
+                        });
+                        $scope.email = '';
+                        setTimeout(function () {
+                            window.location.replace("/SISAASE_war_exploded/index");
+                        }, 6000);
+                    } else if (data.respuesta === "error") {
+                        SweetAlert.swal({
+                            timer: 6000,
+                            type: "error",
+                            title: "Error al recuperar contraseña.",
+                            text: " El código ha expirado o no es valido, intentalo de nuevo."
                         });
                     }
                 }).error($rootScope.errorhttp);

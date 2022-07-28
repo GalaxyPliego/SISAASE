@@ -306,20 +306,6 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
     $scope.consultarPerfilProfesor = function () {
         $http({method: 'POST', url: '/SISAASE_war_exploded/consultarPerfilProfesor'}).success(function (data) {
             $scope.perfil = data.profesor;
-            $scope.contrasenaRestablecida = data.contrasenaRestablecida;
-            if ($scope.contrasenaRestablecida === "true" || $scope.contrasenaRestablecida === true) {
-                $scope.mostrarPanelDatosProfesor = false;
-                SweetAlert.swal({
-                    title: "¡Cuidado!",
-                    text: "Hemos detectado que tu contraseña es igual a tu nombre de usuario, por seguridad, debes cambiarla para acceder a las funcionalidades del sistema.",
-                    type: "warning",
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Aceptar",
-                    closeOnConfirm: true
-                });
-            } else {
-                $scope.mostrarPanelDatosProfesor = true;
-            }
         }).error($rootScope.errorhttp);
     };
 
@@ -342,11 +328,12 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
             if (isConfirm) {
                 $scope.perfil.semblanza = $scope.perfil.semblanza.replace(/#|%/g, "%25");
                 $scope.perfil.semblanza = $scope.perfil.semblanza.replace(/#|&/g, "%26");
-                var profesor = angular.toJson($scope.perfil);
+                $scope.usuario = $scope.perfil
+                let profesor = angular.toJson($scope.usuario);
                 $http({
                     method: 'POST',
                     url: '/SISAASE_war_exploded/modificarPerfilProfesor',
-                    data: 'parametros=' + profesor
+                    data: 'data=' + profesor
                 }).success(function (data) {
                     if (data.respuesta === "ok") {
                         SweetAlert.swal({timer: 3000, type: "success", title: "Perfil actualizado correctamente."});
