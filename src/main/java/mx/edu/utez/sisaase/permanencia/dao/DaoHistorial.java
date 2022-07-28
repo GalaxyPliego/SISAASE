@@ -17,37 +17,6 @@ public class DaoHistorial {
     ResultSet rs;
 
     /* == > COORDINADOR < == */
-    public List<BeanAsesorias> consultarResumenHistorial(){
-        List<BeanAsesorias> listAsesorias = new ArrayList<>();
-
-        return listAsesorias;
-    }
-
-    public List<BeanAsesorias> consultarHisotrialDetallado(){
-        List<BeanAsesorias> listAsesorias = new ArrayList<>();
-        return listAsesorias;
-    }
-
-    public List<BeanAsesorias> consultarHisotrialGeneral(){
-        List<BeanAsesorias> listAsesorias = new ArrayList<>();
-
-        return listAsesorias;
-    }
-
-    /* == > ALUMNO < == */
-    public List<BeanAsesorias> consultarHistorialAlumno(){
-        List<BeanAsesorias> listAsesorias = new ArrayList<>();
-
-        return listAsesorias;
-    }
-
-    /* == > PROFESOR < == */
-    public List<BeanAsesorias> consultarHistorialProfesor(){
-        List<BeanAsesorias> listAsesorias = new ArrayList<>();
-
-        return listAsesorias;
-    }
-
     public List<BeanPeriodoCuatrimestral> findPeriodoCuatrimestral() throws SQLException {
         List<BeanPeriodoCuatrimestral> listPeriodoCuatrimestral = new ArrayList<>();
         try{
@@ -226,6 +195,120 @@ public class DaoHistorial {
         }
         System.out.println("==> " + listHistorialDetallado);
         return listHistorialDetallado;
+    }
+
+    public List<BeanAsesorias> findHistorialAlumno() throws SQLException {
+        List<BeanAsesorias> listHistorialAlumno = new ArrayList<>();
+        try{
+            connection = ConnectionMysql.getConnection();
+            String script = "\tSELECT ase.fechaAsesoria, ase.horarioSolicitado, ase.duracion, p.Nombres as nombreProfesor, p.aPaterno as aPaternoProfesor,\n" +
+                    "\tm.Nombre as asignatura, ase.tema, \n" +
+                    "\tea.nombre as estado, ase.idPeriodoCuatrimestral as periodo,\n" +
+                    "\tase.aclaracionDudas as aclaracionDudas\n" +
+                    "\tFROM alumnoinscrito ai\n" +
+                    "\tJOIN carrera ca ON ai.idCarrera = ca.idCarrera \n" +
+                    "\tJOIN asesorias ase ON ai.matricula = ase.matricula\n" +
+                    "\tJOIN profesor p ON ase.idProfesor = p.idProfesor\n" +
+                    "\tJOIN materias m ON ase.idMateria = m.idMateria\n" +
+                    "\tJOIN estadoasesoria ea ON ase.idEstadoAsesoria = ea.idEstadoAsesoria\n" +
+                    "\tJOIN periodo_cuatrimestral pc ON ase.idPeriodoCuatrimestral = pc.idPeriodoCuatrimestral\n" +
+                    "\tWHERE ase.idPeriodoCuatrimestral = ? AND ase.matricula = ?;";
+            pstm = connection.prepareStatement(script);
+            pstm.setInt(1, 1);
+            pstm.setString(2, "20203tn129");
+            rs = pstm.executeQuery();
+            while (rs.next()){
+                BeanAsesorias asesoria = new BeanAsesorias();
+                BeanProfesor profesor = new BeanProfesor();
+                BeanMaterias materia = new BeanMaterias();
+                BeanEstadoAsesoria estadoAsesoria = new BeanEstadoAsesoria();
+
+                asesoria.setFechaAsesoria(rs.getString("fechaAsesoria"));
+                asesoria.setHorarioSolicitado(rs.getString("horarioSolicitado"));
+                asesoria.setDuracion(rs.getInt("duracion"));
+                asesoria.setTema(rs.getString("tema"));
+                asesoria.setAclaracionDudas(rs.getInt("aclaracionDudas"));
+
+                estadoAsesoria.setNombre(rs.getString("estado"));
+                asesoria.setIdEstadoAsesoria(estadoAsesoria);
+
+                profesor.setNombres(rs.getString("nombreProfesor"));
+                profesor.setaPaterno(rs.getString("aPaternoProfesor"));
+                asesoria.setIdProfesor(profesor);
+
+                materia.setNombre(rs.getString("asignatura"));
+                asesoria.setIdMateria(materia);
+                listHistorialAlumno.add(asesoria);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        System.out.println("==> " + listHistorialAlumno);
+        return listHistorialAlumno;
+    }
+
+    public List<BeanAsesorias> findHistorialDocente() throws SQLException {
+        List<BeanAsesorias> listHistorialDocente = new ArrayList<>();
+        try{
+            connection = ConnectionMysql.getConnection();
+            String script = "\tSELECT ase.fechaAsesoria, ai.matricula, ai.Nombres, ai.aPaterno, m.Nombre as asignatura, ase.tema, ea.nombre as estado, \n" +
+                    "    ai.nombres as nombresAlumno, ai.matricula, ca.nombrecarrera, g.cuatrimestre, g.grupo, ase.riesgo,\n" +
+                    "    ase.horarioSolicitado, ase.duracion, ase.idPeriodoCuatrimestral as periodo,\n" +
+                    "\tase.aclaracionDudas as aclaracionDudas, ea.nombre as estadoAsesoria, ase.dudasEspecificas, ase.motivosCancelacion, ase.motivosRechazo\n" +
+                    "\tFROM alumnoinscrito ai\n" +
+                    "\tJOIN carrera ca ON ai.idCarrera = ca.idCarrera \n" +
+                    "  JOIN grupos g ON ai.idGrupoActual = g.idGrupo\n" +
+                    "\tJOIN asesorias ase ON ai.matricula = ase.matricula\n" +
+                    "\tJOIN profesor p ON ase.idProfesor = p.idProfesor\n" +
+                    "\tJOIN materias m ON ase.idMateria = m.idMateria\n" +
+                    "\tJOIN estadoasesoria ea ON ase.idEstadoAsesoria = ea.idEstadoAsesoria\n" +
+                    "\tJOIN periodo_cuatrimestral pc ON ase.idPeriodoCuatrimestral = pc.idPeriodoCuatrimestral\n" +
+                    "\tWHERE ase.idPeriodoCuatrimestral = ? AND ase.idProfesor = ?;";
+            pstm = connection.prepareStatement(script);
+            pstm.setInt(1, 1);
+            pstm.setInt(2, 1);
+            rs = pstm.executeQuery();
+            while (rs.next()){
+                BeanAlumnoInscrito alumnoInscrito = new BeanAlumnoInscrito();
+                BeanAsesorias asesoria = new BeanAsesorias();
+                BeanMaterias materia = new BeanMaterias();
+                BeanGrupos grupo = new BeanGrupos();
+                BeanEstadoAsesoria estadoAsesoria = new BeanEstadoAsesoria();
+                BeanCarrera carrera = new BeanCarrera();
+
+                alumnoInscrito.setMatricula(rs.getString("matricula"));
+                alumnoInscrito.setNombres(rs.getString("nombresAlumno"));
+                alumnoInscrito.setaPaterno(rs.getString("aPaterno"));
+                carrera.setNombreCarrera(rs.getString("nombrecarrera"));
+                grupo.setCuatrimestre(rs.getInt("cuatrimestre"));
+                grupo.setGrupo(rs.getString("grupo"));
+                alumnoInscrito.setIdGrupoActual(grupo);
+                asesoria.setBeanCarrera(carrera);
+                asesoria.setMatricula(alumnoInscrito);
+                asesoria.setFechaAsesoria(rs.getString("fechaAsesoria"));
+                asesoria.setHorarioSolicitado(rs.getString("horarioSolicitado"));
+                asesoria.setDuracion(rs.getInt("duracion"));
+                materia.setNombre(rs.getString("asignatura"));
+                asesoria.setIdMateria(materia);
+                asesoria.setTema(rs.getString("tema"));
+                asesoria.setAclaracionDudas(rs.getInt("aclaracionDudas"));
+                estadoAsesoria.setNombre(rs.getString("estado"));
+                asesoria.setIdEstadoAsesoria(estadoAsesoria);
+                asesoria.setDudasEspecificas(rs.getString("dudasEspecificas"));
+                asesoria.setMotivosCancelacion(rs.getString("motivosCancelacion"));
+                asesoria.setMotivosRechazo(rs.getString("motivosRechazo"));
+
+                listHistorialDocente.add(asesoria);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        System.out.println("==> " + listHistorialDocente);
+        return listHistorialDocente;
     }
 
     private void closeConnection() throws SQLException{

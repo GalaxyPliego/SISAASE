@@ -25,6 +25,7 @@ public class BeanAsesorias {
     private String rolCancelacion;
 
     private int noAsesorias;
+    private BeanCarrera beanCarrera;
 
     public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion) {
         this.idAsesoria = idAsesoria;
@@ -74,6 +75,14 @@ public class BeanAsesorias {
     public BeanAsesorias(BeanAlumnoInscrito matricula, int noAsesorias) {
         this.matricula = matricula;
         this.noAsesorias = noAsesorias;
+    }
+
+    public BeanCarrera getBeanCarrera() {
+        return beanCarrera;
+    }
+
+    public void setBeanCarrera(BeanCarrera beanCarrera) {
+        this.beanCarrera = beanCarrera;
     }
 
     public String getRolCancelacion() {

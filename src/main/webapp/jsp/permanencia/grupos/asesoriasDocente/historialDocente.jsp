@@ -176,19 +176,18 @@
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4">
                         <!-- filtrado con un select por periodo cuatrimestral -->
-                        <div class="form-group">
-                            <label for="periodo">Periodo Cuatrimestral:</label>
-                            <select class="form-control" id="periodo" ng-model="periodo" ng-change="cambioPeriodo()">
+                        <div class="form-group" ng-init="findPeriodoCuatrimestral()">
+                            <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
+                            <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
                                 <option value="">Seleccione un periodo</option>
-                                <option >Opcion 1</option>
-                                <option >Opcion 2</option>
+                                <option value="" ></option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
                             </select>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table st-safe-src="rowCollection" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
+                            <table ng-init="findHistorialDocente()" st-safe-src="arrayHistorialDocente" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <th>#</th>
@@ -212,16 +211,16 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <tr ng-repeat="row in displayCollection | orderBy : 'fecha'" class="ng-scope">
+                                <tr ng-repeat="historial in displayCollection | orderBy : 'fecha'" class="ng-scope">
 
                                     <td ng-bind="$index + 1"> </td>
-                                    <td ng-bind="row.fecha"></td>
-                                    <td ng-bind="row.matricula"></td>
-                                    <td ng-bind="row.alumno"></td>
-                                    <td ng-bind="row.asignatura"></td>
-                                    <td ng-bind="row.tema"></td>
-                                    <td ng-bind="row.estado "></td>
-                                    <td class="text-center" style="color: #009574; font-size: 18px"> <i ng-click="s" data-toggle="modal" data-target="#modalDetails"  class="fa fa-search-plus" aria-hidden="true" style="cursor: pointer"></i> </td>
+                                    <td ng-bind="historial.fechaAsesoria"></td>
+                                    <td ng-bind="historial.matricula.matricula"></td>
+                                    <td ng-bind="(historial.matricula.nombres) + ' ' + (historial.matricula.aPaterno)"></td>
+                                    <td ng-bind="historial.idMateria.nombre"></td>
+                                    <td ng-bind="historial.tema"></td>
+                                    <td ng-bind="historial.idEstadoAsesoria.nombre"></td>
+                                    <td class="text-center" style="color: #009574; font-size: 18px"> <i ng-click="detailHistorialModal(historial)" data-target="#modalDetails"  class="fa fa-search-plus" style="cursor: pointer"></i> </td>
 
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 </tbody>
@@ -241,7 +240,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade bs-example-modal-lg" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails" >
+    <div class="modal fade bs-example-modal-lg" id="modalDetails" tabindex="-1" aria-labelledby="modalDetails" aria-hidden="true">
         <div class="modal-dialog modal-lg" >
             <div class="modal-content" style="background-color: #F2F2F2 ">
                 <div class="modal-header" style="background-color: #345177; padding-left: 30px; padding-right: 30px;">
@@ -254,38 +253,38 @@
                         <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Nombre</label>
-                                <p class="text__modal">Carlos Ricardo Espinoza Pliego</p>
+                                <p class="text__modal" ng-bind="(detailHistorialDocente.matricula.nombres) + ' ' + (detailHistorialDocente.matricula.aPaterno)">{{}}</p>
 
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Matrícula</label>
-                                <p class="text__modal">20203TN129</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.matricula.matricula"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Carrera</label>
-                                <p class="text__modal">Ingeniería en Desarrollo y Gestión de Software</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.beanCarrera.nombreCarrera"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Grado</label>
-                                <p class="text__modal">6</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.idGrupoActual.cuatrimestre"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Grupo</label>
-                                <p class="text__modal">A</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.idGrupoActual.grupo"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Riesgo</label>
-                                <p class="text__modal">No</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.riesgo"></p>
                             </div>
                         </div>
                     </div>
@@ -295,62 +294,62 @@
                         <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Fecha</label>
-                                <p class="text__modal">24/01/2022</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.fechaAsesoria"></p>
 
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Hora</label>
-                                <p class="text__modal">13:00 - 14:00</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.horarioSolicitado"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12 " style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Duración (minutos) </label>
-                                <p class="text__modal">44</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.duracion"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Asignatura</label>
-                                <p class="text__modal">Base de Datos</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.idMateria.nombre"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Tema</label>
-                                <p class="text__modal">Consultas Avanzadas</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.tema"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">¿Resolvió dudas?</label>
-                                <p class="text__modal">No</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.aclaracionDudas"></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Estado</label>
-                                <p class="text__modal">Pendiente</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.idEstadoAsesoria.nombre"></p>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Dudas específicas</label>
-                                <p class="text__modal">Estructura básica de las consultas y casos de uso en los que se pueden utilizar</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.dudasEspecificas"></p>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Motivos de Cancelación</label>
-                                <p class="text__modal">Tuve una reunión de imprevisto muy importante, una disculpa de antemano. Puedes agendar otra asesoría en estos días, saludos.</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.motivosCancelacion"></p>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px" >
                             <div class="form-group">
                                 <label for="" class="label__modal" >Motivos de Rechazo</label>
-                                <p class="text__modal">Ese día ya tengo ocupado esa hora para otras asesorias, puedes solicitar otra en estos días.</p>
+                                <p class="text__modal" ng-bind="detailHistorialDocente.motivosRechazo"></p>
                             </div>
                         </div>
                     </div>
@@ -393,7 +392,7 @@
 
 
 <!--Script Angular Perfil-->
-<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/asesoriasDocente/historialDocente.js"></script>
+<script src="/SISAASE_war_exploded/js/control/permanencia/grupos/gestionHistorial/gestionHistorial.js"></script>
 
 
 <script src="/SISAASE_war_exploded/js/sweetalert.min_1.js"></script>

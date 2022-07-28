@@ -4,6 +4,7 @@ import mx.edu.utez.sisaase.permanencia.bean.BeanAsesorias;
 import mx.edu.utez.sisaase.permanencia.bean.BeanCarrera;
 import mx.edu.utez.sisaase.permanencia.bean.BeanPeriodoCuatrimestral;
 import mx.edu.utez.sisaase.permanencia.dao.DaoHistorial;
+import org.apache.struts2.components.Bean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,6 +26,12 @@ public class ActionHistorial {
 
     private List<BeanAsesorias> listHistorialGeneral = new ArrayList<>();
     private BeanAsesorias historialGeneral;
+
+    private List<BeanAsesorias> listHistorialAlumno = new ArrayList<>();
+    private BeanAsesorias historialAlumno;
+
+    private List<BeanAsesorias> listHistorialDocente = new ArrayList<>();
+    private BeanAsesorias historialDocente;
 
     /* == > COORDINADOR < == */
 
@@ -48,25 +55,12 @@ public class ActionHistorial {
         return SUCCESS;
     }
 
-    public String consultarResumenHistorial(){
+    public String findHistorialAlumno() throws SQLException {
+        setListHistorialAlumno(new DaoHistorial().findHistorialAlumno());
         return SUCCESS;
     }
-
-    public String consultarHisotrialDetallado(){
-        return SUCCESS;
-    }
-
-    public String  consultarHisotrialGeneral(){
-        return SUCCESS;
-    }
-
-    /* == > ALUMNO < == */
-    public String consultarHistorialAlumno(){
-        return SUCCESS;
-    }
-
-    /* == > PROFESOR < == */
-    public String consultarHistorialProfesor(){
+    public String findHistorialDocente() throws SQLException {
+        setListHistorialDocente(new DaoHistorial().findHistorialDocente());
         return SUCCESS;
     }
 
@@ -142,5 +136,37 @@ public class ActionHistorial {
 
     public void setHistorialGeneral(BeanAsesorias historialGeneral) {
         this.historialGeneral = historialGeneral;
+    }
+
+    public List<BeanAsesorias> getListHistorialAlumno() {
+        return listHistorialAlumno;
+    }
+
+    public void setListHistorialAlumno(List<BeanAsesorias> listHistorialAlumno) {
+        this.listHistorialAlumno = listHistorialAlumno;
+    }
+
+    public BeanAsesorias getHistorialAlumno() {
+        return historialAlumno;
+    }
+
+    public void setHistorialAlumno(BeanAsesorias historialAlumno) {
+        this.historialAlumno = historialAlumno;
+    }
+
+    public List<BeanAsesorias> getListHistorialDocente() {
+        return listHistorialDocente;
+    }
+
+    public void setListHistorialDocente(List<BeanAsesorias> listHistorialDocente) {
+        this.listHistorialDocente = listHistorialDocente;
+    }
+
+    public BeanAsesorias getHistorialDocente() {
+        return historialDocente;
+    }
+
+    public void setHistorialDocente(BeanAsesorias historialDocente) {
+        this.historialDocente = historialDocente;
     }
 }

@@ -56,6 +56,16 @@
         </action>
 
         <!-- COORDINADOR -->
+        <action name="coordinador">
+            <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
+        </action>
+        <action name="historialDetallado">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialDetallado.jsp</result>
+        </action>
+
+        <action name="historialGeneral">
+            <result>/jsp/permanencia/grupos/gestionHistorial/historialGeneral.jsp</result>
+        </action>
         <!-- RESUMEN -->
         <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
@@ -66,40 +76,36 @@
             <result type="json"/>
         </action>
 
-
-            <!-- HISTORIAL GENERAL -->
-                <action name="findCarreras" method="findCarreras" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
-                    <result type="json"/>
-                </action>
-                <action name="findHistorialGeneral" method="findHistorialGeneral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
-                    <result type="json"/>
-                </action>
-
-
-        <action name="coordinador">
-            <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
+        <!-- HISTORIAL GENERAL -->
+        <action name="findCarreras" method="findCarreras" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
         </action>
-
-        <action name="historialDetallado">
-            <result>/jsp/permanencia/grupos/gestionHistorial/historialDetallado.jsp</result>
+        <action name="findHistorialGeneral" method="findHistorialGeneral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
         </action>
-
-        <action name="historialGeneral">
-            <result>/jsp/permanencia/grupos/gestionHistorial/historialGeneral.jsp</result>
-        </action>
-        <!-- +++++++++++++++++++ -->
 
         <!-- ALUMNO -->
         <action name="historialAlumno">
             <result>/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp</result>
         </action>
+        <action name="historial" method="findHistorialAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
         <!-- +++++++++++++++++++ -->
 
         <!-- DOCENTE -->
-        <action name="historialDocente">
+        <action name="pagehistorialDocente">
             <result>/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp</result>
         </action>
+        <action name="historialDocente" method="findHistorialDocente" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
         <!-- +++++++++++++++++++ -->
+
+
+
+
+
 
 
     </package>
