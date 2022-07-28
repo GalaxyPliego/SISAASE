@@ -2,6 +2,7 @@ package mx.edu.utez.sisaase.permanencia.dao;
 
 import mx.edu.utez.sisaase.permanencia.bean.*;
 import mx.edu.utez.sisaase.utils.ConnectionMysql;
+import mx.edu.utez.sisaase.utils.SendEmail;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpSession;
@@ -62,6 +63,12 @@ public class DaoUsuario {
                             session.setAttribute("rol", roles.get(0).getIdRol());
                             session.setAttribute("rolView", roles.get(0).getNombreRol());
                             return "docente";
+                        }else if (roles.get(0).getNombreRol().equals("coordinador")) {
+                            HttpSession session = ServletActionContext.getRequest().getSession();
+                            session.setAttribute("usuario", beanUsuario);
+                            session.setAttribute("rol", roles.get(0).getIdRol());
+                            session.setAttribute("rolView", roles.get(0).getNombreRol());
+                            return "coordinador";
                         }
                     }
 
@@ -125,7 +132,7 @@ public class DaoUsuario {
                 if (usuario.getContrasena().equals(rs.getString("Contrasena"))){
                     String query = "UPDATE usuario SET Contrasena=? where Usuario = ?;";
                     pstm = connection.prepareStatement(query);
-                    pstm.setString(1, usuario.getContrasena());
+                    pstm.setString(1, usuario.getUsuario());
                     pstm.setString(2, beanUsuario.getUsuario());
                     status = pstm.executeUpdate()==1;
                 }else{
@@ -138,6 +145,44 @@ public class DaoUsuario {
             closeConnection();
         }
         return status;
+    }
+    public boolean recuperarContrasexa(BeanUsuario usuario) throws SQLException {
+
+        try {
+            connection=ConnectionMysql.getConnection();
+            String comprobar="select Email from alumnoinscrito where Email=?;";
+            pstm = connection.prepareStatement(comprobar);
+            pstm.setString(1, usuario.getUsuario());
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                if(new SendEmail().recoveryPassword(usuario)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                connection=ConnectionMysql.getConnection();
+                String comprobarProfesor="select emailPart from profesor where emailPart=?;";
+                pstm = connection.prepareStatement(comprobar);
+                pstm.setString(1, usuario.getUsuario());
+                rs = pstm.executeQuery();
+                if(rs.next()){
+                    if(new SendEmail().recoveryPassword(usuario)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else {
+                    return false;
+                }
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+
     }
     public BeanAlumnoInscrito consultarPerfil() throws SQLException {
         try{
@@ -260,10 +305,6 @@ public class DaoUsuario {
         return null;
     }
 
-    public boolean recuperarContrasexa(BeanUsuario beanUsuario) throws SQLException {
-        boolean result = false;
-        return result;
-    }
 
     public boolean nuevaContrasexa(BeanUsuario beanUsuario) throws SQLException {
         boolean result = false;

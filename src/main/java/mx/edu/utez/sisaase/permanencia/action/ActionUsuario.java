@@ -81,6 +81,8 @@ public class ActionUsuario {
             return "alumno";
         }else if(result.equals("docente")){
             return "docente";
+        }else if(result.equals("coordinador")){
+            return "coordinador";
         }else{
             return ERROR;
         }
@@ -105,9 +107,20 @@ public class ActionUsuario {
         }
 
     }
+    public String recuperarContrasexa() throws SQLException {
+        beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
+        if(new DaoUsuario().recuperarContrasexa(beanUsuario)){
+            respuesta="ok";
+            return SUCCESS;
+        }else{
+            respuesta="error";
+            return ERROR;
+        }
+    }
 
     public String modificarContrasexa() throws SQLException {
         beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
+        System.out.println(beanUsuario.getUsuario());
         if(new DaoUsuario().modificarContrasexa(beanUsuario)){
             respuesta="ok";
             return SUCCESS;
@@ -120,9 +133,6 @@ public class ActionUsuario {
     public String cerrarSesion() throws SQLException {
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.invalidate();
-        return SUCCESS;
-    }
-    public String recuperarContrasexa() throws SQLException {
         return SUCCESS;
     }
     public String nuevaContrasexa() throws SQLException {
