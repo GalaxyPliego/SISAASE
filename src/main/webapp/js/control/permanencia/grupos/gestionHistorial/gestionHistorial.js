@@ -63,6 +63,17 @@ sisa.controller("historialGeneral", ['$rootScope', '$scope', '$http', 'SweetAler
             console.log($scope.arrayHistorialGeneral)
         })
     }
+
+    $scope.detailMotivosCancelacion = (historial) =>{
+        $scope.detailMotivosCancelacion = angular.copy(historial)
+        $('#modalDetallesCancelacion').modal('toggle')
+    }
+
+    $scope.detailMotivosRechazo = (historial) =>{
+        $scope.detailMotivosRechazo = angular.copy(historial)
+        $('#modalDetallesCancelacion').modal('toggle')
+    }
+
     $scope.predicates = ['matricula', 'alumno', 'sexo', 'cautrimestre', 'grupo', 'riesgo', 'fecha', 'docente', 'asignatura', 'estado'];
     $scope.selectedPredicate = $scope.predicates[0];
 
@@ -150,7 +161,7 @@ sisa.controller("historialDocente", ['$rootScope', '$scope', '$http', 'SweetAler
     $scope.findHistorialDocente = () => {
         console.log("Entro al findHistorialDocente")
         $http({
-            method: 'GET',
+            method: 'POST',
             url: 'http://localhost:8080/SISAASE_war_exploded/historialDocente'
         }).then(function(response){
             console.log(response)
@@ -180,5 +191,19 @@ sisa.controller("historialDocente", ['$rootScope', '$scope', '$http', 'SweetAler
         })
     }
 
+    $scope.cambioPeriodoCuatrimestral = (periodoCuatrimestral) => {
+        console.log("Entro al cambioPeriodoCuatrimestral")
+        $scope.periodoCuatrimestral = periodoCuatrimestral
+        console.log($scope.periodoCuatrimestral)
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/SISAASE_war_exploded/cambioHistorialDocente',
+            data: `data=${angular.toJson($scope.periodoCuatrimestral)}`
+        }).then((response) => {
+            const {data: {listHistorialDocente}} = response
+            $scope.arrayHistorialDocente = listHistorialDocente
+            console.log('historial docente' + "->" + $scope.arrayHistorialDocente)
+        })
+    }
 }]);
 

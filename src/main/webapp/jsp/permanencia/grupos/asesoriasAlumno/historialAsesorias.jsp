@@ -204,7 +204,7 @@
                                     <td ng-bind="historial.idMateria.nombre"></td>
                                     <td ng-bind="historial.tema "></td>
                                     <td ng-bind="historial.idEstadoAsesoria.nombre"></td>
-                                    <td ng-bind="historial.aclaracionDudas"></td>
+                                    <td><span ng-if="historial.aclaracionDudas == 0">No</span><span  ng-if="historial.aclaracionDudas == 1">Sí</span></td>
 
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 </tbody>

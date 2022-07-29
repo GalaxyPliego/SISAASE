@@ -110,6 +110,9 @@
         <action name="historialDocente" method="findHistorialDocente" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
+        <action name="cambioHistorialDocente" method="findHistorialDocente" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
         <!-- +++++++++++++++++++ -->
 
 

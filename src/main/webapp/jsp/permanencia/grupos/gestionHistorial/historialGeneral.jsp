@@ -241,7 +241,7 @@
                                     <td ng-cloak ng-bind="historial.idMateria.nombre"></td>
                                     <td ng-cloak ng-bind="historial.tema"></td>
                                     <td ng-cloak ><span ng-if="historial.aclaracionDudas == 0">No</span><span  ng-if="historial.aclaracionDudas == 1">Sí</span></td>
-                                    <td ng-cloak ng-bind="historial.idEstadoAsesoria.nombre"></td>
+                                    <td ng-cloak ng-bind="historial.idEstadoAsesoria.nombre"><span ng-if="historial.idEstadoAsesoria.nombre == 'Aceptada'">{{historial.idEstadoAsesoria.nombre}}</span><span  ng-if="historial.idEstadoAsesoria.nombre == 'Finalizada'">{{historial.idEstadoAsesoria.nombre}}</span><span  ng-if="historial.idEstadoAsesoria.nombre == 'Cacncelada'"><a ng-click="detailMotivosCancelacion(historial)" style="color: red">  {{historial.idEstadoAsesoria.nombre}}</a></span><span  ng-if="historial.idEstadoAsesoria.nombre == 'Rechazada'"><a ng-click="detailMotivosRechazo(historial)" style="color: red">  {{historial.idEstadoAsesoria.nombre}}</a></span></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
                                 </tbody>
                                 <tfoot>
@@ -259,6 +259,77 @@
         </div>
     </div>
     <!-- /#page-wrapper -->
+
+    <!-- Modal Cacncelacion -->
+    <div class="modal fade bs-example-modal-lg" id="modalDetallesCancelacion" tabindex="-1" aria-labelledby="modalDetails" aria-hidden="true">
+        <div class="modal-dialog modal-lg" >
+            <div class="modal-content" style="background-color: #F2F2F2 ">
+                <div class="modal-header" style="background-color: #345177; padding-left: 30px; padding-right: 30px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="color: white; font-weight: bold; margin:0px;">Información de Cancelación</h4>
+                </div>
+                <div class="modal-body" style="padding-left: 30px; padding-right: 30px; padding-bottom: 20px; padding-top: 20px;">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Cancelada por</label>
+                                <p class="text__modal" ng-bind="detailMotivosCancelacion.rolCancelacion"></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Hora de Cancelación</label>
+                                <p class="text__modal" ng-bind="detailMotivosCancelacion.horaCancelacion"></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Motivos de Cancelación</label>
+                                <p class="text__modal" ng-bind="detailMotivosCancelacion.motivosCancelacion"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: #676F77; color: white;">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Rechazo -->
+    <div class="modal fade bs-example-modal-lg" id="modalDetallesRechazo" tabindex="-1" aria-labelledby="modalDetails" aria-hidden="true">
+        <div class="modal-dialog modal-lg" >
+            <div class="modal-content" style="background-color: #F2F2F2 ">
+                <div class="modal-header" style="background-color: #345177; padding-left: 30px; padding-right: 30px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="color: white; font-weight: bold; margin:0px;">Información de Rechazo</h4>
+                </div>
+                <div class="modal-body" style="padding-left: 30px; padding-right: 30px; padding-bottom: 20px; padding-top: 20px;">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-12 " style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Rechazada por</label>
+                                <p class="text__modal" >Docente</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 10px">
+                            <div class="form-group">
+                                <label class="label__modal" for="">Motivos de Rechazo</label>
+                                <p class="text__modal" ng-bind="detailMotivosRechazo.motivosRechazo"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: #676F77; color: white;">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <script src="/SISAASE_war_exploded/components/jquery/dist/jquery.min.js"></script>

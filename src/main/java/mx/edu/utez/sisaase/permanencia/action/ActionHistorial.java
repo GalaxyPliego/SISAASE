@@ -1,5 +1,6 @@
 package mx.edu.utez.sisaase.permanencia.action;
 
+import com.google.gson.Gson;
 import mx.edu.utez.sisaase.permanencia.bean.BeanAsesorias;
 import mx.edu.utez.sisaase.permanencia.bean.BeanCarrera;
 import mx.edu.utez.sisaase.permanencia.bean.BeanPeriodoCuatrimestral;
@@ -33,6 +34,8 @@ public class ActionHistorial {
     private List<BeanAsesorias> listHistorialDocente = new ArrayList<>();
     private BeanAsesorias historialDocente;
 
+    private String data;
+
     /* == > COORDINADOR < == */
 
     public String findPeriodoCuatrimestral() throws SQLException {
@@ -46,7 +49,9 @@ public class ActionHistorial {
     }
 
     public String findHistorialDetallado() throws SQLException {
-        setListHistorialDetallado(new DaoHistorial().findHistorialDetallado());
+        periodoCuatrimestral = new Gson().fromJson(data, BeanPeriodoCuatrimestral.class);
+        System.out.println("DATA -> " + periodoCuatrimestral.toString());
+        setListHistorialDetallado(new DaoHistorial().findHistorialDetallado(periodoCuatrimestral.getIdPeriodoCuatrimestral()));
         return SUCCESS;
     }
 
@@ -61,6 +66,12 @@ public class ActionHistorial {
     }
     public String findHistorialDocente() throws SQLException {
         setListHistorialDocente(new DaoHistorial().findHistorialDocente());
+        return SUCCESS;
+    }
+    public String cambioHistorialDocente() throws SQLException {
+        periodoCuatrimestral = new Gson().fromJson(data, BeanPeriodoCuatrimestral.class);
+        System.out.println("DATA -> " + periodoCuatrimestral.toString());
+        setListHistorialDocente(new DaoHistorial().cambioHistorialDocente(periodoCuatrimestral.getIdPeriodoCuatrimestral()));
         return SUCCESS;
     }
 
@@ -168,5 +179,13 @@ public class ActionHistorial {
 
     public void setHistorialDocente(BeanAsesorias historialDocente) {
         this.historialDocente = historialDocente;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

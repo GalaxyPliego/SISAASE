@@ -178,7 +178,7 @@
                         <!-- filtrado con un select por periodo cuatrimestral -->
                         <div class="form-group" ng-init="findPeriodoCuatrimestral()">
                             <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
-                            <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
+                            <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodoCuatrimestral(periodoCuatrimestral)" >
                                 <option value="">Seleccione un periodo</option>
                                 <option value="" ></option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
@@ -284,7 +284,7 @@
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">Riesgo</label>
-                                <p class="text__modal" ng-bind="detailHistorialDocente.riesgo"></p>
+                                <p class="text__modal" ng-bind=""><span ng-if="detailHistorialDocente.riesgo == 0">No</span><span  ng-if="detailHistorialDocente.riesgo == 1">Sí</span></p>
                             </div>
                         </div>
                     </div>
@@ -325,7 +325,7 @@
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
                             <div class="form-group">
                                 <label class="label__modal" for="">¿Resolvió dudas?</label>
-                                <p class="text__modal" ng-bind="detailHistorialDocente.aclaracionDudas"></p>
+                                <p class="text__modal"><span ng-if="detailHistorialDocente.aclaracionDudas == 0">No</span><span  ng-if="detailHistorialDocente.aclaracionDudas == 1">Sí</span></p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-xs-12" style="margin-bottom: 10px">
@@ -341,16 +341,21 @@
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px">
-                            <div class="form-group">
-                                <label class="label__modal" for="">Motivos de Cancelación</label>
-                                <p class="text__modal" ng-bind="detailHistorialDocente.motivosCancelacion"></p>
-                            </div>
+                            <span ng-if="detailHistorialDocente.motivosCancelacion != null && detailHistorialDocente.motivosCancelacion != ''">
+                                <div class="form-group">
+                                    <label class="label__modal" for="">Motivos de Cancelación</label>
+                                    <p class="text__modal" ng-bind="detailHistorialDocente.motivosCancelacion" ng-class=""></p>
+                                </div>
+                            </span>
                         </div>
+
                         <div class="col-lg-8 col-md-6 col-xs-12" style="margin-bottom: 10px" >
-                            <div class="form-group">
-                                <label for="" class="label__modal" >Motivos de Rechazo</label>
-                                <p class="text__modal" ng-bind="detailHistorialDocente.motivosRechazo"></p>
-                            </div>
+                            <span ng-if="detailHistorialDocente.motivosRechazo != null && detailHistorialDocente.motivosRechazo != ''">
+                                <div class="form-group">
+                                    <label for="" class="label__modal" >Motivos de Rechazo</label>
+                                    <p class="text__modal" ng-bind="detailHistorialDocente.motivosRechazo"></p>
+                                </div>
+                            </span>
                         </div>
                     </div>
 
