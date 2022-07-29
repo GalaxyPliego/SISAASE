@@ -117,6 +117,38 @@ public class DaoUsuario {
         }
         return status;
     }
+
+    public boolean modificarPerfilProfesor(BeanProfesor profesor) throws SQLException {
+        boolean status = false;
+        try {
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            BeanUsuario beanUsuario = (BeanUsuario) session.getAttribute("usuario");
+
+            connection = ConnectionMysql.getConnection();
+            String query = "UPDATE profesor \n" +
+                    "SET aPaterno = ?, aMaterno=?,Nombres=?,EmailInst=?, emailPart =?,\n" +
+                    "telefono = ?, NivelMaxEstudios=?, Titulo=?, CURP=?,semblanza=?\n" +
+                    "where idProfesor = ?;";
+            pstm = connection.prepareStatement(query);
+            pstm.setString(1, profesor.getaPaterno());
+            pstm.setString(2, profesor.getaMaterno());
+            pstm.setString(3, profesor.getNombres());
+            pstm.setString(4, profesor.getEmailInst());
+            pstm.setString(5, profesor.getEmailPart());
+            pstm.setString(6, profesor.getTelefono());
+            pstm.setString(7, profesor.getNivelMaxEstudios());
+            pstm.setString(8, profesor.getTitulo());
+            pstm.setString(9, profesor.getCurp());
+            pstm.setString(10, profesor.getSemblanza());
+            pstm.setString(11, beanUsuario.getClaveIdentidad());
+            status = pstm.executeUpdate()==1;
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return status;
+    }
     public boolean modificarContrasexa(BeanUsuario usuario) throws SQLException {
         boolean status = false;
         try {
@@ -150,11 +182,12 @@ public class DaoUsuario {
 
         try {
             connection=ConnectionMysql.getConnection();
-            String comprobar="select Email from alumnoinscrito where Email=?;";
+            String comprobar="select Email,matricula from alumnoinscrito where Email=?;";
             pstm = connection.prepareStatement(comprobar);
             pstm.setString(1, usuario.getUsuario());
             rs = pstm.executeQuery();
             if(rs.next()){
+                usuario.setClaveIdentidad(rs.getString("matricula"));
                 if(new SendEmail().recoveryPassword(usuario)){
                     return true;
                 }else{
@@ -162,11 +195,12 @@ public class DaoUsuario {
                 }
             }else{
                 connection=ConnectionMysql.getConnection();
-                String comprobarProfesor="select emailPart from profesor where emailPart=?;";
-                pstm = connection.prepareStatement(comprobar);
+                String comprobarProfesor="select emailPart, idProfesor from profesor where emailPart=?;";
+                pstm = connection.prepareStatement(comprobarProfesor);
                 pstm.setString(1, usuario.getUsuario());
                 rs = pstm.executeQuery();
                 if(rs.next()){
+                    usuario.setClaveIdentidad(rs.getString("idProfesor"));
                     if(new SendEmail().recoveryPassword(usuario)){
                         return true;
                     }else{
@@ -259,6 +293,7 @@ public class DaoUsuario {
                 alumnoInscrito.setUnidadImss(rs.getString("alumnoinscrito.unidad_imss"));
 
             }
+            session.removeAttribute("datosPersonales");
             session.setAttribute("datosPersonales", alumnoInscrito);
             return alumnoInscrito;
         }catch (SQLException ex) {
@@ -294,7 +329,9 @@ public class DaoUsuario {
                 profesor.setCurp(rs.getString("profesor.CURP"));
                 profesor.setEstado(rs.getString("profesor.estado"));
                 profesor.setSexo(rs.getString("profesor.sexo"));
+                profesor.setTitulo(rs.getString("profesor.Titulo"));
             }
+            session.removeAttribute("datosPersonales");
             session.setAttribute("datosPersonales", profesor);
             return profesor;
         }catch (SQLException ex) {
@@ -311,9 +348,27 @@ public class DaoUsuario {
         return result;
     }
 
-    public boolean cambiarContrasexa(BeanUsuario beanUsuario) throws SQLException {
-        boolean result = false;
-        return result;
+    public boolean contrasexaRecuperada(BeanUsuario beanUsuario) throws SQLException {
+        try{
+            System.out.println(beanUsuario.getCodigoSeguridad());
+            connection = ConnectionMysql.getConnection();
+            String script = "UPDATE usuario SET codigoSeguridad=?, contrasena=? where codigoSeguridad=?;";
+            pstm = connection.prepareStatement(script);
+            pstm.setString(1, "");
+            pstm.setString(2, beanUsuario.getContrasena());
+            pstm.setString(3, beanUsuario.getCodigoSeguridad());
+            if(pstm.executeUpdate()==1){
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return false;
     }
 
     public boolean cambiarDatos(BeanUsuario beanUsuario) throws SQLException {

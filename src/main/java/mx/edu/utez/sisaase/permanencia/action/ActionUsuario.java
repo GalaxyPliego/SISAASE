@@ -107,6 +107,17 @@ public class ActionUsuario {
         }
 
     }
+    public String modificarPerfilProfesor() throws SQLException {
+        profesor = new Gson().fromJson(data,BeanProfesor.class);
+        if(new DaoUsuario().modificarPerfilProfesor(profesor)){
+            respuesta="ok";
+            return SUCCESS;
+        }else{
+            respuesta="error";
+            return ERROR;
+        }
+
+    }
     public String recuperarContrasexa() throws SQLException {
         beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
         if(new DaoUsuario().recuperarContrasexa(beanUsuario)){
@@ -120,7 +131,6 @@ public class ActionUsuario {
 
     public String modificarContrasexa() throws SQLException {
         beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
-        System.out.println(beanUsuario.getUsuario());
         if(new DaoUsuario().modificarContrasexa(beanUsuario)){
             respuesta="ok";
             return SUCCESS;
@@ -138,8 +148,15 @@ public class ActionUsuario {
     public String nuevaContrasexa() throws SQLException {
         return SUCCESS;
     }
-    public String cambiarContrasexa() throws SQLException {
-        return SUCCESS;
+    public String contrasexaRecuperada() throws SQLException {
+        beanUsuario = new Gson().fromJson(data,BeanUsuario.class);
+        if(new DaoUsuario().contrasexaRecuperada(beanUsuario)){
+            respuesta="ok";
+            return SUCCESS;
+        }else{
+            respuesta="error";
+            return ERROR;
+        }
     }
     public String cambiarDatos() throws SQLException {
         return SUCCESS;

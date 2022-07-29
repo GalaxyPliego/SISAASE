@@ -27,7 +27,8 @@ public class BeanAsesorias {
     private int noAsesorias;
     private BeanCarrera beanCarrera;
 
-    public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion) {
+
+    public BeanAsesorias(int idAsesoria, BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion, int noAsesorias, BeanCarrera beanCarrera) {
         this.idAsesoria = idAsesoria;
         this.matricula = matricula;
         this.idMateria = idMateria;
@@ -48,9 +49,11 @@ public class BeanAsesorias {
         this.fechaAsesoria = fechaAsesoria;
         this.horaCancelacion = horaCancelacion;
         this.rolCancelacion = rolCancelacion;
+        this.noAsesorias = noAsesorias;
+        this.beanCarrera = beanCarrera;
     }
 
-    public BeanAsesorias(BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion) {
+    public BeanAsesorias(BeanAlumnoInscrito matricula, BeanMaterias idMateria, BeanProfesor idProfesor, int duracion, BeanEstadoAsesoria idEstadoAsesoria, String tema, String dudasEspecificas, int aclaracionDudas, int asistenciaDocente, int asistenciaAlumno, String motivosCancelacion, String motivosRechazo, String horarioSolicitado, BeanDiaSemana idDiaSemana, BeanPeriodoCuatrimestral idPeriodoCuatrimestral, int riesgo, String fechaAsesoria, String horaCancelacion, String rolCancelacion, int noAsesorias, BeanCarrera beanCarrera) {
         this.matricula = matricula;
         this.idMateria = idMateria;
         this.idProfesor = idProfesor;
@@ -70,12 +73,15 @@ public class BeanAsesorias {
         this.fechaAsesoria = fechaAsesoria;
         this.horaCancelacion = horaCancelacion;
         this.rolCancelacion = rolCancelacion;
+        this.noAsesorias = noAsesorias;
+        this.beanCarrera = beanCarrera;
     }
 
     public BeanAsesorias(BeanAlumnoInscrito matricula, int noAsesorias) {
         this.matricula = matricula;
         this.noAsesorias = noAsesorias;
     }
+
 
     public BeanCarrera getBeanCarrera() {
         return beanCarrera;
