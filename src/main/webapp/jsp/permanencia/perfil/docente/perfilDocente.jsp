@@ -210,6 +210,10 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp"><i
+                                class="fa fa-clock-o"></i> Horarios </a>
+                    </li>
 
                 </ul>
             </div>

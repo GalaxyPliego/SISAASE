@@ -32,6 +32,11 @@ public class BeanEspecialidad {
 
     }
 
+    public BeanEspecialidad(int idEspecialidad, String descripcion) {
+        this.idEspecialidad = idEspecialidad;
+        this.descripcion = descripcion;
+    }
+
     public int getIdEspecialidad() {
         return idEspecialidad;
     }

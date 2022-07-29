@@ -5,14 +5,15 @@
 
 <struts>
 
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="true"/>
 
     <package name="basicstruts2" extends="struts-default, json-default, loginInterceptor">
 
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="iniciarSesion" method="iniciarSesion"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result name="alumno" type="redirectAction">
                 <param name="actionName">perfil</param>
             </result>
@@ -22,36 +23,44 @@
         <action name="perfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
-        <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="consultarPerfil" method="consultarPerfil"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json"></result>
         </action>
-        <action name="consultarPerfilProfesor" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="consultarPerfilProfesor" method="consultarPerfilProfesor"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json"/>
         </action>
         <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/index.jsp</result>
         </action>
-        <action name="modificarPerfilAlumno" method="modificarPerfilAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="modificarPerfilAlumno" method="modificarPerfilAlumno"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
-        <action name="modificarContrasexa" method="modificarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+        <action name="modificarContrasexa" method="modificarContrasexa"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
         </action>
         <action name="horario">
             <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
         </action>
+        <action name="materias">
+            <result>/jsp/permanencia/grupos/gestionHorarios/asignarMaterias.jsp</result>
+        </action>
 
         <!-- COORDINADOR -->
         <!-- RESUMEN -->
-        <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+        <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
 
         <!-- HISTORIAL DETALLADO -->
-        <action name="findHistorialDetallado" method="findHistorialDetallado" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+        <action name="findHistorialDetallado" method="findHistorialDetallado"
+                class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
-
 
 
         <action name="coordinador">
@@ -78,7 +87,17 @@
             <result>/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp</result>
         </action>
         <!-- +++++++++++++++++++ -->
-
+        <!--        HORARIOS-->
+        <!--LISTADO HORARIO-->
+        <action name="consultarHorarioAsesoria" method="consultarHorarioAsesoria" class="mx.edu.utez.sisaase.permanencia.action.ActionHorarioAsesoria">
+            <result type="json"/>
+        </action>
+        <action name="consultarPeriodoCuatrimestral" method="consultarPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHorarioAsesoria">
+            <result type="json"/>
+        </action>
+        <action name="consultarPlanesEstudio" method="consultarPlanesEstudio" class="mx.edu.utez.sisaase.permanencia.action.ActionMaterias">
+            <result type="json"/>
+        </action>
 
     </package>
     <package name="loginInterceptor" extends="struts-default">

@@ -35,6 +35,10 @@ public class BeanGeneracion {
 
     }
 
+    public BeanGeneracion(int idGeneracion) {
+        this.idGeneracion = idGeneracion;
+    }
+
     public int getIdGeneracion() {
         return idGeneracion;
     }

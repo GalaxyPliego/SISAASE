@@ -1,6 +1,11 @@
 const sisa = angular.module("sisa", ['oitozero.ngSweetAlert']);
-sisa.controller("materias", ['$scope', 'SweetAlert', function ($scope, SweetAlert) {
+sisa.controller("materias", ['$scope', 'SweetAlert', '$http', function ($scope, SweetAlert, $http) {
     console.log("ANGULAR JS")
+
+    $scope.arrayMaterias = []
+    $scope.arrayPlanes = []
+
+
     $scope.datosProc = [
         {
             planEstudios1: " Plan de estudios Procesos industriales área: Manufactura 2020",
@@ -553,6 +558,23 @@ sisa.controller("materias", ['$scope', 'SweetAlert', function ($scope, SweetAler
         },
 
     ]
+
+    $scope.consultarPlanesEstudio = ( ) =>{
+        console.log("-----------------------------")
+        console.log("ConsultarPlanesEstudio")
+        $http({
+            method: 'POST',
+            url: 'Sisa-Ase/consultarPlanesEstudio'
+        }).then(function (response){
+            const {data: {listPlanesEstudio}} = response
+            $scope.arrayMaterias = listPlanesEstudio;
+            $scope.arrayPlanes = listPlanesEstudio;
+            console.log("-------------------------------------")
+            console.log(response)
+        })
+    }
+
+
 
     $scope.guardarMaterias = () => {
         SweetAlert.swal({

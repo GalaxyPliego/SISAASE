@@ -4,6 +4,8 @@ sisa.controller("gestionhorarios", ['$scope', 'SweetAlert', '$http', function ($
 
     $scope.arrayHorario = []
 
+    $scope.arrayPeriodoCuatrimestral = []
+
     $scope.mostrarLeyenda = true;
 
     $scope.datos = [
@@ -95,6 +97,21 @@ sisa.controller("gestionhorarios", ['$scope', 'SweetAlert', '$http', function ($
             console.log(response)
         })
     }
+
+    $scope.consultarPeriodoCuatrimestral = ( ) =>{
+        console.log("-----------------------------")
+        console.log("ConsultarPeriodoCuatrimestral")
+        $http({
+            method: 'POST',
+            url: 'Sisa-Ase/consultarPeriodoCuatrimestral'
+        }).then(function (response){
+            const {data: {listPeriodoCuatrimestral}} = response
+            $scope.arrayPeriodoCuatrimestral = listPeriodoCuatrimestral;
+            console.log("-------------------------------------")
+            console.log(response)
+        })
+    }
+
 
     $scope.agregarHorario = (entrada) => {
         $scope.agregarHora = angular.copy(entrada)

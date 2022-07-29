@@ -232,12 +232,12 @@
                     <div class="col-md-12">
 
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
-                            <div class="panel panel-default">
+                            <div class="panel panel-default" ng-init="consultarPlanesEstudio()">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion"
                                            href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                                           ng-repeat="entrada in datosProc" ng-bind="entrada.planEstudios1">
+                                           ng-repeat="planes in arrayPlanes | limitTo:1" ng-bind="planes.carrera.nombreCarrera + '  ' + planes.especialidad.descripcion" ng-click="consultarPlanesEstudio(planes)">
                                         </a>
                                     </h4>
                                 </div>
@@ -254,10 +254,10 @@
                                                     <td>Selecciona</td>
                                                 </tr>
                                                 </thead>
-                                                <tr ng-repeat="entrada in datosProc">
+                                                <tr ng-repeat="materias in arrayMaterias">
                                                     <th ng-bind="$index+1"></th>
-                                                    <td ng-bind="entrada.materia"></td>
-                                                    <td ng-bind="entrada.cuatrimestre"></td>
+                                                    <td ng-bind="materias.materias.nombre"></td>
+                                                    <td ng-bind="materias.materias.cuatrimestre"></td>
                                                     <td>
                                                         <input type="checkbox">
                                                     </td>
@@ -267,80 +267,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                           href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"
-                                           ng-repeat="entrada in datosMeca" ng-bind="entrada.planEstudios1">
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-striped">
-                                                <thead style="background-color: #676f77 ; color: #fff">
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>Materia</td>
-                                                    <td>Cuatrimestre</td>
-                                                    <td>Selecciona</td>
-                                                </tr>
-                                                </thead>
-                                                <tr ng-repeat="entrada in datosMeca">
-                                                    <th ng-bind="$index+1"></th>
-                                                    <td ng-bind="entrada.materia"></td>
-                                                    <td ng-bind="entrada.cuatrimestre"></td>
-                                                    <td>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                           href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"
-                                           ng-repeat="entrada in datosMant" ng-bind="entrada.planEstudios1">
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-striped">
-                                                <thead style="background-color: #676f77 ; color: #fff">
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>Materia</td>
-                                                    <td>Cuatrimestre</td>
-                                                    <td>Selecciona</td>
-                                                </tr>
-                                                </thead>
-                                                <tr ng-repeat="entrada in datosMant">
-                                                    <th ng-bind="$index+1"></th>
-                                                    <td ng-bind="entrada.materia"></td>
-                                                    <td ng-bind="entrada.cuatrimestre"></td>
-                                                    <td>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

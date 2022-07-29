@@ -194,10 +194,10 @@
                     <div class="col-md-12">
 
 
-                        <div class="form-group">
+                        <div class="form-group" ng-init="consultarPeriodoCuatrimestral()">
                             <label>Periodo cuatrimestral: <span class="text-danger">*</span></label>
-                            <select class="form-control" required>
-                                <option ng-repeat="cuatrimestre in periodoCuatri" ng-bind="cuatrimestre.periodo"></option>
+                            <select class="form-control" name="periodo" ng-model="horario.nombreCuatrimestre" ng-options="horario.nombreCuatrimestre for horario in arrayPeriodoCuatrimestral track by horario.idPeriodoCuatrimestral" required>
+                                <option>Selecciona</option>
                             </select>
                         </div>
 

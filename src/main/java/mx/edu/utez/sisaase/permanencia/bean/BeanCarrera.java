@@ -25,6 +25,15 @@ public class BeanCarrera {
 
     }
 
+    public BeanCarrera(int idCarrera) {
+        this.idCarrera = idCarrera;
+    }
+
+    public BeanCarrera(int idCarrera, String nombreCarrera) {
+        this.idCarrera = idCarrera;
+        this.nombreCarrera = nombreCarrera;
+    }
+
     public BeanEspecialidad getIdEspecialidad() {
         return idEspecialidad;
     }

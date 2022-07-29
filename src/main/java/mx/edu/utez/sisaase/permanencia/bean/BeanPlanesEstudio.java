@@ -8,6 +8,15 @@ public class BeanPlanesEstudio {
     private BeanEspecialidad especialidad;
     private BeanCarrera carrera;
 
+    private BeanProfesorxCarrera profesorxCarrera;
+
+    private BeanPlanesxCarrera planesxCarrera;
+
+    private BeanProfesor profesor;
+
+    private BeanMaterias materias;
+
+
     public BeanPlanesEstudio() {
     }
 
@@ -26,6 +35,21 @@ public class BeanPlanesEstudio {
         this.estado = estado;
         this.especialidad = especialidad;
         this.carrera = carrera;
+    }
+
+    public BeanPlanesEstudio(int idPlan, int axoVigente, BeanEspecialidad especialidad, BeanCarrera carrera, BeanProfesorxCarrera profesorxCarrera, BeanPlanesxCarrera planesxCarrera, BeanProfesor profesor, BeanMaterias materias) {
+        this.idPlan = idPlan;
+        this.axoVigente = axoVigente;
+        this.especialidad = especialidad;
+        this.carrera = carrera;
+        this.profesorxCarrera = profesorxCarrera;
+        this.planesxCarrera = planesxCarrera;
+        this.profesor = profesor;
+        this.materias = materias;
+    }
+
+    public BeanPlanesEstudio(int idPlan) {
+        this.idPlan = idPlan;
     }
 
     public int getIdPlan() {
@@ -76,4 +100,35 @@ public class BeanPlanesEstudio {
         this.carrera = carrera;
     }
 
+    public BeanProfesorxCarrera getProfesorxCarrera() {
+        return profesorxCarrera;
+    }
+
+    public void setProfesorxCarrera(BeanProfesorxCarrera profesorxCarrera) {
+        this.profesorxCarrera = profesorxCarrera;
+    }
+
+    public BeanPlanesxCarrera getPlanesxCarrera() {
+        return planesxCarrera;
+    }
+
+    public void setPlanesxCarrera(BeanPlanesxCarrera planesxCarrera) {
+        this.planesxCarrera = planesxCarrera;
+    }
+
+    public BeanProfesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(BeanProfesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public BeanMaterias getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(BeanMaterias materias) {
+        this.materias = materias;
+    }
 }
