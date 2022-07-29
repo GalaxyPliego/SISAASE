@@ -7,7 +7,9 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,19 +79,54 @@ public class DaoAsesoria {
         return asesoriasList;
     }
 
-    public boolean isAceptada(BeanAsesorias asesoria) throws SQLException {
-
+    public static Map<String, String> isAceptada(BeanAsesorias asesoria) throws SQLException {
+        int errorIdAsesoria, errorEstado, estadoErroneo;
         boolean aceptada = false;
+        //Para los errores
+        Map<String, String> map = new HashMap<>();
 
         try {
             connection = ConnectionMysql.getConnection();
-            //HttpSession session = ServletActionContext.getRequest().getSession();
-//            BeanUsuario usuario = (BeanUsuario) session.getAttribute("usuario");
+            cstm = connection.prepareCall("{CALL actualizarEstadoRechazadaAceptada(?,?,?,?,?,?)}");
+            cstm.setInt(1, asesoria.getIdAsesoria());
+            cstm.setInt(2, asesoria.getIdEstadoAsesoria().getIdEstadoAsesoria());
+            cstm.setString(3, asesoria.getMotivosRechazo());
+            cstm.registerOutParameter(4, Types.INTEGER);
+            cstm.registerOutParameter(5, Types.INTEGER);
+            cstm.registerOutParameter(6, Types.INTEGER);
+            cstm.executeUpdate();
+            //rs solo para consultas
+            errorIdAsesoria = cstm.getInt(4);
+            errorEstado = cstm.getInt(5);
+            estadoErroneo = cstm.getInt(6);
+
+            if (errorIdAsesoria == 0 && errorEstado == 0){
+
+                if (estadoErroneo == 0){
+                    map.put("Exitoso","Asesoría aceptada exitosamente");
+                }else {
+                    map.put("Estado","El estado no es el correspondiente");
+                }
+
+            }else {
+
+                if (errorIdAsesoria == 1){
+                    map.put("Asesoria", "No existe la asesoría");
+                }
+
+                if (errorEstado == 1) {
+                    map.put("Estado", "No existe el estado");
+                }
+            }
+
         }catch (SQLException e){
+            map.put("Servidor","Ha ocurrido un error en el servidor");
             Logger.getLogger(DaoAsesoria.class.getName()).log(Level.SEVERE,"Ha ocurrido un error en el método isAceptada " + e);
+
         }finally {
             closeConnection();
         }
+        return map;
 
     }
 
@@ -107,9 +144,9 @@ public class DaoAsesoria {
 
 
     public static void main(String[] args) throws SQLException {
-        List<BeanAsesorias> datos = consultarAsesoriasPendientesDocente("1");
+        /*List<BeanAsesorias> datos = consultarAsesoriasPendientesDocente("1");
         for (BeanAsesorias asesoria : datos) {
-            System.out.println("Id: " + asesoria.getIdAsesoria());
+            //System.out.println("Id: " + asesoria.getIdAsesoria());
             System.out.println("Nombres: " + asesoria.getMatricula().getNombres());
             System.out.println("Apellido Paterno: " + asesoria.getMatricula().getaPaterno());
             System.out.println("Apellido Materno: " + asesoria.getMatricula().getaMaterno());
@@ -124,6 +161,10 @@ public class DaoAsesoria {
             System.out.println("Cuatrimestre: " + asesoria.getGrupo().getCuatrimestre());
             System.out.println("Materia: " + asesoria.getIdMateria().getNombre());
             System.out.println("Estado: " + asesoria.getIdEstadoAsesoria().getNombre());
-        }
+        }*/
+        BeanAsesorias aceptarAsesoria = new BeanAsesorias(2, new BeanEstadoAsesoria(2), null);
+        Map<String, String> mensaje = isAceptada(aceptarAsesoria);
+        System.out.println(mensaje);
+
     }
 }

@@ -8,7 +8,9 @@ public class BeanEstadoAsesoria {
         this.nombre = nombre;
     }
 
-
+    public BeanEstadoAsesoria(int idEstadoAsesoria) {
+        this.idEstadoAsesoria = idEstadoAsesoria;
+    }
 
     public int getIdEstadoAsesoria() {
         return idEstadoAsesoria;

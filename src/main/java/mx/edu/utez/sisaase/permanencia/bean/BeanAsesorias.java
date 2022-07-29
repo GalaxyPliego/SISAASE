@@ -30,6 +30,12 @@ public class BeanAsesorias {
 
     private BeanGrupos grupo;
 
+    public BeanAsesorias(int idAsesoria, BeanEstadoAsesoria idEstadoAsesoria, String motivosRechazo) {
+        this.idAsesoria = idAsesoria;
+        this.idEstadoAsesoria = idEstadoAsesoria;
+        this.motivosRechazo = motivosRechazo;
+    }
+
     public BeanAsesorias() {
     }
 
