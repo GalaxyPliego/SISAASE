@@ -27,14 +27,10 @@ sisa.controller("ControlPerfil", ['$rootScope', '$scope', '$http', 'SweetAlert',
 //        }
 
     $scope.consultarPerfil = function () {
-        console.log("aaaa")
         $http({method: 'POST', url: '/SISAASE_war_exploded/consultarPerfil'}).success(function (data) {
             $scope.estados = data.estados;
             $scope.municipiosNacimiento = data.municipiosNacimiento;
             $scope.municipiosRadica = data.municipiosRadica;
-
-//                angular.copy($scope.perfil.fechaNacimiento,$scope.modDate);
-
             $scope.perfil = data.alumno;
             $scope.perfil.apMaterno = $scope.perfil.apMaterno === "." ? "" : $scope.perfil.apMaterno;
             var fechaNacimiento = data.alumno.fechaNac.split("-");

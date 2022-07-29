@@ -1,6 +1,9 @@
-var sisa = angular.module("sisa", ['ui.bootstrap', 'oitozero.ngSweetAlert']);
+var sisa = angular.module("sisa", ['ui.bootstrap', 'smart-table','oitozero.ngSweetAlert']);
 
 sisa.controller("ControlAsesorias", ['$rootScope', '$scope', '$http', 'SweetAlert', function ($rootScope, $scope, $http, SweetAlert) {
+
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
     $scope.abrirModalFinalizar = () =>{
         $('#modalFinalizar').modal('show')
     }
@@ -53,14 +56,32 @@ sisa.controller("ControlAsesorias", ['$rootScope', '$scope', '$http', 'SweetAler
         }
     }
 
-    $scope.consultarHorarios = function (){
+    $scope.cambioMateria = function (){
+        $scope.materia = $scope.materiaSeleccionada
+        console.log($scope.materia)
         $http({
             method: 'POST',
-            url: '/SISAASE_war_exploded/consultarHorarios'
+            url: '/SISAASE_war_exploded/consultarHorarios',
+            data: 'data=' + angular.toJson($scope.materia)
         }).success(function (data) {
-            $scope.horarios = data;
+            $scope.horarios = data.profesors;
             console.log(data)
-        }).error($rootScope.errorhttp);
+        }).error(function(error){
+            console.log(error)
+        });
+    }
+
+    $scope.consultarMaterias = function (){
+        $http({
+            method: 'POST',
+            url: '/SISAASE_war_exploded/consultarMaterias',
+            data: 'data=' + angular.toJson($scope.materia)
+        }).success(function (data) {
+            $scope.materias = data.materias;
+            console.log(data)
+        }).error(function(error){
+            console.log(error)
+        });
     }
 
     $scope.finalizarAsesoria = function () {

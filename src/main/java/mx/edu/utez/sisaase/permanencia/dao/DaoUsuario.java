@@ -350,7 +350,6 @@ public class DaoUsuario {
 
     public boolean contrasexaRecuperada(BeanUsuario beanUsuario) throws SQLException {
         try{
-            System.out.println(beanUsuario.getCodigoSeguridad());
             connection = ConnectionMysql.getConnection();
             String script = "UPDATE usuario SET codigoSeguridad=?, contrasena=? where codigoSeguridad=?;";
             pstm = connection.prepareStatement(script);

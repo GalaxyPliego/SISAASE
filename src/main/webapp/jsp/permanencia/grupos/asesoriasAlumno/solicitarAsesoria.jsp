@@ -103,7 +103,7 @@
     </style>
 </head>
 
-<body ng-controller="ControlAsesorias" ng-init="consultarHorarios()">
+<body ng-controller="ControlAsesorias" >
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
@@ -232,88 +232,61 @@
 
 
     </nav>
-    <div id="page-wrapper">
+    <div id="page-wrapper" ng-init="consultarMaterias()">
         <br/>
-        <div class="panel panel-primary">
-            <div class="panel-heading">Asesorías académicas</div>
+        <div class="panel panel-primary" >
+            <div class="panel-heading text-center">Asesorías académicas</div>
             <div class="panel-body">
                 <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <!-- filtrado con un select por materia -->
+                        <div class="form-group">
+                            <label for="materia">Materia:</label>
+                            <select class="form-control" id="materia" ng-model="materiaSeleccionada" ng-options="materia as materia.nombre for materia in materias track by materia.idMateria" ng-change="cambioMateria()">
+                                <option value="">Seleccione un periodo</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead style="background-color: #676f77 ; color: #fff">
+                            <table st-table="profesores" st-safe-src="horarios" class="table table-bordered table-striped">
+                                <thead  style="background-color: #676f77 ; color: #fff">
                                 <tr>
-                                    <td>#</td>
-                                    <td>Docente</td>
-                                    <td>Horario</td>
-                                    <td>Solicitar</td>
+                                    <th rowspan="2" style="vertical-align: middle">#</th>
+                                    <th st-sort="nombres">Docente</th>
+                                    <th st-sort="horarios.horaInicio">Horario</th>
+                                    <th>Solicitar</th>
+                                </tr>
+                                <tr>
+                                    <th><input st-search="nombres" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="horarios.horaInicio" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td><input class="form-control" type="text" placeholder="Buscar"/></td>
-                                    <td><input class="form-control" type="text" placeholder="Buscar"/></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="ng-scope">
+                                <tr ng-repeat="profesor in profesores">
+                                    <div ng-repeat="horario in profesor.horarios">
+                                        <td ng-bind="$index + 1"></td>
+                                        <td ng-bind="profesor.nombres + ' ' + profesor.aPaterno + ' ' + profesor.aMaterno"></td>
+                                        <td> <div ng-repeat="horario in profesor.horarios"><b>{{horario.diaSemana.nombre}}</b> {{horario.horaInicio}} <br></div></td>
+                                        <td>
+                                            <button class="btn btn-success"
+                                                    style="margin-right:5px ;"><i class="fa fa-calendar"
+                                                                                  ng-click="abrirModalSolicitar()"></i>
+                                            </button>
+                                        </td>
+                                    </div>
 
-                                    <td class="ng-binding">1</td>
-                                    <td class="ng-binding">Roy Axxel Salgado Martinez</td>
-                                    <td class="ng-binding"><strong>Lunes </strong>14:00</td>
-                                    <td class="ng-binding">
-                                        <button class="btn btn-success"
-                                                style="margin-right:5px ;"><i class="fa fa-calendar"
-                                                                              ng-click="abrirModalSolicitar()"></i>
-                                        </button>
-                                    </td>
                                 </tr>
-                                <tr class="ng-scope">
-
-                                    <td class="ng-binding">2</td>
-                                    <td class="ng-binding">Miriam Guadalupe Saucedo Bustamante</td>
-                                    <td class="ng-binding">
-                                        <strong>Martes </strong>15:00
-                                        <br>
-                                        <strong>Jueves </strong>14:00
-                                    </td>
-                                    <td class="ng-binding">
-                                        <button class="btn btn-success"
-                                                style="margin-right:5px ;"><i class="fa fa-calendar"
-                                                                              ng-click="abrirModalSolicitar()"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="ng-scope">
-
-                                    <td class="ng-binding">3</td>
-                                    <td class="ng-binding">Monica Samantha Salgado Saucedo</td>
-                                    <td class="ng-binding"><strong>Lunes </strong>16:00</td>
-                                    <td class="ng-binding">
-                                        <button class="btn btn-success"
-                                                style="margin-right:5px ;"><i class="fa fa-calendar"
-                                                                              ng-click="abrirModalSolicitar()"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-
                                 </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <div style="cursor:pointer;" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                    </td>
+                                </tr>
+                                </tfoot>
                             </table>
                         </div>
-                        <center>
-                            <nav aria-label="...">
-                                <ul class="pagination">
-                                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-                                    </li>
-                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
-                        </center>
-                    </div>
                 </div>
             </div>
         </div>
@@ -446,7 +419,7 @@
 <script src="/SISAASE_war_exploded/js/SweetAlert.min.js"></script>
 <script src="/SISAASE_war_exploded/js/angular-locale_es-mx.js"></script>
 <script src="/SISAASE_war_exploded/js/ui-bootstrap-tpls-0.14.3.js"></script>
-
+<script src="/SISAASE_war_exploded/js/smart-table.min.js"></script>
 
 </body>
 
