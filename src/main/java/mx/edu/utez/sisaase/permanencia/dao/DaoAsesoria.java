@@ -148,17 +148,18 @@ public class DaoAsesoria {
         int errorIdAsesoria,errorEstado, estadoErroneo;
         try {
             connection = ConnectionMysql.getConnection();
-            cstm = connection.prepareCall("{CALL actualizarEstadoImpartida(?,?,?,?,?,?)}");
+            cstm = connection.prepareCall("{CALL actualizarEstadoImpartida(?,?,?,?,?,?,?}");
             cstm.setInt(1,asesoria.getIdAsesoria());
             cstm.setInt(2,asesoria.getIdEstadoAsesoria().getIdEstadoAsesoria());
             cstm.setInt(3, asesoria.getDuracion());
-            cstm.registerOutParameter(4,Types.INTEGER);
+            cstm.setInt(4, asesoria.getAsistenciaAlumno());
             cstm.registerOutParameter(5,Types.INTEGER);
             cstm.registerOutParameter(6,Types.INTEGER);
+            cstm.registerOutParameter(7,Types.INTEGER);
             cstm.executeUpdate();
-            errorIdAsesoria = cstm.getInt(4);
-            errorEstado = cstm.getInt(5);
-            estadoErroneo = cstm.getInt(6);
+            errorIdAsesoria = cstm.getInt(5);
+            errorEstado = cstm.getInt(6);
+            estadoErroneo = cstm.getInt(7);
             if (errorIdAsesoria == 0 && errorEstado == 0){
                 if (estadoErroneo == 0){
                     map.put("Exitoso","La asesoría ha sido actualizada correctamente");
@@ -262,7 +263,7 @@ public class DaoAsesoria {
 //          Map<String,String> mensaje = isImpartida(asesoriaImpartida);
 //          System.out.println(mensaje);
 
-            BeanAsesorias asesoriaCancelada = new BeanAsesorias(2, new BeanEstadoAsesoria(5), null);
+            BeanAsesorias asesoriaCancelada = new BeanAsesorias(2, new BeanEstadoAsesoria(5), "Porque si");
             Map<String,String> mensaje = isCancelada(asesoriaCancelada);
             System.out.println(mensaje);
 
