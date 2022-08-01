@@ -2,7 +2,7 @@ package mx.edu.utez.sisaase.permanencia.bean;
 
 public class BeanUsuario {
     private int idUsuario;
-    private String Usuario;
+    private String usuario;
     private String contrasena;
     private String tipoUsuario;
     private int noIntentosFallidos;
@@ -13,7 +13,7 @@ public class BeanUsuario {
 
     public BeanUsuario(int idUsuario, String usuario, String contrasena, String tipoUsuario, int noIntentosFallidos, String ultimoAcceso, String estado, String codigoSeguridad, String claveIdentidad) {
         this.idUsuario = idUsuario;
-        Usuario = usuario;
+        this.usuario = usuario;
         this.contrasena = contrasena;
         this.tipoUsuario = tipoUsuario;
         this.noIntentosFallidos = noIntentosFallidos;
@@ -43,11 +43,11 @@ public class BeanUsuario {
     }
 
     public String getUsuario() {
-        return Usuario;
+        return usuario;
     }
 
     public void setUsuario(String usuario) {
-        Usuario = usuario;
+        this.usuario = usuario;
     }
 
     public String getContrasena() {
@@ -102,7 +102,7 @@ public class BeanUsuario {
     public String toString() {
         return "BeanUsuario{" +
                 "idUsuario=" + idUsuario +
-                ", Usuario='" + Usuario + '\'' +
+                ", Usuario='" + usuario + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 ", tipoUsuario='" + tipoUsuario + '\'' +
                 ", noIntentosFallidos=" + noIntentosFallidos +

@@ -14,29 +14,34 @@
         </action>
         <action name="iniciarSesion" method="iniciarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result name="alumno" type="redirectAction">
-                <param name="actionName">perfil</param>
+                <param name="actionName">perfilAlumno</param>
             </result>
-            <result name="docente">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
+            <result name="docente" type="redirectAction">
+                <param name="actionName">perfilDocente</param>
+            </result>
+            <result name="coordinador" type="redirectAction">
+                <param name="actionName">perfilCoordinador</param>
+            </result>
             <result name="multiRol">/jsp/multiRol.jsp</result>
         </action>
-        <action name="perfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
-        </action>
-        <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result type="json"></result>
-        </action>
-        <action name="consultarPerfilProfesor" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result type="json"/>
-        </action>
+
         <action name="cerrarSesion" method="cerrarSesion" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result>/index.jsp</result>
         </action>
-        <action name="modificarPerfilAlumno" method="modificarPerfilAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
-        </action>
+
         <action name="modificarContrasexa" method="modificarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
-            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+            <result type="json"></result>
         </action>
+        <action name="recuperarContrasexa" method="recuperarContrasexa" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
+        <action name="contrasexaRecuperada" method="contrasexaRecuperada" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
+        <action name="cambiarContrasexa">
+            <result>/jsp/cambiarContrasexa.jsp</result>
+        </action>
+
         <action name="horario">
             <result>/jsp/permanencia/grupos/gestionHorarios/listadoHorario.jsp</result>
         </action>
@@ -46,13 +51,14 @@
         <action name="findPeriodoCuatrimestral" method="findPeriodoCuatrimestral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
+        <action name="perfilCoordinador" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
+        </action>
 
         <!-- HISTORIAL DETALLADO -->
         <action name="findHistorialDetallado" method="findHistorialDetallado" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
-
-
 
         <action name="coordinador">
             <result>/jsp/permanencia/perfil/coordinador/homeCoordinador.jsp</result>
@@ -71,11 +77,35 @@
         <action name="historialAlumno">
             <result>/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp</result>
         </action>
+        <action name="consultarHorarios" method="consultarHorarios" class="mx.edu.utez.sisaase.permanencia.action.ActionAsesoria">
+            <result type="json"/>
+        </action>
+        <action name="consultarMaterias" method="consultarMaterias" class="mx.edu.utez.sisaase.permanencia.action.ActionAsesoria">
+            <result type="json"></result>
+        </action>
+        <action name="perfilAlumno" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
+        <action name="consultarPerfil" method="consultarPerfil" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"></result>
+        </action>
+        <action name="modificarPerfilAlumno" method="modificarPerfilAlumno" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json">/jsp/permanencia/perfil/alumno/perfilAlumno.jsp</result>
+        </action>
         <!-- +++++++++++++++++++ -->
 
         <!-- DOCENTE -->
         <action name="historialDocente">
             <result>/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp</result>
+        </action>
+        <action name="perfilDocente" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result>/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
+        </action>
+        <action name="consultarPerfilProfesor" method="consultarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json"/>
+        </action>
+        <action name="modificarPerfilProfesor" method="modificarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
+            <result type="json">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
         </action>
         <!-- +++++++++++++++++++ -->
 
@@ -93,7 +123,10 @@
         <default-interceptor-ref name="session"/>
         <global-results>
             <result name="notFound" type="httpheader">
-                <param name="error">403</param>
+                <param name="error">404</param>
+            </result>
+            <result name="notAuthorized" type="httpheader">
+                <param name="error">401</param>
             </result>
             <result name="loginRequired">/index.jsp</result>
         </global-results>
