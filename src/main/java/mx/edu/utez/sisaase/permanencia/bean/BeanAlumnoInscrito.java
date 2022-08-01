@@ -28,6 +28,7 @@ public class BeanAlumnoInscrito {
     private BeanGeneracion idGeneracion;
     private BeanGrupos idGrupoActual;
     private BeanCarrera idCarrera;
+    private String nombreCompleto;
 
     public BeanAlumnoInscrito(String matricula, String aPaterno, String aMaterno, String nombres, String fechaNac, int edad, String sexo, String estadoCivil, String domActual, String colonia, int cp, String telefono, String cel, String email, String curp, String nacionalidad, String trabaja, int ingresoMensual, String tipoSangre, String nombreTutor, String noIMSS, String localidadRadica, String status, String unidadImss, BeanGeneracion idGeneracion, BeanGrupos idGrupoActual, BeanCarrera idCarrera) {
         this.matricula = matricula;
@@ -62,11 +63,9 @@ public class BeanAlumnoInscrito {
     public BeanAlumnoInscrito() {
     }
 
-    public BeanAlumnoInscrito(String matricula, String aPaterno, String aMaterno, String nombres) {
+    public BeanAlumnoInscrito(String matricula,String nombreCompleto) {
         this.matricula = matricula;
-        this.aPaterno = aPaterno;
-        this.aMaterno = aMaterno;
-        this.nombres = nombres;
+        this.nombreCompleto = nombreCompleto;
     }
 
     public BeanAlumnoInscrito(String matricula, String nombres, String sexo, String nombreCarrera, String cuatrimestre, String grupo) {
@@ -293,6 +292,14 @@ public class BeanAlumnoInscrito {
 
     public void setIdCarrera(BeanCarrera idCarrera) {
         this.idCarrera = idCarrera;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     @Override

@@ -152,8 +152,7 @@ public class DaoAsesoria {
                     BeanAsesorias asesoria = new BeanAsesorias
                             (
                                     rs.getInt("idAsesoria"),
-                                    new BeanAlumnoInscrito(rs.getString("matricula"), rs.getString("apellido_paterno"),
-                                            rs.getString("apellido_materno"), rs.getString("nombre")),
+                                    new BeanAlumnoInscrito(rs.getString("matricula"), rs.getString("nombre_completo")),
                                     new BeanMaterias(rs.getString("materia")),
                                     new BeanEstadoAsesoria(rs.getString("estado_asesoria")),
                                     rs.getString("tema"),

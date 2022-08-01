@@ -291,20 +291,20 @@
                                     <th rowspan="2" style="vertical-align: middle">Acciones</th>
                                 </tr>
                                 <tr>
-                                    <th><input st-search="fecha" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="fechaAsesoria" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="horarioSolicitado" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="matricula.nombres" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="matricula.nombreCompleto" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="tema" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                 </tr>
                                 </thead>
                                 <tbody><!-- ngRepeat: pago in historial.lista -->
 
-                                <tr class="ng-scope" ng-repeat="row in listaAsesoriasPendientes | orderBy:'fecha' : reverse">
+                                <tr class="ng-scope" ng-repeat="row in listPending | orderBy:'fecha' : reverse">
 
                                     <td ng-bind="$index + 1"></td>
                                     <td ng-bind="row.fechaAsesoria"></td>
                                     <td ng-bind="row.horarioSolicitado"></td>
-                                    <td ng-bind="row.matricula.nombres + ' ' + row.matricula.aPaterno + ' ' + row.matricula.aMaterno"></td>
+                                    <td ng-bind="row.matricula.nombreCompleto"></td>
                                     <td ng-bind="row.tema"></td>
                                     <td ng-bind="row.idEstadoAsesoria.nombre" style="color:#F0AD4E ;"></td>
                                     <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR(row)"><i class="fa fa-search"></i></button></td>
@@ -399,7 +399,7 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label >Nombre:</label>
-                                <div ng-bind="infoAsesoria.matricula.nombres + ' ' +  infoAsesoria.matricula.aPaterno + ' ' + infoAsesoria.matricula.aMaterno " >
+                                <div ng-bind="infoAsesoria.matricula.nombreCompleto" >
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
