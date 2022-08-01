@@ -3,6 +3,7 @@ package mx.edu.utez.sisaase.permanencia.action;
 import com.google.gson.Gson;
 import mx.edu.utez.sisaase.permanencia.bean.BeanAsesorias;
 import mx.edu.utez.sisaase.permanencia.bean.BeanCarrera;
+import mx.edu.utez.sisaase.permanencia.bean.BeanIdPeriodoIdCarrera;
 import mx.edu.utez.sisaase.permanencia.bean.BeanPeriodoCuatrimestral;
 import mx.edu.utez.sisaase.permanencia.dao.DaoHistorial;
 import org.apache.struts2.components.Bean;
@@ -36,8 +37,7 @@ public class ActionHistorial {
 
     private String data;
 
-    /* == > COORDINADOR < == */
-
+    /* == > FUNCIONES GENERALES < == */
     public String findPeriodoCuatrimestral() throws SQLException {
         setListPeriodoCuatrimestral(new DaoHistorial().findPeriodoCuatrimestral());
         return SUCCESS;
@@ -47,6 +47,9 @@ public class ActionHistorial {
         setListCarrera(new DaoHistorial().findCarreras());
         return SUCCESS;
     }
+    /* --------------- */
+
+    /* == > COORDINADOR < == */
 
     public String findHistorialDetallado() throws SQLException {
         periodoCuatrimestral = new Gson().fromJson(data, BeanPeriodoCuatrimestral.class);
@@ -56,10 +59,13 @@ public class ActionHistorial {
     }
 
     public String findHistorialGeneral() throws SQLException {
-        setListHistorialGeneral(new DaoHistorial().findHistorialGeneral());
+        BeanIdPeriodoIdCarrera idPeriodoCarrera = new Gson().fromJson(data, BeanIdPeriodoIdCarrera.class);
+        System.out.println("DATA -> " + idPeriodoCarrera.getPeriodoCuatrimestral() + " " + idPeriodoCarrera.getCarrera());
+        setListHistorialGeneral(new DaoHistorial().cambioPeriodoHistorialGeneral(idPeriodoCarrera.getPeriodoCuatrimestral(), idPeriodoCarrera.getCarrera()));
         return SUCCESS;
     }
 
+    /* --------------- */
     public String findHistorialAlumno() throws SQLException {
         setListHistorialAlumno(new DaoHistorial().findHistorialAlumno());
         return SUCCESS;
@@ -74,6 +80,7 @@ public class ActionHistorial {
         setListHistorialDocente(new DaoHistorial().cambioHistorialDocente(periodoCuatrimestral.getIdPeriodoCuatrimestral()));
         return SUCCESS;
     }
+
 
     /* == > GETTERS AND SETTERS < == */
 

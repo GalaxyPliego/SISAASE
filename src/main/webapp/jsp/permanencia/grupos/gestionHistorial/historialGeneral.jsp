@@ -153,7 +153,6 @@
         <!-- /.navbar-static-side -->
     </nav>
 
-
     <!-- Page Content -->
     <div id="page-wrapper">
         <br/>
@@ -161,7 +160,7 @@
         <!-- Panel principal -->
         <div class="panel panel-primary">
             <!-- Panel heading -->
-            <div class="panel-heading">Historial Detallado de Asesorías</div>
+            <div class="panel-heading">Historial General de Asesorías</div>
             <!-- Panel body -->
             <div class="panel-body">
                 <div class="row">
@@ -169,9 +168,8 @@
                         <!-- filtrado con un select por periodo cuatrimestral -->
                         <div class="form-group" ng-init="findPeriodoCuatrimestral()">
                             <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
-                            <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
-                                <option value="">Seleccione un periodo</option>
-                                <option value="" ></option>
+                            <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodoCarrera(periodoCuatrimestral, carrera)" >
+                                <option value="" autofocus>Seleccione un periodo</option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
                             </select>
                         </div>
@@ -180,7 +178,7 @@
                         <!-- filtrado con un select por periodo cuatrimestral -->
                         <div class="form-group" ng-init="findCarreras()">
                             <label for="carreras">Carrera:</label>
-                            <select class="form-control" id="carreras" ng-model="carrera" ng-options="carrera.nombreCarrera for carrera in arrayCarreras track by carrera.idCarrera" ng-change="cambioCarrera()">
+                            <select class="form-control" id="carreras" ng-model="carrera" ng-options="carrera.nombreCarrera for carrera in arrayCarreras track by carrera.idCarrera" ng-change="cambioPeriodoCarrera(periodoCuatrimestral, carrera)">
                                 <option value="">Seleccione una carrera</option>
                                 <option value="" ></option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
@@ -190,7 +188,7 @@
 
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table ng-init="findHistorialGeneral()" st-safe-src="arrayHistorialGeneral" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
+                            <table ng-init="" st-safe-src="arrayHistorialGeneral" st-table="displayCollection" st-set-filter="myStrictFilter" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <th rowspan="2">#</th>
@@ -252,6 +250,12 @@
                                 </tr>
                                 </tfoot>
                             </table>
+
+                            <div class="text-center" ng-if="cantidadHistorialDocente" >
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <strong>No hay registro en este Periodo Cuatrimestral</strong>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

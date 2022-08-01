@@ -17,6 +17,30 @@ sisa.controller("resumenHistorial", ['$rootScope', '$scope', '$http', 'SweetAler
         })
     }
 
+    //pendiente de implementar
+    $scope.cambioPeriodoCuatrimestral = (periodoCuatrimestral) => {
+        console.log("Entro al cambioPeriodoCuatrimestral")
+        $scope.periodoCuatrimestral = periodoCuatrimestral
+        // imprimir en consola en forma json el periodo cuatrimestral
+        console.log("periodo elegido ->" + JSON.stringify($scope.periodoCuatrimestral))
+
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/SISAASE_war_exploded/cambioPeriodoResumenHistorial',
+            data: `data=${angular.toJson($scope.periodoCuatrimestral)}`
+        }).then((response) => {
+            const {data: {listHistorialDocente}} = response
+            $scope.arrayHistorialDocente = listHistorialDocente
+            console.log("tamaño" + $scope.arrayHistorialDocente.length)
+            if ($scope.arrayHistorialDocente.length == 0) {
+                $scope.cantidadHistorialDocente = true
+            }else{
+                $scope.cantidadHistorialDocente = false
+            }
+            console.log('historial docente ->' + JSON.stringify($scope.arrayHistorialDocente))
+        })
+    }
+
 }]);
 
 sisa.controller("historialGeneral", ['$rootScope', '$scope', '$http', 'SweetAlert', '$filter', function ($rootScope, $scope, $http, SweetAlert, filter) {
@@ -34,6 +58,41 @@ sisa.controller("historialGeneral", ['$rootScope', '$scope', '$http', 'SweetAler
             $scope.arrayPeriodoCuatrimestral = listPeriodoCuatrimestral
             console.log($scope.arrayPeriodoCuatrimestral)
         })
+    }
+
+    $scope.cambioPeriodoCarrera = (periodoCuatrimestral, carrera) => {
+        console.log("Entro al cambioPeriodoCuatrimestral")
+        $scope.periodoCuatrimestral = periodoCuatrimestral
+        console.log("periodo elegido ->" + JSON.stringify($scope.periodoCuatrimestral))
+        $scope.carrera = carrera
+        console.log("carrera elegida ->" + JSON.stringify($scope.carrera))
+
+        $scope.data = {
+            periodoCuatrimestral: $scope.periodoCuatrimestral.idPeriodoCuatrimestral,
+            carrera: $scope.carrera.idCarrera
+        }
+
+        console.log("data ->" + JSON.stringify($scope.data))
+
+         if (periodoCuatrimestral != null && carrera != null){
+             $http({
+                 method: 'POST',
+                 url: 'http://localhost:8080/SISAASE_war_exploded/cambioPeriodoHistorialGeneral',
+                 data: `data=${angular.toJson($scope.data)}`
+             }).then((response) => {
+                 const {data: {listHistorialGeneral}} = response
+                 $scope.arrayHistorialGeneral = listHistorialGeneral
+                 console.log("tamaño" + $scope.arrayHistorialGeneral.length)
+                 if ($scope.arrayHistorialGeneral.length == 0) {
+                     $scope.cantidadHistorialGeneral = true
+                 }else{
+                     $scope.cantidadHistorialGeneral = false
+                 }
+                 console.log('historial general ->' + JSON.stringify($scope.arrayHistorialGeneral))
+             })
+         }else{
+
+         }
     }
 
     $scope.arrayCarreras = [];
@@ -194,7 +253,9 @@ sisa.controller("historialDocente", ['$rootScope', '$scope', '$http', 'SweetAler
     $scope.cambioPeriodoCuatrimestral = (periodoCuatrimestral) => {
         console.log("Entro al cambioPeriodoCuatrimestral")
         $scope.periodoCuatrimestral = periodoCuatrimestral
-        console.log($scope.periodoCuatrimestral)
+        // imprimir en consola en forma json el periodo cuatrimestral
+        console.log("periodo elegido ->" + JSON.stringify($scope.periodoCuatrimestral))
+
         $http({
             method: 'POST',
             url: 'http://localhost:8080/SISAASE_war_exploded/cambioHistorialDocente',
@@ -202,7 +263,13 @@ sisa.controller("historialDocente", ['$rootScope', '$scope', '$http', 'SweetAler
         }).then((response) => {
             const {data: {listHistorialDocente}} = response
             $scope.arrayHistorialDocente = listHistorialDocente
-            console.log('historial docente' + "->" + $scope.arrayHistorialDocente)
+            console.log("tamaño" + $scope.arrayHistorialDocente.length)
+            if ($scope.arrayHistorialDocente.length == 0) {
+                $scope.cantidadHistorialDocente = true
+            }else{
+                $scope.cantidadHistorialDocente = false
+            }
+            console.log('historial docente ->' + JSON.stringify($scope.arrayHistorialDocente))
         })
     }
 }]);

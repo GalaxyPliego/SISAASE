@@ -93,6 +93,9 @@
         <action name="findHistorialGeneral" method="findHistorialGeneral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
+        <action name="cambioPeriodoHistorialGeneral" method="findHistorialGeneral" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+            <result type="json"/>
+        </action>
 
         <!-- ALUMNO -->
         <action name="historialAlumno">
@@ -110,7 +113,7 @@
         <action name="historialDocente" method="findHistorialDocente" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
-        <action name="cambioHistorialDocente" method="findHistorialDocente" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
+        <action name="cambioHistorialDocente" method="cambioHistorialDocente" class="mx.edu.utez.sisaase.permanencia.action.ActionHistorial">
             <result type="json"/>
         </action>
         <!-- +++++++++++++++++++ -->

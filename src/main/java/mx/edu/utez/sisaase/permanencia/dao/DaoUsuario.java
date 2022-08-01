@@ -39,7 +39,6 @@ public class DaoUsuario {
                     rs = pstm.executeQuery();
                     List<BeanRol> roles = new ArrayList<>();
                     if (rs.next()) {
-
                         BeanRol beanRol = new BeanRol();
                         beanRol.setIdRol(rs.getInt("rol.idRol"));
                         beanRol.setNombreRol(rs.getString("rol.nombreRol"));

@@ -170,7 +170,7 @@
         <!-- Panel principal -->
         <div class="panel panel-primary">
             <!-- Panel heading -->
-            <div class="panel-heading">Historial Detallado de Asesorías</div>
+            <div class="panel-heading">Historial de Asesorías</div>
             <!-- Panel body -->
             <div class="panel-body">
                 <div class="row">
@@ -179,8 +179,7 @@
                         <div class="form-group" ng-init="findPeriodoCuatrimestral()">
                             <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
                             <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodoCuatrimestral(periodoCuatrimestral)" >
-                                <option value="">Seleccione un periodo</option>
-                                <option value="" ></option>
+                                <option value="" autofocus>Seleccione un periodo</option>
                                 <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
                             </select>
                         </div>
@@ -232,6 +231,12 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                        </div>
+
+                        <div class="text-center" ng-if="cantidadHistorialDocente" >
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <strong>No hay registro en este Periodo Cuatrimestral</strong>
+                            </div>
                         </div>
                     </div>
                 </div>

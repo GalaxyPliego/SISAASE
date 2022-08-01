@@ -179,9 +179,8 @@
                             <!-- filtrado con un select por periodo cuatrimestral -->
                             <div class="form-group" ng-init="findPeriodoCuatrimestral()">
                                 <label for="periodoCuatrimestral">Periodo Cuatrimestral:</label>
-                                <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodo()">
-                                    <option value="">Seleccione un periodo</option>
-                                    <option value="" ></option>
+                                <select class="form-control" id="periodoCuatrimestral" ng-model="periodoCuatrimestral" ng-options="periodoCuatrimestral.nombreCuatrimestre for periodoCuatrimestral in arrayPeriodoCuatrimestral track by periodoCuatrimestral.idPeriodoCuatrimestral" ng-change="cambioPeriodoCuatrimestral(periodoCuatrimestral)" >
+                                    <option value="" autofocus>Seleccione un periodo</option>
                                     <!--<option ng-repeat="periodo in periodos" value="{{periodo.id}}">{{periodo.periodo}}</option>-->
                                 </select>
                             </div>
