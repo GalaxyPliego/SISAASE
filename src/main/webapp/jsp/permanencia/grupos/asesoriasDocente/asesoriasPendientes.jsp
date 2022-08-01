@@ -102,7 +102,8 @@
 <div class="se-pre-con text-center"></div>
 <div id="wrapper">
     <!-- Navigation -->
-    <nav id="topMenu" class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <nav id="topMenu" class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation"
+         style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Navegación</span>
@@ -110,104 +111,120 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/SISAASE_war_exploded/iniciarSesion" style="color: #FFF !important;" >Sistema Integral de Servicios Académicos | SISA</a>
+            <a class="navbar-brand" href="/SISAASE_war_exploded/iniciarSesion" style="color: #FFF !important;">Sistema
+                Integral de Servicios Académicos | SISA</a>
         </div>
         <!-- /.navbar-header -->
 
         <ul id="rightMenu" class="nav navbar-top-links navbar-right">
 
+            <li class="dropdown" style="color: white; cursor: pointer;" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-exchange"></i> Roles
+            </li>
+
             <li class="dropdown">
+
+                <a class="dropdown-toggle" href="/SISAASE_war_exploded/docs/MU-SISA2020-DOCENTE.pdf" target="_blank">
+                    <i class="fa fa-file-pdf-o fa-fw"></i> Manual
+                </a>
 
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle" id="cerrarSesion" href="/SISAASE_war_exploded/cerrarSesion">
-                    <i class="fa fa-power-off fa-fw"></i>  Salir
+                    <i class="fa fa-power-off fa-fw"></i> Salir
                 </a>
             </li>
             <!-- /.dropdown -->
         </ul>
         <!-- /.navbar-top-links -->
 
+
         <!DOCTYPE html>
         <div id="leftMenu" class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li class="sidebar-search text-center hidden-xs " style="background-color: #fff;padding: 15px 0 5px 0;">
-                        <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png" />
+                    <!--                            <li class="sidebar-search">
+                                                    <div class="input-group custom-search-form">
+                                                        <input type="text" class="form-control" placeholder="Search...">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button">
+                                                                <i class="fa fa-search"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                     /input-group
+                                                </li>-->
+                    <li class="sidebar-search text-center hidden-xs "
+                        style="background-color: #fff;padding: 15px 0 5px 0;">
+                        <img width="100%" src="/SISAASE_war_exploded/img/utez/lenguaje-incluyente.png"/>
                     </li>
                     <li class="sidebar-search text-center" style="color: #fff;">
-                        <h5>Nathaly Escalona Ruiz</h5>
-                        <h4>Docente</h4>
+                        <h4>${sessionScope.datosPersonales.nombres} ${sessionScope.datosPersonales.aPaterno} ${sessionScope.datosPersonales.aMaterno}</h4>
+                        <h5>Docente</h5>
+                    </li>
+
+
+                    <li>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/perfil/profesor/perfilProfesor.jsp"><i
+                                class="fa fa-user"></i> Mi Perfil</a>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/historialAcademico/historialAcademico.jsp"><i class="fa fa-book fa-fw"></i> Historial académico</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Asesorías<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-pencil-square-o"></i> Evaluaciones<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/solicitarAsesoria.jsp">Solicitar asesoría</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/evaluaciones/clasesProfesorPeriodoActual.jsp">Registrar
+                                    evaluaciones</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/asesoriasSolicitadas.jsp">Asesorías solicitadas</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/actaCalificacion/actaCalificacion.jsp">Historial
+                                    de evaluaciones</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasAlumno/historialAsesorias.jsp">Historial de asesorías</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-file-text"></i> Evaluación docente</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-arrow-down fa-fw"></i> Bajas<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/baja/solicitudBaja/bajasRegistroSolicitud.jsp">Registrar solicitud</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/baja/historialBajas/historialBajas.jsp">Historial de  bajas</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-usd fa-fw"></i> Pagos<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/pagos/pagosFicha.jsp">Fichas de pago</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/seguimiento/pagos/pagosHistorial.jsp">Historial de pagos</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/solicitudesCambio/registrarModificacionPromedio.jsp">Solicitud
+                                    de cambio de promedio</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Estadías<span class="fa arrow"></span></a>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/seguimiento/seguimientoEstadia.jsp"><i
+                                class="fa fa-th-list"></i> Seguimiento a Estadía</a>
+                    </li>
+                    <li>
+                        <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/asesoriasPendientes.jsp"><i
+                                class="fa fa-th-list"></i> Solicitudes Asesorías Académicas</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i> Evaluación docente<span
+                                class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/cartaPresentacion/cartaPresentacion.jsp">Carta Presentación</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/autoevaluacion.jsp">Autoevaluación</a>
                             </li>
                             <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/convenioIndividual/convenionIndividual.jsp">Asignación y aceptación de estadía</a>
-                            </li>
-                            <li>
-                                <a href="/SISAASE_war_exploded/jsp/permanencia/estadia/resumenEstadia/resumenEstadia.jsp">Resumen estadía</a>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/resultados/resultadosEvaluacionDocentePorDocente.jsp">
+                                    Resultados de evaluación docente </a>
                             </li>
                         </ul>
                     </li>
-                    <!--            <li>
-                                    <a href="/SISAASE_war_exploded/jsp/permanencia/evaluacionDocente/evaluacion/inicioEvaluacionDocente.jsp"><i class="fa fa-braille fa-fw"></i> Evaluación Docente</a>
-                                </li>-->
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/perfil/alumno/perfilAlumno.jsp"><i class="fa fa-user-o fa-fw"></i>Mi Perfil</a>
+                        <a href="#"><i class="fa fa-male" aria-hidden="true"></i> Seguimiento a estudiantes <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/planaccion/registrarPlanAccion.jsp">Nuevo
+                                    plan de acción</a>
+                            </li>
+                            <li>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/planaccion/seguimientoPlanAccion.jsp">Consulta
+                                    / seguimiento</a>
+                            </li>
+                        </ul>
                     </li>
+
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
         </div>
-        <!-- /.navbar-static-side -->
 
 
     </nav>
@@ -252,43 +269,44 @@
         <div class="panel panel-primary">
             <div class="panel-heading" style="font-size:medium ">Solicitudes</div>
             <div class="panel-body">
+
                 <%--                <div ng-show="!historial" class="text-center ng-hide">--%>
                 <%--                    <img src="SISAASE_war_exploded/preloader.gif">--%>
                 <%--                </div>--%>
                 <%--                <div ng-show="historial" class="row">--%>
-                <div class="row">
+                <div class="row"  ng-init="consultarAsesoriasPendientes()">
                     <div class="col-md-12">
                         <h2 style="color: #345177 ; margin-top: -5px">Asesorias pendientes</h2>
 
-                        <div class="table-responsive">
-                            <table st-table="listPending" st-safe-src="rowCollection" class="table table-bordered table-striped">
+                        <div class="table-responsive" >
+                            <table st-table="listPending" st-safe-src="listaAsesoriasPendientes" class="table table-bordered table-striped">
                                 <thead  style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <th rowspan="2" style="vertical-align: middle">#</th>
-                                    <th st-sort="fecha">Fecha</th>
-                                    <th st-sort="hora">Hora</th>
-                                    <th st-sort="nombre">Nombre</th>
+                                    <th st-sort="fechaAsesoria">Fecha</th>
+                                    <th st-sort="horarioSolicitado">Hora</th>
+                                    <th st-sort="matricula.nombres">Nombre</th>
                                     <th st-sort="tema">Tema</th>
                                     <th st-sort="estado" rowspan="2" style="vertical-align: middle">Estado</th>
                                     <th rowspan="2" style="vertical-align: middle">Acciones</th>
                                 </tr>
                                 <tr>
                                     <th><input st-search="fecha" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="hora" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="estudiante.nombre" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="horarioSolicitado" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="matricula.nombres" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="tema" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                 </tr>
                                 </thead>
                                 <tbody><!-- ngRepeat: pago in historial.lista -->
 
-                                <tr class="ng-scope" ng-repeat="row in listPending | orderBy:'fecha' : reverse">
+                                <tr class="ng-scope" ng-repeat="row in listaAsesoriasPendientes | orderBy:'fecha' : reverse">
 
                                     <td ng-bind="$index + 1"></td>
-                                    <td ng-bind="row.fecha"></td>
-                                    <td ng-bind="row.hora"></td>
-                                    <td ng-bind="row.estudiante.nombre"></td>
+                                    <td ng-bind="row.fechaAsesoria"></td>
+                                    <td ng-bind="row.horarioSolicitado"></td>
+                                    <td ng-bind="row.matricula.nombres + ' ' + row.matricula.aPaterno + ' ' + row.matricula.aMaterno"></td>
                                     <td ng-bind="row.tema"></td>
-                                    <td ng-bind="row.estado.nombre" style="color:#F0AD4E ;"></td>
+                                    <td ng-bind="row.idEstadoAsesoria.nombre" style="color:#F0AD4E ;"></td>
                                     <td class="ng-binding"><button class="btn btn-success" ng-click="modalAceptarR(row)"><i class="fa fa-search"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
@@ -381,35 +399,37 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label >Nombre:</label>
-                                <div ng-bind="infoAsesoria.estudiante.nombre">
+                                <div ng-bind="infoAsesoria.matricula.nombres + ' ' +  infoAsesoria.matricula.aPaterno + ' ' + infoAsesoria.matricula.aMaterno " >
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
                                 <label >Matrícula:</label>
-                                <div ng-bind="infoAsesoria.estudiante.matricula"></div>
+                                <div ng-bind="infoAsesoria.matricula.matricula"></div>
                             </div>
                             <div class="form-group col-md-4">
                                 <label >Carrera:</label>
-                                <div ng-bind="infoAsesoria.estudiante.carrera"></div>
+                                <div ng-bind="infoAsesoria.carrera.nombreCarrera"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label >Grado:</label>
-                                    <div ng-bind="infoAsesoria.estudiante.grado"><span ></span></div>
+                                    <div ng-bind="infoAsesoria.grupo.cuatrimestre"><span ></span></div>
+
+
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label >Grupo:</label>
-                                    <div ng-bind="infoAsesoria.estudiante.grupo"><span ></span></div>
+                                    <div ng-bind="infoAsesoria.grupo.grupo"><span ></span></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label >Riesgo:</label>
-                                    <div ng-bind="infoAsesoria.estudiante.riesgo"><span></span></div>
+                                    <div ><span ng-if="infoAsesoria.riesgo == 0">No</span><span  ng-if="infoAsesoria.riesgo == 1">Sí</span></div>
                                 </div>
                             </div>
                         </div>
@@ -424,15 +444,15 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label >Fecha:</label>
-                                    <div ng-bind="infoAsesoria.fecha"></div>
+                                    <div ng-bind="infoAsesoria.fechaAsesoria"></div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label >Hora:</label>
-                                    <div ng-bind="infoAsesoria.hora"></div>
+                                    <div ng-bind="infoAsesoria.horarioSolicitado"></div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label >Asignatura:</label>
-                                    <div ng-bind="infoAsesoria.asignatura"></div>
+                                    <div ng-bind="infoAsesoria.idMateria.nombre"></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -445,7 +465,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label >Dudas Específicas:</label>
-                                        <div ng-bind="infoAsesoria.dudas"><span></span></div>
+                                        <div ng-bind="infoAsesoria.dudasEspecificas"><span></span></div>
                                     </div>
 
                                 </div>

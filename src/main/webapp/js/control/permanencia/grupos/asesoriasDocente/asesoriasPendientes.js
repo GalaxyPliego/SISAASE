@@ -1,7 +1,8 @@
 var sisa = angular.module("sisa", ['smart-table','ui.bootstrap', 'oitozero.ngSweetAlert']);
 
 sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'SweetAlert', function ($rootScope, $scope, $http, SweetAlert) {
-        $scope.infoAsesoria = {}
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    $scope.infoAsesoria = {}
         $scope.estados = [
                 {
                         id: 1,
@@ -107,7 +108,18 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
         }
 
 
-
+        $scope.consultarAsesoriasPendientes = () =>{
+            console.log("Holi")
+            $http({
+                method: 'GET',
+                url: '/SISAASE_war_exploded/consultarAsesoriasPendientesDocenteAction',
+            }).then(function successCallback (response){
+               $scope.listaAsesoriasPendientes = response.data.listaAsesorias;
+                console.log($scope.listaAsesoriasPendientes)
+            },function errorCallback (response){
+                console.log(response);
+            })
+        }
 
         $scope.rowCollection = [
                 { id: 1, fecha: '2022/05/25', hora: '20:00', estudiante: {

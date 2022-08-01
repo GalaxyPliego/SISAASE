@@ -107,6 +107,9 @@
         <action name="modificarPerfilProfesor" method="modificarPerfilProfesor" class="mx.edu.utez.sisaase.permanencia.action.ActionUsuario">
             <result type="json">/jsp/permanencia/perfil/docente/perfilDocente.jsp</result>
         </action>
+        <action name="consultarAsesoriasPendientesDocenteAction" method="consultarAsesoriasPendientesDocenteAction" class="mx.edu.utez.sisaase.permanencia.action.ActionAsesoria">
+            <result type="json"/>
+        </action>
         <!-- +++++++++++++++++++ -->
 
 

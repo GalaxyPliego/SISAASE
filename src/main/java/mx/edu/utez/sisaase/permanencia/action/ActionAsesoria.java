@@ -9,7 +9,9 @@ import mx.edu.utez.sisaase.permanencia.dao.DaoAsesoria;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -23,7 +25,11 @@ public class ActionAsesoria {
     List<BeanProfesor> profesors = new ArrayList<>();
     List<BeanMaterias> materias = new ArrayList<>();
     BeanMaterias materia = new BeanMaterias();
-    public String getMessage() {
+    private Gson gs = new Gson();
+
+    private Map<String, Object> map = new HashMap<>();
+    private boolean error;
+     public String getMessage() {
         return message;
     }
 
@@ -75,6 +81,20 @@ public class ActionAsesoria {
         return SUCCESS;
     }
     public String finalizarAsesoria() throws SQLException {
+        return SUCCESS;
+    }
+
+    //  DOCENTEEEEE
+    public String consultarAsesoriasPendientesDocenteAction(){
+        try {
+            //Los datos que nos mandan lo pasamos a un modelo de la clase BeanAsesorias
+            map = new DaoAsesoria().consultarAsesoriasPendientesDocente();
+            listaAsesorias = (List<BeanAsesorias>) map.get("Data");
+            message = (String) map.get("Message");
+            error = (boolean) map.get("Error");
+        }catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
         return SUCCESS;
     }
 
