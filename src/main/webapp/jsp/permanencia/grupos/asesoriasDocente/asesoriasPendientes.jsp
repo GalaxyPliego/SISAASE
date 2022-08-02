@@ -190,8 +190,17 @@
                                 class="fa fa-th-list"></i> Seguimiento a Estadía</a>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/asesoriasPendientes.jsp"><i
-                                class="fa fa-th-list"></i> Solicitudes Asesorías Académicas</a>
+                        <a href="#"><i class="fa fa-pencil-square-o"></i> Asesorías Académicas<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/asesoriasPendientes.jsp">Solicitudes
+                                de asesorías académicas</a>
+                            </li>
+                            <li>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp">Historial
+                                    de asesorías académicas</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i> Evaluación docente<span
@@ -324,24 +333,24 @@
                 </div>
 
                 <h2 style="color: #345177; margin-top: -5px">Asesorías aceptadas</h2>
-                <div class="row">
+                <div class="row" ng-init="consultarAsesoriasAceptadas()">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table st-table="listAccepted" st-safe-src="rowCollection2" class="table table-bordered table-striped">
+                            <table st-table="listAccepted" st-safe-src="listaAsesoriasAceptadas" class="table table-bordered table-striped">
                                 <thead style="background-color: #676f77 ; color: #fff">
                                 <tr>
                                     <th rowspan="2" style="vertical-align: middle">#</th>
-                                    <th st-sort="fecha">Fecha</th>
-                                    <th st-sort="hora">Hora</th>
-                                    <th st-sort="nombre">Nombre</th>
+                                    <th st-sort="fechaAsesoria">Fecha</th>
+                                    <th st-sort="horarioSolicitado">Hora</th>
+                                    <th st-sort="matricula.nombres">Nombre</th>
                                     <th st-sort="tema">Tema</th>
                                     <th st-sort="estado" rowspan="2" style="vertical-align: middle">Estado</th>
                                     <th rowspan="2" style="vertical-align: middle">Acciones</th>
                                 </tr>
                                 <tr>
-                                    <th><input st-search="fecha" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="hora" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
-                                    <th><input st-search="estudiante.nombre" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="fechaAsesoria" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="horarioSolicitado" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
+                                    <th><input st-search="matricula.nombreCompleto" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                     <th><input st-search="tema" placeholder="Buscar" class="input-sm form-control" type="search"/></th>
                                 </tr>
                                 </thead>
@@ -350,11 +359,11 @@
                                 <tr class="ng-scope" ng-repeat="row2 in listAccepted | orderBy:'fecha' ">
 
                                     <td ng-bind="$index + 1"></td>
-                                    <td ng-bind="row2.fecha"></td>
-                                    <td ng-bind="row2.hora"></td>
-                                    <td ng-bind="row2.estudiante.nombre"></td>
+                                    <td ng-bind="row2.fechaAsesoria"></td>
+                                    <td ng-bind="row2.horarioSolicitado"></td>
+                                    <td ng-bind="row2.matricula.nombreCompleto"></td>
                                     <td ng-bind="row2.tema"></td>
-                                    <td ng-bind="row2.estado.nombre" style="color:#069779 ;"></td>
+                                    <td ng-bind="row2.idEstadoAsesoria.nombre" style="color:#069779 ;"></td>
                                     <td style="white-space: nowrap"><button class="btn btn-success" ng-click="modalFinalizar(row2)" style="margin-right:5px ;"><i class="fa fa-search"></i></button><button class="btn btn-danger" ng-click="modalCancelar(row2)"><i class="fa fa-calendar-times-o"></i></button></td>
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
@@ -380,7 +389,7 @@
 
 
 <!--Modal aceptar o rechazar asesoría -->
-<form novalidate name="formularioAceptarAsesoria" id="formularioAceptarAsesoria" ng-submit="aceptarAsesoria()">
+<form novalidate name="formularioAceptarAsesoria" id="formularioAceptarAsesoria" >
     <div class="modal fade" id="aceptarRechazar" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -414,7 +423,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label >Grado:</label>
+                                    <label >Cuatrimestre:</label>
                                     <div ng-bind="infoAsesoria.grupo.cuatrimestre"><span ></span></div>
 
 
@@ -486,23 +495,23 @@
                                     <div>
                                         <!--<input type="text" class="form-control" id="sexo"  value="{{perfil.sexo}}" />-->
                                         <label class="checkbox-inline">
-                                            <input type="radio" name="aceptarRechazar"  ng-value="estados[1]"
-                                                   required ng-model="infoAsesoria.estado" ng-required="true"
+                                            <input type="radio" name="aceptarRechazar"  ng-value="estados[1].id"
+                                                    ng-model="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria" ng-required="true"
                                             ><strong>Si</strong>
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="radio" name="aceptarRechazar"   ng-value="estados[2]"
-                                                   required ng-model="infoAsesoria.estado"  ng-required="true"
+                                            <input type="radio" name="aceptarRechazar"   ng-value="estados[2].id"
+                                                   ng-model="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria"  ng-required="true"
                                             ><strong>No</strong>
                                         </label>
                                     </div>
                                 </div>
-                                <div ng-if="infoAsesoria.estado.nombre === 'Rechazada'" class="col-md-8"  >
+                                <div ng-if="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria === 3" class="col-md-8"  >
                                     <label>
                                         <strong>Motivos:*</strong>
 
                                     </label>
-                                    <textarea ng-model="infoAsesoria.motivoRechazo" class="form-control"
+                                    <textarea ng-model="infoAsesoria.motivosRechazo" class="form-control"
                                               style="resize:none;height: 50%" placeholder="Motivos de rechazo"
                                               ng-required="true" ></textarea>
                                 </div>
@@ -513,9 +522,9 @@
 
                         <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                         <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
-                        <button class="btn " ng-disabled="formularioAceptarAsesoria.$invalid "
-                                ng-class="infoAsesoria.estado.nombre === 'Rechazada' ? 'btn-danger' : 'btn-success'"
-                                ng-bind="infoAsesoria.estado.nombre === 'Rechazada' ? 'Rechazar' : 'Aceptar'"  type="submit"></button>
+                        <button class="btn " ng-disabled="formularioAceptarAsesoria.$invalid"
+                                ng-class="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria === 3 ? 'btn-danger' : 'btn-success'"
+                                ng-bind="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria === 3 ? 'Rechazar' : 'Aceptar'"  ng-click="aceptarAsesoria()"></button>
                         <!--{{formularioAceptarAsesoria | json}}-->
                         <button type="button" class="btn" ng-click="cerrarModalAceptarR()"  style="background-color:#6C757D; color:white">Cerrar</button>
                     </div>

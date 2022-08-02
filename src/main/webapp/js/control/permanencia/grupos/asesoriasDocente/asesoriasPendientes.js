@@ -39,12 +39,26 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
         $scope.aceptarAsesoria = () => {
                 console.log($scope.infoAsesoria)
                 //Pasar a la otra lista. Borrarlo de la primer lista y pasarla a la otra
-                $scope.rowCollection = $scope.rowCollection.filter(solicitud => solicitud.id != $scope.infoAsesoria.id)
-                if ($scope.infoAsesoria.estado.nombre === 'Aceptada'){
-                        $scope.rowCollection2.push(angular.copy($scope.infoAsesoria))
-                }
-
-                $scope.cerrarModalAceptarR()
+                //$scope.rowCollection = $scope.rowCollection.filter(solicitud => solicitud.id != $scope.infoAsesoria.id)
+                //if ($scope.infoAsesoria.estado.nombre === 'Aceptada'){
+                  //      $scope.rowCollection2.push(angular.copy($scope.infoAsesoria))
+                //}
+                //$scope.cerrarModalAceptarR()
+           //$scope.infoAsesoria.idEstadoAsesoria.idEstadoAsesoria=3;
+            //$scope.infoAsesoria.motivosRechazo="nose";
+            $http({
+                method: 'POST',
+                url: '/SISAASE_war_exploded/isAceptadaORechazadaAction',
+                data: 'data=' + JSON.stringify($scope.infoAsesoria)
+            }).then(function successCallback (response){
+                console.log(response)
+                $scope.consultarAsesoriasPendientes()
+                $scope.consultarAsesoriasAceptadas()
+                //aqui
+                $('#aceptarRechazar').modal('hide')
+            }, function errorCallback (response) {
+                console.log(response)
+            })
         }
 
 
@@ -56,12 +70,23 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
         $scope.cerrarModalFinalizar = () => {
                 $('#finalizar').modal('hide')
         }
-        $scope.aceptarAsesoriaImpartida = () => {
-                $scope.infoAsesoria.estado = $scope.estados[3]
-                console.log($scope.infoAsesoria)
-                $scope.rowCollection2 = $scope.rowCollection2.filter(solicitud => solicitud.id != $scope.infoAsesoria.id)
-                $scope.cerrarModalFinalizar()
-        }
+    $scope.aceptarAsesoriaImpartida = () => {
+        $scope.infoAsesoria.estado = $scope.estados[3]
+        console.log($scope.infoAsesoria)
+        //$scope.rowCollection2 = $scope.rowCollection2.filter(solicitud => solicitud.id != $scope.infoAsesoria.id)
+        //$scope.cerrarModalFinalizar()
+        $http({
+            method:'POST',
+            url:'/SISAASE_war_exploded/isImpartidaAction',
+            data: 'data=' + JSON.stringify({idAsesoria: 1, idEstadoAsesoria:{
+                    idEstadoAsesoria: 4, nombre:"Impartida"
+                }, duracion: null})
+        }).then(function successCallback (response) {
+            console.log(response)
+        },function errorCallback (response) {
+            console.log(response)
+        })
+    }
 
         $scope.modalCancelar = (asesoria) => {
                 $scope.infoAsesoria = angular.copy(asesoria)
@@ -121,7 +146,23 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
             })
         }
 
-        $scope.rowCollection = [
+    $scope.consultarAsesoriasAceptadas = () =>{
+        console.log("Holi")
+        $http({
+            method: 'GET',
+            url: '/SISAASE_war_exploded/consultarAsesoriasAceptadasDocenteAction',
+        }).then(function successCallback (response){
+            $scope.listaAsesoriasAceptadas = response.data.listaAsesorias;
+            console.log($scope.listaAsesoriasAceptadas)
+        },function errorCallback (response){
+            console.log(response);
+        })
+    }
+
+
+
+
+    $scope.rowCollection = [
                 { id: 1, fecha: '2022/05/25', hora: '20:00', estudiante: {
                                 nombre: 'Nath Escalona Ruiz',
                                 matricula: '20203TN082',

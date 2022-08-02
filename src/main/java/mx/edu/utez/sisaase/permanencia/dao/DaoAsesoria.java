@@ -181,6 +181,53 @@ public class DaoAsesoria {
         return map;
     }
 
+    public Map<String,Object> consultarAsesoriasAceptadasDocente() throws SQLException{
+        List<BeanAsesorias> asesoriasList = new ArrayList<>();
+        int errorProfesor;
+        Map<java.lang.String, java.lang.Object> map = new HashMap<>();
+        try {
+            connection = ConnectionMysql.getConnection();
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            BeanUsuario usuario = (BeanUsuario) session.getAttribute("usuario");
+            cstm = connection.prepareCall("{CALL consultaAsesoriasAceptadasDocente(?,?)}");
+            cstm.setString(1, usuario.getClaveIdentidad());
+            cstm.registerOutParameter(2, Types.INTEGER);
+            rs = cstm.executeQuery();
+            errorProfesor = cstm.getInt(2);
+            if (errorProfesor == 0){
+                while (rs.next()){
+                    BeanAsesorias asesoria = new BeanAsesorias
+                            (
+                                    rs.getInt("idAsesoria"),
+                                    new BeanAlumnoInscrito(rs.getString("matricula"), rs.getString("nombre_completo")),
+                                    new BeanMaterias(rs.getString("materia")),
+                                    new BeanEstadoAsesoria(rs.getString("estado_asesoria")),
+                                    rs.getString("tema"),
+                                    rs.getString("dudas"),
+                                    rs.getString("hora"),
+                                    rs.getInt("riesgo"),
+                                    new BeanCarrera(rs.getString("carrera")),
+                                    rs.getString("fecha"),
+                                    new BeanGrupos(rs.getInt("cuatrimestre"), rs.getString("grupo"))
+                            );
+                    asesoriasList.add(asesoria);
+                }
+                map.put("Data", asesoriasList);
+                map.put("Message", "Consulta exitosa");
+                map.put("Error", false);
+            }else {
+                map.put("Data", null);
+                map.put("Message", "El profesor no existe");
+                map.put("Error", false);
+            }
+        }catch (SQLException e){
+            Logger.getLogger(DaoAsesoria.class.getName()).log(Level.SEVERE,"Ha ocurrido un error en el método consultarAsesoriasAceptadasDocente " + e);
+        }finally {
+            closeConnection();
+        }
+        return map;
+    }
+
     public Map<String, Object> isAceptadaORechazada(BeanAsesorias asesoria) throws SQLException {
         int errorIdAsesoria, errorEstado, estadoErroneo, actualizado;
         //Para los errores

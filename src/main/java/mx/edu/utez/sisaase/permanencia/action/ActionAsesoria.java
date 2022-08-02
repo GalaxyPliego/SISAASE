@@ -1,10 +1,7 @@
 package mx.edu.utez.sisaase.permanencia.action;
 
 import com.google.gson.Gson;
-import mx.edu.utez.sisaase.permanencia.bean.BeanAsesorias;
-import mx.edu.utez.sisaase.permanencia.bean.BeanHorariosAsesoria;
-import mx.edu.utez.sisaase.permanencia.bean.BeanMaterias;
-import mx.edu.utez.sisaase.permanencia.bean.BeanProfesor;
+import mx.edu.utez.sisaase.permanencia.bean.*;
 import mx.edu.utez.sisaase.permanencia.dao.DaoAsesoria;
 
 import java.sql.SQLException;
@@ -97,6 +94,54 @@ public class ActionAsesoria {
         }
         return SUCCESS;
     }
+
+    public String consultarAsesoriasAceptadasDocenteAction(){
+        try {
+            //Los datos que nos mandan lo pasamos a un modelo de la clase BeanAsesorias
+            map = new DaoAsesoria().consultarAsesoriasAceptadasDocente();
+            listaAsesorias = (List<BeanAsesorias>) map.get("Data");
+            message = (String) map.get("Message");
+            error = (boolean) map.get("Error");
+        }catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return SUCCESS;
+    }
+
+    public String isAceptadaORechazadaAction(){
+         try {
+             beanAsesorias = gs.fromJson(data, BeanAsesorias.class);
+             map = new DaoAsesoria().isAceptadaORechazada(beanAsesorias);
+             message = (String) map.get("Message");
+             error = (boolean) map.get("Error");
+         }catch (Exception e){
+             System.out.println("Error: " + e.getMessage());
+         }
+         return SUCCESS;
+    }
+
+
+
+
+    public String isImpartidaAction(){
+        System.out.println("Entrooooo");
+        try {
+            //Los datos que nos mandan lo pasamos a un modelo de la clase BeanAseosiras
+            beanAsesorias = gs.fromJson(data,BeanAsesorias.class);
+            System.out.println(beanAsesorias.getIdAsesoria());
+            map = new DaoAsesoria().isImpartida(beanAsesorias);
+            //Obtener el valor del error del Dao
+            error = (boolean) map.get("Error");
+            message = (String) map.get("Message");
+
+        }catch (Exception e){
+            System.out.println("Error " + e.getMessage());
+
+        }
+        return SUCCESS;
+    }
+
+
 
     public List<BeanHorariosAsesoria> getHorariosAsesoria() {
         return horariosAsesoria;
