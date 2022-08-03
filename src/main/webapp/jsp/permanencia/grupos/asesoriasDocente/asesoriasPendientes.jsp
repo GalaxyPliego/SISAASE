@@ -310,7 +310,7 @@
 
                                 <tr class="ng-scope" ng-repeat="row in listPending | orderBy:'fecha' : reverse">
 
-                                    <td ng-bind="$index + 1"></td>
+                                    <td ng-bind="((currentPage - 1) * registroPorPagina) + $index + 1"></td>
                                     <td ng-bind="row.fechaAsesoria"></td>
                                     <td ng-bind="row.horarioSolicitado"></td>
                                     <td ng-bind="row.matricula.nombreCompleto"></td>
@@ -320,10 +320,12 @@
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody>
-                                <tfoot>
+                                <tfoot ng-if="listaAsesoriasPendientes.length >= 0" style="cursor:pointer;">
                                 <tr>
-                                    <td colspan="7" class="text-center">
-                                        <div style="cursor:pointer;" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                    <td ng-if="listaAsesoriasPendientes.length > 0" colspan="7" class="text-center">
+                                        <div st-pagination="" st-page-change="rembemberCurrentPage(newPage)"
+                                             st-items-by-page="registroPorPagina"
+                                             st-displayed-pages="10"></div>
                                     </td>
                                 </tr>
                                 </tfoot>
@@ -358,7 +360,7 @@
 
                                 <tr class="ng-scope" ng-repeat="row2 in listAccepted | orderBy:'fecha' ">
 
-                                    <td ng-bind="$index + 1"></td>
+                                    <td ng-bind="((pageCurrent - 1) * registroPorPagina) + $index + 1"></td>
                                     <td ng-bind="row2.fechaAsesoria"></td>
                                     <td ng-bind="row2.horarioSolicitado"></td>
                                     <td ng-bind="row2.matricula.nombreCompleto"></td>
@@ -368,10 +370,12 @@
                                 </tr><!-- end ngRepeat: pago in historial.lista -->
 
                                 </tbody>
-                                <tfoot>
+                                <tfoot ng-if="listaAsesoriasAceptadas.length >= 0" style="cursor:pointer;">
                                 <tr>
-                                    <td colspan="7" class="text-center">
-                                        <div style="cursor:pointer;" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                    <td ng-if="listaAsesoriasAceptadas.length > 0" colspan="7" class="text-center">
+                                        <div st-pagination="" st-page-change="pagina(newPage)"
+                                             st-items-by-page="registroPorPagina"
+                                             st-displayed-pages="10"></div>
                                     </td>
                                 </tr>
                                 </tfoot>
@@ -524,7 +528,8 @@
                         <!--<button id="aceptar" type="button" class="btn" style="background-color:#019979 ; color: white;">Aceptar</button>-->
                         <button class="btn " ng-disabled="formularioAceptarAsesoria.$invalid"
                                 ng-class="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria === 3 ? 'btn-danger' : 'btn-success'"
-                                ng-bind="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria === 3 ? 'Rechazar' : 'Aceptar'"  ng-click="aceptarAsesoria()"></button>
+                                ng-bind="infoAsesoria.idEstadoAsesoria.idEstadoAsesoria === 3 ? 'Rechazar' : 'Aceptar'"
+                                ng-click="aceptarAsesoria()"></button>
                         <!--{{formularioAceptarAsesoria | json}}-->
                         <button type="button" class="btn" ng-click="cerrarModalAceptarR()"  style="background-color:#6C757D; color:white">Cerrar</button>
                     </div>
@@ -554,34 +559,34 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label >Nombre:</label>
-                            <div ng-bind="infoAsesoria.estudiante.nombre"></div>
+                            <div ng-bind="infoAsesoria.matricula.nombreCompleto"></div>
                         </div>
                         <div class="form-group col-md-4">
                             <label >Matrícula:</label>
-                            <div ng-bind="infoAsesoria.estudiante.matricula"></div>
+                            <div ng-bind="infoAsesoria.matricula.matricula"></div>
                         </div>
                         <div class="form-group col-md-4">
                             <label >Carrera:</label>
-                            <div ng-bind="infoAsesoria.estudiante.carrera"></div>
+                            <div ng-bind="infoAsesoria.carrera.nombreCarrera"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label >Grado:</label>
-                                <div ng-bind="infoAsesoria.estudiante.grado"></div>
+                                <label >Cuatrimestre:</label>
+                                <div ng-bind="infoAsesoria.grupo.cuatrimestre"></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label >Grupo:</label>
-                                <div ng-bind="infoAsesoria.estudiante.grupo"></div>
+                                <div ng-bind="infoAsesoria.grupo.grupo"></div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label >Riesgo:</label>
-                                <div ng-bind="infoAsesoria.estudiante.riesgo"></div>
+                                <div ng-bind="infoAsesoria.riesgo"></div>
                             </div>
                         </div>
                     </div>
@@ -596,15 +601,15 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label >Fecha:</label>
-                            <div ng-bind="infoAsesoria.fecha"></div>
+                            <div ng-bind="infoAsesoria.fechaAsesoria"></div>
                         </div>
                         <div class="form-group col-md-4">
                             <label >Hora:</label>
-                            <div ng-bind="infoAsesoria.hora"></div>
+                            <div ng-bind="infoAsesoria.horarioSolicitado"></div>
                         </div>
                         <div class="form-group col-md-4">
                             <label >Asignatura:</label>
-                            <div ng-bind="infoAsesoria.asignatura"></div>
+                            <div ng-bind="infoAsesoria.idMateria.nombre"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -617,7 +622,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label >Dudas Específicas:</label>
-                                <div ng-bind="infoAsesoria.dudas"></div>
+                                <div ng-bind="infoAsesoria.dudasEspecificas"></div>
                             </div>
 
                         </div>

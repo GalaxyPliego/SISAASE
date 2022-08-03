@@ -196,8 +196,17 @@
                                 class="fa fa-th-list"></i> Seguimiento a Estadía</a>
                     </li>
                     <li>
-                        <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/asesoriasPendientes.jsp"><i
-                                class="fa fa-th-list"></i> Solicitudes Asesorías Académicas</a>
+                        <a href="#"><i class="fa fa-pencil-square-o"></i> Asesorías Académicas<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/asesoriasPendientes.jsp">Solicitudes
+                                    de asesorías académicas</a>
+                            </li>
+                            <li>
+                                <a href="/SISAASE_war_exploded/jsp/permanencia/grupos/asesoriasDocente/historialDocente.jsp">Historial
+                                    de asesorías académicas</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i> Evaluación docente<span

@@ -2,6 +2,9 @@ var sisa = angular.module("sisa", ['smart-table','ui.bootstrap', 'oitozero.ngSwe
 
 sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'SweetAlert', function ($rootScope, $scope, $http, SweetAlert) {
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    $scope.currentPage = 1;
+    $scope.pageCurrent = 1;
+    $scope.registroPorPagina = 2;
     $scope.infoAsesoria = {}
         $scope.estados = [
                 {
@@ -26,9 +29,18 @@ sisa.controller("ControlAsesoriasDocente", ['$rootScope', '$scope', '$http', 'Sw
                 }
         ]
 
+    $scope.rembemberCurrentPage = (p) =>{
+        $scope.currentPage = p;
+    }
+
+    $scope.pagina = (pagina) =>{
+        $scope.pageCurrent = pagina;
+    }
+
 
         $scope.modalAceptarR = (asesoria) =>{
-                $scope.infoAsesoria = angular.copy({...asesoria,estado:null})
+                $scope.infoAsesoria = angular.copy({...asesoria,idEstadoAsesoria:null})
+                console.log($scope.infoAsesoria)
                 $('#aceptarRechazar').modal('show')
 
         }
